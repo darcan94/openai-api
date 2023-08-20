@@ -1,0 +1,20 @@
+.chatBubble{
+    border-radius: 15px;
+    padding: 8px;
+    width: auto;
+    max-width: 70%;
+}
+
+.userBubble{
+    align-self: end;
+    background: linear-gradient(90deg, #2870EA 10.79%, #1B4AEF 87.08%);
+    color: #FFFFFF;
+    border-bottom-right-radius: 0px;
+} 
+
+.assistantBubble{
+    align-self: start;
+    background-color: #EAEAEA;
+    color: #3F3F3F;
+    border-bottom-left-radius: 0px;
+}
