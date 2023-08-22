@@ -9,7 +9,7 @@ export default function Chat(){
         initialMessages: [{
           id: new Date().toISOString(),
           role: 'system',
-          content: 'Eres un gran programador en javascript'
+          content: 'You are a helpful assistant.'
         }]
     });
 

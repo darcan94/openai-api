@@ -3,7 +3,7 @@ import { type Message } from "ai";
 
 export default function ChatList({ messages }: {messages: Message[]}){    
     return(
-        <div>
+        <div className="flex flex-col w-full gap-8">
             {   messages
                     .filter((message: Message) => message.role !== 'system')   
                     .map((message: Message) => ( <Bubble key={message.id} message={message} /> ))
