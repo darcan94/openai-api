@@ -14,7 +14,7 @@ export const POST = async ( request: Request ) => {
     const response = await openai.createChatCompletion({
         model: 'gpt-3.5-turbo',
         messages,
-        max_tokens: 600,
+        max_tokens: 400,
         stream: true
     });
 
