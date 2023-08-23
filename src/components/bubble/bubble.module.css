@@ -3,6 +3,7 @@
     padding: 8px;
     width: auto;
     max-width: 70%;
+    box-shadow: 4px 4px 15px -2px rgba(161,161,161,0.5);
 }
 
 .userBubble{
