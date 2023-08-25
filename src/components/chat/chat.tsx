@@ -2,6 +2,7 @@
 import { useChat } from "ai/react";
 import PromptField from "../promptField/promptField";
 import ChatList from "../chatList/chatList";
+import useAutoScroll from "@/app/hooks/useAutoScroll";
 
 export default function Chat(){
     const { messages, input, handleInputChange, handleSubmit } = useChat({
@@ -13,14 +14,16 @@ export default function Chat(){
         }]
     });
 
+    const chatListRef = useAutoScroll(messages);
+
     return (
-        <>
+        <div ref={chatListRef} className="w-full overflow-y-scroll px-2">
             <ChatList messages={messages}/>
             <PromptField
                 input = {input}
                 handleInputChange = {handleInputChange}
                 handleSubmit = {handleSubmit} 
             />
-        </>
+        </div>
     )
 }

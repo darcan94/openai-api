@@ -12,7 +12,7 @@ export default function PromptField({input, handleInputChange, handleSubmit}: Ch
     const {formRef, onKeyDown} = useEnterSend();
 
     return(
-        <form ref={formRef} onSubmit={handleSubmit} className="sticky bottom-0 w-full bg-white/50 backdrop-blur-md p-4">
+        <form ref={formRef} onSubmit={handleSubmit} className="sticky bottom-0 w-full bg-white/50 backdrop-blur-md p-4 mt-2">
             <div className="flex bg-slate-50 backdrop-blur-lg rounded-xl p-1">
                 <textarea onKeyDown={onKeyDown} className="bg-transparent resize-none w-11/12 outline-none"
                     value={input} 
