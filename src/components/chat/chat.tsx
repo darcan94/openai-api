@@ -17,7 +17,7 @@ export default function Chat(){
     const chatListRef = useAutoScroll(messages);
 
     return (
-        <div ref={chatListRef} className="w-full overflow-y-scroll px-2">
+        <div ref={chatListRef} className="w-full overflow-y-auto px-2">
             <ChatList messages={messages}/>
             <PromptField
                 input = {input}
