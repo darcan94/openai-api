@@ -1,6 +1,6 @@
 import useEnterSend from "@/app/hooks/useEnterSend";
 import useTextareaAutoHeight from "@/app/hooks/useTextareaAuttoHeight";
-import { ChangeEvent, FormEvent, useEffect, useRef } from "react";
+import { ChangeEvent, FormEvent } from "react";
 
 interface ChatFormProps{
     input: string;
