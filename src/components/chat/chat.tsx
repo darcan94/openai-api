@@ -10,7 +10,7 @@ export default function Chat(){
         initialMessages: [{
           id: new Date().toISOString(),
           role: 'system',
-          content: 'You are a helpful assistant.'
+          content: 'You are a helpful assistant. Answer as concisely as possible.'
         }]
     });
 
