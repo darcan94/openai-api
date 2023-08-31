@@ -1,6 +1,6 @@
 'use client';
 import { useChat } from "ai/react";
-import PromptField from "@/components/promptField/promptField";
+import PromptField from "@/components/promptField/promptForm";
 import ChatList from "@/components/chatList/chatList";
 import useAutoScroll from "@/app/hooks/useAutoScroll";
 
