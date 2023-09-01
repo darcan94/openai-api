@@ -1,4 +1,4 @@
-import useEnterSend from "@/app/hooks/useEnterSend";
+import useEnterSend from "@/hooks/useEnterSend";
 import { ChangeEvent, FormEvent } from "react";
 import SendButton from "@/components/sendButton/sendButton";
 import TextArea from "@/components/textArea/TextArea";
