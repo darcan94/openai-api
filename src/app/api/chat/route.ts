@@ -15,6 +15,7 @@ export const POST = async ( request: Request ) => {
         model: 'gpt-3.5-turbo',
         messages,
         max_tokens: 400,
+        temperature: 0,
         stream: true
     });
 
