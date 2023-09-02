@@ -1,11 +1,11 @@
 'use client';
 import { useChat } from "ai/react";
-import PromptField from "@/components/promptField/promptForm";
 import ChatList from "@/components/chatList/chatList";
 import useAutoScroll from "@/hooks/useAutoScroll";
+import PromptForm from "@/components/promptForm/promptForm";
 
 export default function Chat(){
-    const { messages, input, handleInputChange, handleSubmit } = useChat({
+    const { messages, input, isLoading, stop, reload, handleInputChange, handleSubmit } = useChat({
         api: '/api/chat',
         initialMessages: [{
           id: new Date().toISOString(),
@@ -15,14 +15,18 @@ export default function Chat(){
     });
 
     const chatListRef = useAutoScroll(messages);
-
+    
     return (
         <div ref={chatListRef} className="w-full overflow-y-auto px-2">
             <ChatList messages={messages}/>
-            <PromptField
+            <PromptForm
                 input = {input}
+                isLoading = {isLoading}
+                hasMessage = {messages.length>1}
+                stop={stop}
+                reload={reload}
                 handleInputChange = {handleInputChange}
-                handleSubmit = {handleSubmit} 
+                handleSubmit = {handleSubmit}
             />
         </div>
     )

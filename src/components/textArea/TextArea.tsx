@@ -18,7 +18,7 @@ export default function TextArea( {input, handleInputChange, onKeyDown }: ChatFo
             onKeyDown={(evt) => onKeyDown(evt)} 
             value={input} 
             onChange={handleInputChange} 
-            placeholder="type a message">    
+            placeholder="Send a message">    
         </textarea>
     );
 }
