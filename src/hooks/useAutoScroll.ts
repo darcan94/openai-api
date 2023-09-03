@@ -1,7 +1,7 @@
-import { RefObject, useEffect, useRef } from "react";
+import { RefObject, useEffect, useRef, useState } from "react";
 import { type Message } from "ai";
 
-export default function useAutoScroll(refDependency: Message[]): RefObject<HTMLDivElement>{
+export function useAutoScroll(refDependency: Message[]): RefObject<HTMLDivElement>{
     const chatListRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -16,4 +16,36 @@ export default function useAutoScroll(refDependency: Message[]): RefObject<HTMLD
     }, [refDependency]);
 
     return chatListRef;
+}
+
+export function useScrollToBottom(ref: RefObject<HTMLDivElement>){
+    const scrollToBottom = () => {      
+        const reference = ref.current; 
+        reference?.scrollTo({
+            top: reference?.scrollHeight,
+            behavior: 'smooth'
+        });
+    };
+
+    return scrollToBottom
+}
+
+export function useScrollDetection({ chatListRef }: { chatListRef: RefObject<HTMLDivElement>; }){
+    const [ isAtBottom, setIsAtBottom ] = useState(true);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const ref = chatListRef.current;
+            if(ref) setIsAtBottom((ref.scrollTop + ref.clientHeight) === ref.scrollHeight);
+        };
+
+        const ref = chatListRef.current;
+        ref?.addEventListener('scroll', handleScroll);
+
+        return () => {
+            ref?.removeEventListener('scroll', handleScroll);
+        };
+    }, [chatListRef]);
+
+    return isAtBottom;
 }
