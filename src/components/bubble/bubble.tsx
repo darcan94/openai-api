@@ -10,7 +10,7 @@ export default function Bubble({message}: {message: Message}){
     return(
         <div key={message.id} className={`${styles.chatBubble} ${styles[bubbleClass]}`}>
            {segments.map((segment, index) => {
-                if( message.role === 'assistant' && /^```[\s\S]*$/.test(segment)){
+                if( message.role === 'assistant' && /^```[\s\S]*```$/.test(segment)){
                     const language = segment.split('\n')[0].replace('```', '');
                     const code = segment.replace(/```/g, '');
                     return <CodeBlock key={index} value={code} language={language || ''}/>

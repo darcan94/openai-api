@@ -2,12 +2,13 @@ import useEnterSend from "@/hooks/useEnterSend";
 import { ChangeEvent, FormEvent } from "react";
 import Button from "@/components/button/Button";
 import TextArea from "@/components/textArea/TextArea";
-import { IconReload, IconStop, IconSubmit } from "../icons/Icons";
+import { IconClearChat, IconReload, IconStop, IconSubmit } from "../icons/Icons";
+import { useRouter } from "next/navigation";
 
 interface ChatFormProps{
     input: string;
     isLoading: boolean;
-    hasMessage: boolean
+    hasMessage: boolean;
     stop: () => void;
     reload: () => void;
     handleInputChange: (event: ChangeEvent<HTMLTextAreaElement>) => void;
@@ -15,11 +16,11 @@ interface ChatFormProps{
 }
 
 export default function PromptForm({input, isLoading, hasMessage, stop, reload, handleInputChange, handleSubmit}: ChatFormProps){  
-
+    const router = useRouter()
     const {formRef, onKeyDown} = useEnterSend();
 
     return(
-        <div className="bg-white/50 backdrop-blur-md  sticky bottom-0 w-full">
+        <div className="bg-white/50 backdrop-blur-lg  sticky bottom-0 w-full shadow-md">
             <div className="flex h-auto items-center justify-center py-1 mt-2">
                 {isLoading ? (
                     <Button
@@ -40,11 +41,24 @@ export default function PromptForm({input, isLoading, hasMessage, stop, reload, 
                 ) }
             </div>
             <form ref={formRef} onSubmit={handleSubmit} className="p-4">
-                <div className="flex bg-slate-50 backdrop-blur-lg rounded-xl p-1">                
+                <div className="flex items-center bg-slate-50 backdrop-blur-lg rounded-xl p-1">         
+                    <Button
+                        variant="ghost"
+                        disabled={!hasMessage}
+                        onClick={e => {
+                            e.preventDefault()
+                            router.refresh()
+                            router.push('/')
+                          }}>
+                            <IconClearChat />
+                            <span className="sr-only"> New Chat </span>
+                    </Button>
+
                     <TextArea 
                         input={input} 
                         handleInputChange={handleInputChange} 
                         onKeyDown = { onKeyDown }/>
+
                     <Button
                         type="submit" 
                         disabled={isLoading || input === ''}
