@@ -2,21 +2,22 @@ import useEnterSend from "@/hooks/useEnterSend";
 import { ChangeEvent, FormEvent } from "react";
 import Button from "@/components/button/Button";
 import TextArea from "@/components/textArea/TextArea";
-import { IconClearChat, IconReload, IconStop, IconSubmit } from "../icons/Icons";
-import { useRouter } from "next/navigation";
+import { IconClearChat, IconReload, IconStop, IconSubmit } from "@/components/icons/Icons";
+import { Message } from "ai";
+import { initialMessages } from "@/components/chat/chat";
 
 interface ChatFormProps{
     input: string;
     isLoading: boolean;
     hasMessage: boolean;
+    setMessages: (messages: Message[])=> void ;
     stop: () => void;
     reload: () => void;
     handleInputChange: (event: ChangeEvent<HTMLTextAreaElement>) => void;
     handleSubmit: (event: FormEvent<HTMLFormElement>) => void;
 }
 
-export default function PromptForm({input, isLoading, hasMessage, stop, reload, handleInputChange, handleSubmit}: ChatFormProps){  
-    const router = useRouter()
+export default function PromptForm({input, isLoading, hasMessage, setMessages, stop, reload, handleInputChange, handleSubmit}: ChatFormProps){
     const {formRef, onKeyDown} = useEnterSend();
 
     return(
@@ -45,11 +46,7 @@ export default function PromptForm({input, isLoading, hasMessage, stop, reload, 
                     <Button
                         variant="ghost"
                         disabled={!hasMessage}
-                        onClick={e => {
-                            e.preventDefault()
-                            router.refresh()
-                            router.push('/')
-                          }}>
+                        onClick={() => setMessages(initialMessages)}>
                             <IconClearChat />
                             <span className="sr-only"> New Chat </span>
                     </Button>

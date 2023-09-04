@@ -30,7 +30,7 @@ export function useScrollToBottom(ref: RefObject<HTMLDivElement>){
     return scrollToBottom
 }
 
-export function useScrollDetection({ chatListRef }: { chatListRef: RefObject<HTMLDivElement>; }){
+export function useScrollDetection(chatListRef: RefObject<HTMLDivElement>){
     const [ isAtBottom, setIsAtBottom ] = useState(true);
 
     useEffect(() => {

@@ -1,4 +1,3 @@
-import { IconSubmit } from "@/components/icons/Icons";
 import { VariantProps, cva } from "class-variance-authority";
 
 const buttonVariants = cva(
