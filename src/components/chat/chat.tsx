@@ -14,9 +14,16 @@ export const initialMessages: Message[] = [{
 }];
 
 export default function Chat(){
-    const { messages, input, isLoading, setMessages, stop, reload, handleInputChange, handleSubmit } = useChat({
-        initialMessages
-    });
+    const { 
+        messages,
+        input, 
+        isLoading, 
+        setMessages, 
+        stop, 
+        reload, 
+        handleInputChange, 
+        handleSubmit 
+    } = useChat({ initialMessages });
 
     const chatListRef = useAutoScroll(messages);
     const scrollToBottom = useScrollToBottom(chatListRef);
@@ -39,9 +46,9 @@ export default function Chat(){
             </div>
             {!isAtBottom && (
                 <Button
-                    variant="outline"
-                    className="fixed bottom-6 right-8
-                    rounded-full h-10 w-10 px-0 py-0"
+                    variant="rounded"
+                    className="fixed bottom-6 right-8 
+                    rounded-full h-15 w-15 px-0 py-0"
                     onClick={scrollToBottom}>
                         <IconArrowDown />
                 </Button>

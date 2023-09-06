@@ -17,7 +17,10 @@ interface ChatFormProps{
     handleSubmit: (event: FormEvent<HTMLFormElement>) => void;
 }
 
-export default function PromptForm({input, isLoading, hasMessage, setMessages, stop, reload, handleInputChange, handleSubmit}: ChatFormProps){
+export default function PromptForm({
+    input, isLoading, hasMessage, setMessages, stop, reload, handleInputChange, handleSubmit
+}: ChatFormProps){
+    
     const {formRef, onKeyDown} = useEnterSend();
 
     return(

@@ -8,7 +8,7 @@ export default function Bubble({message}: {message: Message}){
     const segments = message.content.split(/(```[\s\S]*?```)/g);    
 
     return(
-        <div key={message.id} className={`${styles.chatBubble} ${styles[bubbleClass]}`}>
+        <div key={message.id} className={`${styles.chatBubble} ${styles[bubbleClass]} sm:w-full`}>
            {segments.map((segment, index) => {
                 if( message.role === 'assistant' && /^```[\s\S]*```$/.test(segment)){
                     const language = segment.split('\n')[0].replace('```', '');

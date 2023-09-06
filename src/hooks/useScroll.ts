@@ -36,9 +36,9 @@ export function useScrollDetection(chatListRef: RefObject<HTMLDivElement>){
     useEffect(() => {
         const handleScroll = () => {
             const ref = chatListRef.current;
-            if(ref) setIsAtBottom((ref.scrollTop + ref.clientHeight) === ref.scrollHeight);
+            if(ref) setIsAtBottom((ref.scrollTop + ref.clientHeight) >= ref.scrollHeight - 1 );
         };
-
+        
         const ref = chatListRef.current;
         ref?.addEventListener('scroll', handleScroll);
 
@@ -46,6 +46,6 @@ export function useScrollDetection(chatListRef: RefObject<HTMLDivElement>){
             ref?.removeEventListener('scroll', handleScroll);
         };
     }, [chatListRef]);
-
+    
     return isAtBottom;
 }
