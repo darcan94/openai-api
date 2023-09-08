@@ -24,7 +24,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-  font-weight: 200;
+  font-weight: 300;
 }
 
 /* Estilos para el scrollbar */

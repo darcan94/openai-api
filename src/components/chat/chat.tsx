@@ -30,8 +30,8 @@ export default function Chat(){
     const isAtBottom = useScrollDetection(chatListRef);
 
     return (
-         <>    
-            <div ref={chatListRef} className="w-full overflow-y-auto px-2">
+         <div  className=" relative w-full flex flex-col justify-end">    
+            <div ref={chatListRef} className="overflow-y-auto">
                 <ChatList messages={messages}/>
                 <PromptForm
                     input = {input}
@@ -47,12 +47,13 @@ export default function Chat(){
             {!isAtBottom && (
                 <Button
                     variant="rounded"
-                    className="fixed bottom-6 right-8 
-                    rounded-full h-15 w-15 px-0 py-0"
+                    className="absolute bottom-32 right-8 
+                    rounded-full h-15 w-15 px-0 py-0 z-10"
+                    size="icon"
                     onClick={scrollToBottom}>
                         <IconArrowDown />
                 </Button>
             )}            
-        </>
+        </div>
     )
 }

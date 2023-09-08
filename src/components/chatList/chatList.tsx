@@ -5,7 +5,7 @@ export default function ChatList({ messages }: {messages: Message[]}){
     const filteredMessages = messages.filter((message: Message) => message?.role !== 'system');
 
     return(
-        <div className="flex flex-col w-full gap-4">
+        <div className="flex flex-col w-full gap-4 px-2">
             { filteredMessages.map((message: Message) => ( 
                  <Bubble key={message.id} message={message} /> 
             )) }
