@@ -28,7 +28,7 @@ export default function Chat(){
     const chatListRef = useAutoScroll(messages);
     const scrollToBottom = useScrollToBottom(chatListRef);
     const isAtBottom = useScrollDetection(chatListRef);
-
+    
     return (
          <div  className=" relative w-full flex flex-col justify-end">    
             <div ref={chatListRef} className="overflow-y-auto">
@@ -47,9 +47,9 @@ export default function Chat(){
             {!isAtBottom && (
                 <Button
                     variant="rounded"
-                    className="absolute bg-white bottom-32 right-8 
+                    className="absolute bg-white bottom-36 right-6 
                     rounded-full px-0 py-0 z-10"
-                    size="icon"
+                    size="iconlg"
                     onClick={scrollToBottom}>
                         <IconArrowDown />
                 </Button>

@@ -1,27 +1,40 @@
 import { type Message } from "ai";
 import styles from "./bubble.module.css";
 import CodeBlock from "@/components/codeBlock/codeBlock";
+import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+import { MemoMarkdown } from "../markdown/memoMarkdown";
 
 export default function Bubble({message}: {message: Message}){
 
     const bubbleClass = message.role === 'user' ? 'userBubble' : 'assistantBubble';
-    const segments = message.content.split(/(```[\s\S]*?```)/g);    
 
     return(
-        <div key={message.id} className={`${styles.chatBubble} ${styles[bubbleClass]}`}>
-           {segments.map((segment, index) => {
-                if( message.role === 'assistant' && /^```[\s\S]*```$/.test(segment)){
-                    const language = segment.split('\n')[0].replace('```', '');
-                    const code = segment.replace(/```/g, '');
-                    return <CodeBlock key={index} value={code} language={language || ''}/>
-                }
-                
-                const formattedSegments = segment.split(/(`[^`]+`)/g).map((part, i) => {
-                      return part.startsWith('`') ? <b key={i}>{part}</b> : part;
-                });
-                    
-                return <p key={index}>{ formattedSegments }</p>;           
-           })}
+        <div key={message.id} className={`${styles.chatBubble} ${styles[bubbleClass]}`}>           
+                 <MemoMarkdown 
+                        key={message.id}
+                        remarkPlugins={[remarkGfm, remarkMath]}
+                        components={{
+                            p({ children }) {
+                                return <p className="mb-2 last:mb-0">{children}</p>
+                            },
+                            code({ node, inline, className, children, ...props }){
+                                const match = /language-(\w+)/.exec(className || '');
+                                return !inline && match ? (
+                                    <CodeBlock 
+                                        key={message.id}
+                                        language={match[1]}
+                                        value={String(children).replace(/\n$/, '')}
+                                    />
+                                ) : (
+                                    <code className={className} {...props}>
+                                        {children}
+                                    </code>
+                                )
+                            }
+                        }}>
+                            {message.content}
+                </MemoMarkdown>
         </div>
     )
 }

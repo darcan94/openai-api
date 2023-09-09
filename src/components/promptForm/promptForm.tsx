@@ -24,13 +24,13 @@ export default function PromptForm({
     const {formRef, onKeyDown} = useEnterSend();
 
     return(
-        <div className="bg-white/50 backdrop-blur-lg  sticky bottom-0 w-full shadow-md">
+        <div className="bg-white/70 backdrop-blur-lg  sticky bottom-0 w-full border-t border-t-black/10">
             <div className="flex h-auto items-center justify-center py-1 mt-2">
                 {isLoading ? (
                     <Button
                         variant="outline"
                         onClick={() => stop()}
-                        className="bg-background">
+                        className="bg-white">
                             <IconStop />
                             Stop generating
                     </Button>
@@ -38,14 +38,14 @@ export default function PromptForm({
                     hasMessage && (<Button
                         variant="outline"
                         onClick={() => reload()}
-                        className="bg-background">
+                        className="bg-white">
                             <IconReload />    
                             Regenerate response
                     </Button>)
                 ) }
             </div>
             <form ref={formRef} onSubmit={handleSubmit} className="p-4">
-                <div className="flex items-center bg-slate-50 backdrop-blur-lg rounded-xl p-1">         
+                <div className="flex items-center bg-slate-50 backdrop-blur-lg rounded-xl p-1 border border-black/10">         
                     <Button
                         variant="ghost"
                         disabled={!hasMessage}
