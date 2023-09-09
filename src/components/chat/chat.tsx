@@ -47,8 +47,8 @@ export default function Chat(){
             {!isAtBottom && (
                 <Button
                     variant="rounded"
-                    className="absolute bottom-32 right-8 
-                    rounded-full h-15 w-15 px-0 py-0 z-10"
+                    className="absolute bg-white bottom-32 right-8 
+                    rounded-full px-0 py-0 z-10"
                     size="icon"
                     onClick={scrollToBottom}>
                         <IconArrowDown />
