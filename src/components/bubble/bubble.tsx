@@ -3,7 +3,7 @@ import styles from "./bubble.module.css";
 import CodeBlock from "@/components/codeBlock/codeBlock";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
-import { MemoMarkdown } from "../markdown/memoMarkdown";
+import { MemoMarkdown } from "@/components/markdown/memoMarkdown";
 
 export default function Bubble({message}: {message: Message}){
 
@@ -24,8 +24,7 @@ export default function Bubble({message}: {message: Message}){
                                     <CodeBlock 
                                         key={message.id}
                                         language={match[1]}
-                                        value={String(children).replace(/\n$/, '')}
-                                    />
+                                        value={String(children).replace(/\n$/, '')}/>
                                 ) : (
                                     <code className={className} {...props}>
                                         {children}

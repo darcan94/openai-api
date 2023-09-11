@@ -11,9 +11,6 @@ export default function Home() {
           <h1>History</h1>
         </Sidebar>
         <Chat />
-        <Sidebar key="settings" className="mt-[4rem]">
-          <h1>Settings</h1>
-        </Sidebar>
       </main>
     </>
   )
