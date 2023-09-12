@@ -7,7 +7,7 @@ export default function Home() {
     <>
       <Header />
       <main className="flex h-screen justify-end w-full my-0 mx-auto">
-        <Sidebar key="history" className="mt-[4rem]">
+        <Sidebar key="history" className="mt-[4rem] w-1/4">
           <h1>History</h1>
         </Sidebar>
         <Chat />
