@@ -10,7 +10,7 @@ import { Message } from "ai";
 export const initialMessages: Message[] = [{
     id: new Date().toISOString(),
     role: 'system',
-    content: 'You are a helpful assistant. Answer as concisely as possible.'
+    content: 'You are a helpful assistant. Answer as concisely as possible. Markdown'
 }];
 
 export default function Chat(){
