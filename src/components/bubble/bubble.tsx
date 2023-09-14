@@ -3,7 +3,7 @@ import styles from "./bubble.module.css";
 import CodeBlock from "@/components/codeBlock/codeBlock";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
-import { MemoMarkdown } from "@/components/markdown/memoMarkdown";
+import { MemoizedMarkdown } from "@/components/markdown/memoizedMarkdown";
 
 export default function Bubble({message}: {message: Message}){
 
@@ -11,7 +11,7 @@ export default function Bubble({message}: {message: Message}){
 
     return(
         <div key={message.id} className={`${styles.chatBubble} ${styles[bubbleClass]}`}>           
-                 <MemoMarkdown 
+                 <MemoizedMarkdown 
                         key={message.id}
                         remarkPlugins={[remarkGfm, remarkMath]}
                         components={{
@@ -37,7 +37,7 @@ export default function Bubble({message}: {message: Message}){
                             },
                         }}>
                             {message.content}
-                </MemoMarkdown>
+                </MemoizedMarkdown>
         </div>
     )
 }
