@@ -2,6 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  a{
+    @apply underline text-blue-600;
+  }
+
+  ul{
+    @apply list-disc mx-6 my-4;
+  }
+
+  ol{
+    @apply list-decimal mx-6 my-4;
+  }
+
+  blockquote>p{
+    @apply text-base italic font-medium my-4 before:content-['"'] after:content-['"'];
+  }
+
+  h1 {
+    @apply text-2xl;
+  }
+  h2 {
+    @apply text-xl;
+  }
+  h3 {
+    @apply text-lg;
+  }
+
+  h4{
+    @apply text-base;
+  }
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;

@@ -15,9 +15,6 @@ const config: Config = {
       },
       maxWidth:{
         '80': '80%',
-      },
-      fontSize:{
-        initial: 'initial'
       }
     },
   },
