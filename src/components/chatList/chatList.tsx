@@ -1,14 +1,16 @@
 import Bubble from "@/components/bubble/bubble";
 import { type Message } from "ai";
 
-export default function ChatList({ messages }: {messages: Message[]}){
-    const filteredMessages = messages.filter((message: Message) => message?.role !== 'system');
+export default function ChatList({ messages }: { messages: Message[] }) {
+  const filteredMessages = messages.filter(
+    (message: Message) => message?.role !== "system",
+  );
 
-    return(
-        <div className="flex flex-col w-full gap-4 px-2">
-            { filteredMessages.map((message: Message) => ( 
-                 <Bubble key={message.id} message={message} /> 
-            )) }
-        </div>
-    )
+  return (
+    <div className="flex w-full flex-col gap-4 px-2">
+      {filteredMessages.map((message: Message) => (
+        <Bubble key={message.id} message={message} />
+      ))}
+    </div>
+  );
 }

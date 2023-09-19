@@ -6,12 +6,12 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="pt-[4rem] flex h-screen justify-end w-full my-0 mx-auto">
+      <main className="mx-auto my-0 flex h-screen w-full justify-end pt-[4rem]">
         <Sidebar key="history" className="w-1/4">
           <h1>History</h1>
         </Sidebar>
         <Chat />
       </main>
     </>
-  )
+  );
 }

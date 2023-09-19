@@ -1,21 +1,21 @@
-.chatBubble{
-    border-radius: 15px;
-    padding: 8px;
-    width: auto;
-    max-width: 80%;
-    box-shadow: 4px 4px 15px -2px rgba(161,161,161,0.5);
+.chatBubble {
+  border-radius: 15px;
+  padding: 8px;
+  width: auto;
+  max-width: 80%;
+  box-shadow: 4px 4px 15px -2px rgba(161, 161, 161, 0.5);
 }
 
-.userBubble{
-    align-self: end;
-    background: linear-gradient(90deg, #2870EA 10.79%, #1B4AEF 87.08%);
-    color: #FFFFFF;
-    border-bottom-right-radius: 0px;
-} 
+.userBubble {
+  align-self: end;
+  background: linear-gradient(90deg, #2870ea 10.79%, #1b4aef 87.08%);
+  color: #ffffff;
+  border-bottom-right-radius: 0px;
+}
 
-.assistantBubble{
-    align-self: start;
-    background-color: #EAEAEA;
-    color: #3F3F3F;
-    border-bottom-left-radius: 0px;
+.assistantBubble {
+  align-self: start;
+  background-color: #eaeaea;
+  color: #3f3f3f;
+  border-bottom-left-radius: 0px;
 }
