@@ -7,7 +7,7 @@ export async function connectDB() {
         await mongoClient.connect();
         console.log('connect to MongoDB');        
         const database = mongoClient.db('open-api');
-        return database.collection('users');
+        return database.collection('chats');
     }catch(error){
         throw new Error(`Failed to connect to MongoDB: ${error}`)
     }

@@ -3,9 +3,9 @@ import { connectDB } from "@/utils/db";
 
 export const GET = async () => {
     const collection = await connectDB();
-    const users = collection.find()
+    const chats = collection.find()
 
     return NextResponse.json({
-        users: await users.toArray()
+        chats: await chats.toArray()
     });
 };
