@@ -4,16 +4,33 @@ import CodeBlock from "@/components/codeBlock/codeBlock";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import { MemoizedMarkdown } from "@/components/markdown/memoizedMarkdown";
+import Button from "@/components/button/Button";
+import { IconCheck, IconCopy } from "@/components/icons/Icons";
+import useClipboard from "@/hooks/useClipboard";
 
 export default function Bubble({ message }: { message: Message }) {
   const bubbleClass =
     message.role === "user" ? "userBubble" : "assistantBubble";
 
+  const { isCopied, copyToClipboard } = useClipboard({ timeout: 3000 });
+
+  const onCopy = () => {
+    if (isCopied) return;
+    copyToClipboard(message.content);
+  };
+
   return (
     <div
       key={message.id}
-      className={`${styles.chatBubble} ${styles[bubbleClass]}`}
+      className={`${styles.chatBubble} ${styles[bubbleClass]} relative group hover:group-hover`}
     >
+     {bubbleClass==='assistantBubble' && 
+     (<div className="absolute right-2 top-1 hidden group-hover:block">
+        <Button variant="ghost" size="iconsm" onClick={onCopy}>
+          {isCopied ? <IconCheck /> : <IconCopy />}
+        </Button>
+      </div>)}
+
       <MemoizedMarkdown
         key={message.id}
         remarkPlugins={[remarkGfm, remarkMath]}
