@@ -1,3 +1,4 @@
+import { connectDB } from "@/utils/db";
 import { OpenAIStream, StreamingTextResponse } from "ai";
 import { Configuration, OpenAIApi } from "openai-edge";
 
@@ -6,10 +7,11 @@ const config = new Configuration({
 });
 const openai = new OpenAIApi(config);
 
-export const runtime = "edge";
+//export const runtime = "edge";
 
 export const POST = async (request: Request) => {
   const { messages } = await request.json();
+  const collection = await connectDB();
 
   const response = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
@@ -33,7 +35,9 @@ export const POST = async (request: Request) => {
             role: 'assistant'
           }
         ]
-      }    
+      }
+      
+      collection.insertOne(payload);
     }
   });
 
