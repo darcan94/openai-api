@@ -1,8 +1,10 @@
 import Chat from "@/components/chat/chat";
 import Header from "@/components/header/header";
 import Sidebar from "@/components/sidebar/sidebar";
+import { v4 as uuidv4 } from 'uuid';
 
 export default function Home() {
+  const chatId = uuidv4();
   return (
     <>
       <Header />
@@ -10,7 +12,7 @@ export default function Home() {
         <Sidebar key="history" className="w-1/4">
           <h1>History</h1>
         </Sidebar>
-        <Chat />
+        <Chat id={ chatId }/>
       </main>
     </>
   );

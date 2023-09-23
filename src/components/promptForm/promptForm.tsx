@@ -10,6 +10,7 @@ import {
 } from "@/components/icons/Icons";
 import { Message } from "ai";
 import { initialMessages } from "@/components/chat/chat";
+import { useRouter } from "next/navigation";
 
 interface ChatFormProps {
   input: string;
@@ -33,6 +34,7 @@ export default function PromptForm({
   handleSubmit,
 }: ChatFormProps) {
   const { formRef, onKeyDown } = useEnterSend();
+  const router = useRouter();
 
   return (
     <div className="sticky bottom-0  w-full border-t border-t-black/10 bg-white/70 backdrop-blur-lg">
@@ -60,7 +62,12 @@ export default function PromptForm({
           <Button
             variant="ghost"
             disabled={!hasMessage}
-            onClick={() => setMessages(initialMessages)}
+            onClick={e => {
+              e.preventDefault(); 
+              router.refresh(); 
+              router.push('/');
+              setMessages(initialMessages);
+            }}
           >
             <IconClearChat />
             <span className="sr-only"> New Chat </span>

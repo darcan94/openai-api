@@ -20,7 +20,8 @@ export const initialMessages: Message[] = [
   },
 ];
 
-export default function Chat() {
+export default function Chat({ id }: { id: string }) {
+  
   const {
     messages,
     input,
@@ -30,7 +31,7 @@ export default function Chat() {
     reload,
     handleInputChange,
     handleSubmit,
-  } = useChat({ initialMessages });
+  } = useChat({ initialMessages, body: { id } });
 
   const chatListRef = useAutoScroll(messages);
   const scrollToBottom = useScrollToBottom(chatListRef);
