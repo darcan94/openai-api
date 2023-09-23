@@ -21,7 +21,7 @@ export const initialMessages: Message[] = [
 ];
 
 export default function Chat({ id }: { id: string }) {
-  
+  console.log(id);  
   const {
     messages,
     input,

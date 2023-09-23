@@ -7,7 +7,7 @@ const config = new Configuration({
 });
 const openai = new OpenAIApi(config);
 
-//export const runtime = "edge";
+export const runtime = "edge";
 
 export const POST = async (request: Request) => {
   const { messages, id } = await request.json();
