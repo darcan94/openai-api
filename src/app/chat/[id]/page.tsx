@@ -11,5 +11,5 @@ export default async function ChatPage({ params }: { params: any }) {
       notFound()
     }
 
-    return <Chat id={chat._id.toString()}/>
+    return <Chat id={chat._id.toString()} initialMessages={chat.messages}/>
 }

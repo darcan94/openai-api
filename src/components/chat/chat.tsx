@@ -11,7 +11,7 @@ import Button from "@/components/button/Button";
 import { IconArrowDown } from "@/components/icons/Icons";
 import { Message } from "ai";
 
-export const initialMessages: Message[] = [
+export const initialPrompt: Message[] = [
   {
     id: new Date().toISOString(),
     role: "system",
@@ -20,8 +20,7 @@ export const initialMessages: Message[] = [
   },
 ];
 
-export default function Chat({ id }: { id: string }) {
-  console.log(id);  
+export default function Chat({ id, initialMessages = initialPrompt }: { id: string, initialMessages?: Message[] }) {  
   const {
     messages,
     input,

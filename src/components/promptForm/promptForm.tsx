@@ -9,7 +9,7 @@ import {
   IconSubmit,
 } from "@/components/icons/Icons";
 import { Message } from "ai";
-import { initialMessages } from "@/components/chat/chat";
+import { initialPrompt } from "@/components/chat/chat";
 import { useRouter } from "next/navigation";
 
 interface ChatFormProps {
@@ -66,7 +66,7 @@ export default function PromptForm({
               e.preventDefault(); 
               router.refresh(); 
               router.push('/');
-              setMessages(initialMessages);
+              setMessages(initialPrompt);
             }}
           >
             <IconClearChat />

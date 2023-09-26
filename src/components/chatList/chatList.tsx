@@ -8,8 +8,8 @@ export default function ChatList({ messages }: { messages: Message[] }) {
 
   return (
     <div className="flex w-full flex-col gap-4 px-2">
-      {filteredMessages.map((message: Message) => (
-        <Bubble key={message.id} message={message} />
+      {filteredMessages.map((message: Message, index: number) => (
+        <Bubble key={index} message={message} />
       ))}
     </div>
   );
