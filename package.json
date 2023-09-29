@@ -22,10 +22,10 @@
     "react-syntax-highlighter": "^15.5.0",
     "remark-gfm": "^3.0.1",
     "remark-math": "^5.1.1",
-    "tailwindcss": "3.3.3",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "github:tailwindcss/typography",
     "@types/mongodb": "^4.0.7",
     "@types/node": "^20.7.0",
     "@types/react": "^18.2.22",
@@ -38,6 +38,8 @@
     "postcss": "^8.4.30",
     "prettier": "^3.0.3",
     "prettier-plugin-tailwindcss": "^0.5.4",
+    "tailwindcss": "^3.3.3",
+    "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.2.2"
   }
 }
