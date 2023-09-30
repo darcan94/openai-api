@@ -1,5 +1,3 @@
-import Button from "../button/Button"
-import { IconSidebar } from "../icons/Icons";
 import Sidebar from "../sidebar/sidebar";
 
 export default function Header() {
