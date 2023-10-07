@@ -19,8 +19,7 @@ export default function Sidebar({
     setContainerReady(true); 
   }, []);
   return (
-    <div className="flex">
-      <Dialog.Root defaultOpen={true}>
+      <Dialog.Root defaultOpen={true} modal={false}>
           <Dialog.Trigger asChild>
             <Button variant="ghost" size="icon">
               <IconSidebar />
@@ -28,19 +27,20 @@ export default function Sidebar({
             </Button>
           </Dialog.Trigger>
          { isContainerReady && (<Dialog.Portal container={ref.current}>
-            <Dialog.Content onPointerDownOutside={e => e.preventDefault()} className='flex bg-white/70 backdrop-blur-lg w-[300px] flex-col inset-y-0 left-0 z-10 h-full border-r bg-background p-6 shadow-lg transition ease-in-out data-state=open data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left data-[state=closed]:duration-300 data-[state=open]:duration-500 sm:max-w-sm'>
+            <Dialog.Overlay />
+            <Dialog.Content onPointerDownOutside={e => e.preventDefault()} 
+            onInteractOutside={(e) => e.preventDefault()} className='flex bg-white/70 backdrop-blur-lg w-[300px] flex-col inset-y-0 left-0 z-10 h-full border-r bg-background p-6 shadow-lg transition ease-in-out data-state=open data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left data-[state=closed]:duration-300 data-[state=open]:duration-500 sm:max-w-sm '>
                 <Dialog.Title>
                   Chat History
                 </Dialog.Title>
               {children}
-              <Dialog.Close className='absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary'>
+              <Dialog.Close className='absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none'>
                 <IconClose />
                 <span className='sr-only'>Close</span>
               </Dialog.Close>
             </Dialog.Content>
           </Dialog.Portal>  )}
       </Dialog.Root>
-    </div>
   );
 }
   
