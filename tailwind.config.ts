@@ -16,7 +16,32 @@ const config: Config = {
       maxWidth: {
         "80": "80%",
       },
-      
+      keyframes: {
+        'accordion-down': {
+          from: { height: '0' },
+          to: { height: 'var(--radix-accordion-content-height)' }
+        },
+        'accordion-up': {
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: '0' }
+        },
+        'slide-from-left': {
+          '0%': {
+            transform: 'translateX(-100%)'
+          },
+          '100%': {
+            transform: 'translateX(0)'
+          }
+        },
+        'slide-to-left': {
+          '0%': {
+            transform: 'translateX(0)'
+          },
+          '100%': {
+            transform: 'translateX(-100%)'
+          }
+        }
+      },
       animation: {
         'slide-from-left':
           'slide-from-left 0.3s cubic-bezier(0.82, 0.085, 0.395, 0.895)',

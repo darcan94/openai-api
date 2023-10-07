@@ -2,7 +2,7 @@
 import * as Dialog from '@radix-ui/react-dialog';
 import Button from '@/components//button/Button';
 import { IconClose, IconSidebar } from '@/components/icons/Icons';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Sidebar({
   children,
@@ -10,22 +10,25 @@ export default function Sidebar({
   children?: React.ReactNode;
 }) {
 
+  const [isContainerReady, setContainerReady] = useState(false);
+
   const ref: any = useRef();
 
   useEffect(() => {
-    ref.current = document.querySelector('main > div') ;
+    ref.current = document.querySelector('main') ;
+    setContainerReady(true); 
   }, []);
   return (
     <div className="flex">
-      <Dialog.Root>
+      <Dialog.Root defaultOpen={true}>
           <Dialog.Trigger asChild>
             <Button variant="ghost" size="icon">
               <IconSidebar />
               <span className="sr-only">Toggle Sidebar</span>
             </Button>
           </Dialog.Trigger>
-          <Dialog.Portal container={ref.current}>
-            <Dialog.Content className='flex bg-white/70 backdrop-blur-lg w-[300px] flex-col  absolute inset-y-0 left-0 z-10 h-full border-r bg-background p-6 shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left data-[state=closed]:duration-300 data-[state=open]:duration-500 sm:max-w-sm'>
+         { isContainerReady && (<Dialog.Portal container={ref.current}>
+            <Dialog.Content onPointerDownOutside={e => e.preventDefault()} className='flex bg-white/70 backdrop-blur-lg w-[300px] flex-col inset-y-0 left-0 z-10 h-full border-r bg-background p-6 shadow-lg transition ease-in-out data-state=open data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left data-[state=closed]:duration-300 data-[state=open]:duration-500 sm:max-w-sm'>
                 <Dialog.Title>
                   Chat History
                 </Dialog.Title>
@@ -35,7 +38,7 @@ export default function Sidebar({
                 <span className='sr-only'>Close</span>
               </Dialog.Close>
             </Dialog.Content>
-          </Dialog.Portal>  
+          </Dialog.Portal>  )}
       </Dialog.Root>
     </div>
   );
