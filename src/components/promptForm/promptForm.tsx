@@ -62,10 +62,10 @@ export default function PromptForm({
           <Button
             variant="ghost"
             disabled={!hasMessage}
-            onClick={e => {
-              e.preventDefault(); 
-              router.refresh(); 
-              router.push('/');
+            onClick={(e) => {
+              e.preventDefault();
+              router.refresh();
+              router.push("/");
               setMessages(initialPrompt);
             }}
           >

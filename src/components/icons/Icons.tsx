@@ -92,7 +92,7 @@ export function IconArrowDown() {
 }
 
 export function IconSidebar() {
-  return(
+  return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 256 256"
@@ -104,16 +104,15 @@ export function IconSidebar() {
   );
 }
 
-
 export function IconClose() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 256 256"
       fill="#174ae4"
-      className='h-6 w-6'
+      className="h-6 w-6"
     >
       <path d="M205.66 194.34a8 8 0 0 1-11.32 11.32L128 139.31l-66.34 66.35a8 8 0 0 1-11.32-11.32L116.69 128 50.34 61.66a8 8 0 0 1 11.32-11.32L128 116.69l66.34-66.35a8 8 0 0 1 11.32 11.32L139.31 128Z" />
     </svg>
-  )
+  );
 }

@@ -11,11 +11,11 @@ const openai = new OpenAIApi(config);
 
 export const POST = async (request: Request) => {
   const { messages, id } = await request.json();
-  
+
   const collection = await connectDB();
-  
-  const chat = await collection.findOne({_id: id});
-  
+
+  const chat = await collection.findOne({ _id: id });
+
   const response = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
     messages,
@@ -26,39 +26,41 @@ export const POST = async (request: Request) => {
 
   const stream = OpenAIStream(response, {
     onCompletion: async (completion) => {
-      
-      if(!chat){
+      if (!chat) {
         const _id = id;
         const title = messages[1].content.substring(0, 100);
         const createdAt = Date.now();
         const payload = {
           _id,
-          title, 
+          title,
           createdAt,
           messages: [
-            ...messages, 
+            ...messages,
             {
-              content: completion, 
-              role: 'assistant'
-            }
-          ]
-        }
+              content: completion,
+              role: "assistant",
+            },
+          ],
+        };
 
         collection.insertOne(payload);
-      }else{
-        collection.updateOne({_id: id}, {
-          $set:{
+      } else {
+        collection.updateOne(
+          { _id: id },
+          {
+            $set: {
               messages: [
-              ...messages, 
-              {
-                content: completion, 
-                role: 'assistant'
-              }
-            ]
-          }
-        })
+                ...messages,
+                {
+                  content: completion,
+                  role: "assistant",
+                },
+              ],
+            },
+          },
+        );
       }
-    }
+    },
   });
 
   return new StreamingTextResponse(stream);

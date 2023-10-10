@@ -20,7 +20,13 @@ export const initialPrompt: Message[] = [
   },
 ];
 
-export default function Chat({ id, initialMessages = initialPrompt }: { id: string, initialMessages?: Message[] }) {  
+export default function Chat({
+  id,
+  initialMessages = initialPrompt,
+}: {
+  id: string;
+  initialMessages?: Message[];
+}) {
   const {
     messages,
     input,

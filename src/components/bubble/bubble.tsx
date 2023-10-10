@@ -22,14 +22,15 @@ export default function Bubble({ message }: { message: Message }) {
   return (
     <div
       key={message.id}
-      className={`${styles.chatBubble} ${styles[bubbleClass]} relative group hover:group-hover`}
+      className={`${styles.chatBubble} ${styles[bubbleClass]} hover:group-hover group relative`}
     >
-     {bubbleClass==='assistantBubble' && 
-     (<div className="absolute right-2 top-1 hidden group-hover:block">
-        <Button variant="ghost" size="iconsm" onClick={onCopy}>
-          {isCopied ? <IconCheck /> : <IconCopy />}
-        </Button>
-      </div>)}
+      {bubbleClass === "assistantBubble" && (
+        <div className="absolute right-2 top-1 hidden group-hover:block">
+          <Button variant="ghost" size="iconsm" onClick={onCopy}>
+            {isCopied ? <IconCheck /> : <IconCopy />}
+          </Button>
+        </div>
+      )}
 
       <MemoizedMarkdown
         key={message.id}
