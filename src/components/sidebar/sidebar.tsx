@@ -1,6 +1,6 @@
 "use client";
 import * as Dialog from "@radix-ui/react-dialog";
-import Button from "@/components//button/Button";
+import { Button } from "@/components//button/Button";
 import { IconClose, IconSidebar } from "@/components/icons/Icons";
 
 export default function Sidebar({ children }: { children?: React.ReactNode }) {

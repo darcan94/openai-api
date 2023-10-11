@@ -1,6 +1,6 @@
 import useEnterSend from "@/hooks/useEnterSend";
 import { ChangeEvent, FormEvent } from "react";
-import Button from "@/components/button/Button";
+import { Button } from "@/components/button/Button";
 import TextArea from "@/components/textArea/TextArea";
 import {
   IconClearChat,

@@ -4,7 +4,7 @@ import CodeBlock from "@/components/codeBlock/codeBlock";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import { MemoizedMarkdown } from "@/components/markdown/memoizedMarkdown";
-import Button from "@/components/button/Button";
+import { Button } from "@/components/button/Button";
 import { IconCheck, IconCopy } from "@/components/icons/Icons";
 import useClipboard from "@/hooks/useClipboard";
 
