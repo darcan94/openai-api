@@ -19,14 +19,6 @@ const config: Config = {
     },
 
     keyframes: {
-      'accordion-down': {
-        from: { height: '0' },
-        to: { height: 'var(--radix-accordion-content-height)' }
-      },
-      'accordion-up': {
-        from: { height: 'var(--radix-accordion-content-height)' },
-        to: { height: '0' }
-      },
       'slide-from-left': {
         '0%': {
           transform: 'translateX(-100%)'
@@ -49,10 +41,7 @@ const config: Config = {
         'slide-from-left 0.3s cubic-bezier(0.82, 0.085, 0.395, 0.895)',
       'slide-to-left':
         'slide-to-left 0.25s cubic-bezier(0.82, 0.085, 0.395, 0.895)',
-      'accordion-down': 'accordion-down 0.2s ease-out',
-      'accordion-up': 'accordion-up 0.2s ease-out'
     }
-  },
-  plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')]
+  }
 };
 export default config;

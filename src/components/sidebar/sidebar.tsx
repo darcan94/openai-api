@@ -24,11 +24,11 @@ export default function Sidebar({ children }: { children?: React.ReactNode }) {
         </Button>
       </Dialog.Trigger>
      { isContainerReady && (<Dialog.Portal container={ref.current}>
-        <Dialog.Overlay />
+        <Dialog.Overlay></Dialog.Overlay>
         <Dialog.Content 
         onPointerDownOutside={e => e.preventDefault()}
         onInteractOutside={e => e.preventDefault()}
-        className="bg-background data-state=open inset-y-0 left-0 z-10 flex h-full w-[300px] flex-col border-r bg-white/70 p-6 shadow-lg backdrop-blur-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left sm:max-w-sm ">
+        className="bg-background inset-y-0 left-0 z-10 flex h-full w-[300px] flex-col border-r bg-white/70 p-6 shadow-lg backdrop-blur-lg   data-[state=closed]:animate-slide-to-left data-[state=open]:animate-slide-from-left sm:max-w-sm ">
           <Dialog.Title>Chat History</Dialog.Title>
           {children}
         </Dialog.Content>

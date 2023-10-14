@@ -13,7 +13,7 @@
     "ai": "^2.2.6",
     "class-variance-authority": "^0.7.0",
     "mongodb": "^6.1.0",
-    "next": "13.4.19",
+    "next": "^13.5.4",
     "openai": "^4.0.1",
     "openai-edge": "^1.2.2",
     "react": "18.2.0",
@@ -25,7 +25,6 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "github:tailwindcss/typography",
     "@types/mongodb": "^4.0.7",
     "@types/node": "^20.7.0",
     "@types/react": "^18.2.22",
@@ -39,7 +38,6 @@
     "prettier": "^3.0.3",
     "prettier-plugin-tailwindcss": "^0.5.4",
     "tailwindcss": "^3.3.3",
-    "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.2.2"
   }
 }
