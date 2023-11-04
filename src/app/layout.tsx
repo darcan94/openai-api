@@ -3,6 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { TailwindIndicator } from "@/components/tailwind-indicator";
+import Sidebar from "@/components/sidebar/sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,8 +24,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header />
-        <main className="mx-auto my-0 flex h-screen w-full flex-row-reverse justify-end pt-[4rem]">
+        <main className="mx-auto my-0 flex h-screen w-full justify-end">
+          <Sidebar />
           {children}
         </main>
         <TailwindIndicator />
