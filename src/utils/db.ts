@@ -1,6 +1,9 @@
 import { MongoClient } from "mongodb";
 
-const mongoClient = new MongoClient(process.env.MONGO_DB_URI ?? "");
+export const mongoClient = new MongoClient(process.env.MONGO_DB_URI ?? "");
+
+export const collection = mongoClient.db('open-api').collection('chats');
+
 
 export async function connectDB() {
   try {
