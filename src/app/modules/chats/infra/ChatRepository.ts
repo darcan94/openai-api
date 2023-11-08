@@ -1,5 +1,5 @@
 import { mongoClient as client} from "@/utils/db";
-import { Chat } from "../models/Chat";
+import { Chat } from "../domain/Chat";
 import { ObjectId } from "mongodb";
 
 export class ChatRepository{
