@@ -1,6 +1,6 @@
 import { ObjectId } from "mongodb";
 import { Chat } from "../domain/Chat";
-import { ChatRepository } from "../infra/ChatRepository";
+import { ChatRepository } from "../adapters/ChatRepository";
 
 export class ChatService{
     constructor(private chatRepository: ChatRepository){};

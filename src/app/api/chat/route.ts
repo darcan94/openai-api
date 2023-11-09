@@ -1,4 +1,4 @@
-import { connectDB } from "@/utils/db";
+import { connectDB } from "@/app/modules/chats/infra/db";
 import { OpenAIStream, StreamingTextResponse } from "ai";
 import { Configuration, OpenAIApi } from "openai-edge";
 
