@@ -1,4 +1,4 @@
-import { mongoClient as client} from "@/app/modules/chats/infra/db";
+import { mongoClient as client} from "../infra/data-access/MongoDB";
 import { Chat } from "../domain/Chat";
 import { ObjectId } from "mongodb";
 

@@ -1,5 +1,5 @@
 import Chat from "@/components/chat/chat";
-import { connectDB } from "@/app/modules/chats/infra/db";
+import { connectDB } from "../../modules/chats/infra/data-access/MongoDB";
 import { notFound } from "next/navigation";
 
 export default async function ChatPage({ params }: { params: any }) {
