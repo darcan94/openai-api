@@ -1,3 +1,4 @@
+import { Message } from "ai";
 import { ObjectId } from "mongodb";
 
 export interface Chat{
@@ -5,9 +6,4 @@ export interface Chat{
     title: string;
     createdAt: Date;
     messages: Message[];
-}
-
-interface Message {
-    role: string;
-    content: string;
 }
