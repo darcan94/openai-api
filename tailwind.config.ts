@@ -16,6 +16,28 @@ const config: Config = {
       maxWidth: {
         "80": "80%",
       },
+      colors: {
+        'primary':{
+          light: '#1B4AEF',
+          dark: '#2870EA',
+        },
+        'secondary':{
+          light: '#eaeaea',
+          dark: '#474747',
+        },
+        'background': {
+          light: '#F8F8F9',
+          dark: '#031025',
+        },
+        'font': {
+          light: '#F8F8F9',
+          dark: '#26262C',
+        },
+        'disabled': {
+          light: '#F8F8F9',
+          dark: '#26262C',
+        }
+      }
     },
 
     keyframes: {
