@@ -18,25 +18,29 @@ const config: Config = {
       },
       colors: {
         'primary':{
-          light: '#1B4AEF',
+          DEFAULT: '#1B4AEF',
           dark: '#2870EA',
         },
         'secondary':{
-          light: '#eaeaea',
+          DEFAULT: '#eaeaea',
           dark: '#474747',
         },
         'background': {
-          light: '#F8F8F9',
+          DEFAULT: '#F8F8F9',
           dark: '#031025',
         },
         'font': {
-          light: '#F8F8F9',
+          DEFAULT: '#F8F8F9',
           dark: '#26262C',
         },
         'disabled': {
-          light: '#F8F8F9',
+          DEFAULT: '#F8F8F9',
           dark: '#26262C',
         }
+      },
+      gradientColorStopPositions: {
+        11: '11%',
+        87: '87%'
       }
     },
 

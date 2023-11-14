@@ -1,5 +1,4 @@
 import { type Message } from "ai";
-import styles from "./bubble.module.css";
 import CodeBlock from "@/components/codeBlock/codeBlock";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
@@ -10,7 +9,9 @@ import useClipboard from "@/hooks/useClipboard";
 
 export default function Bubble({ message }: { message: Message }) {
   const bubbleClass =
-    message.role === "user" ? "userBubble" : "assistantBubble";
+    message.role === "user" 
+      ? "self-end dark:bg-primary-dark bg-gradient-to-r from-primary-dark to-primary text-white rounded-br-none"
+      : "self-start pt-4 bg-secondary dark:bg-secondary-dark text-font-dark dark:text-font rounded-bl-none shadow-md dark:shadow-none";
 
   const { isCopied, copyToClipboard } = useClipboard({ timeout: 3000 });
 
@@ -22,9 +23,9 @@ export default function Bubble({ message }: { message: Message }) {
   return (
     <div
       key={message.id}
-      className={`${styles.chatBubble} ${styles[bubbleClass]} hover:group-hover group relative`}
+      className={`${bubbleClass} rounded-2xl w-auto max-w-80 p-3 hover:group-hover group relative`}
     >
-      {bubbleClass === "assistantBubble" && (
+      {message.role !== "user" && (
         <div className="absolute right-2 top-1 hidden group-hover:block">
           <Button variant="ghost" size="iconsm" onClick={onCopy}>
             {isCopied ? <IconCheck /> : <IconCopy />}

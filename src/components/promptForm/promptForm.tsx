@@ -37,7 +37,7 @@ export default function PromptForm({
   const router = useRouter();
 
   return (
-    <div className="sticky bottom-0  w-full border-t border-t-black/10 bg-white/70 backdrop-blur-lg">
+    <div className="sticky bottom-0  w-full border-t border-t-black/10 bg-white/70 dark:bg-secondary-dark backdrop-blur-lg">
       <div className="mt-2 flex h-auto items-center justify-center py-1">
         {isLoading ? (
           <Button variant="outline" onClick={() => stop()} className="bg-white">
@@ -49,7 +49,7 @@ export default function PromptForm({
             <Button
               variant="outline"
               onClick={() => reload()}
-              className="bg-white"
+              className="bg-white dark:bg-secondary-dark/70"
             >
               <IconReload />
               Regenerate response
@@ -58,10 +58,11 @@ export default function PromptForm({
         )}
       </div>
       <form ref={formRef} onSubmit={handleSubmit} className="p-4">
-        <div className="flex items-center rounded-xl border border-black/10 bg-slate-50 p-1 backdrop-blur-lg">
+        <div className="flex items-center rounded-xl border border-black/10 bg-slate-50 dark:bg-background-dark p-1 backdrop-blur-lg">
           <Button
             variant="ghost"
             disabled={!hasMessage}
+            className="text-primary-dark"
             onClick={(e) => {
               e.preventDefault();
               router.refresh();
@@ -83,6 +84,7 @@ export default function PromptForm({
             type="submit"
             disabled={isLoading || input === ""}
             variant="ghost"
+            className="text-primary-dark"
           >
             <IconSubmit />
             <span className="sr-only"> Send message </span>
