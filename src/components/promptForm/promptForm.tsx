@@ -37,7 +37,7 @@ export default function PromptForm({
   const router = useRouter();
 
   return (
-    <div className="sticky bottom-0  w-full border-t border-t-black/10 bg-white/70 dark:bg-secondary-dark backdrop-blur-lg">
+    <div className="sticky bottom-0  w-full border-t border-t-black/10 bg-white/70 dark:bg-secondary-dark/50 backdrop-blur-lg">
       <div className="mt-2 flex h-auto items-center justify-center py-1">
         {isLoading ? (
           <Button variant="outline" onClick={() => stop()} className="bg-white">
