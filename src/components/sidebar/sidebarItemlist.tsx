@@ -1,9 +1,9 @@
 import SidebarItem from "./sidebarItem";
 
 export default function SidebarItemList({chats}: {chats: any}){
-    const chatList = chats.map((chat: any) => 
-        <li className="list-none">
-            <SidebarItem key={chat.id} chat={chat}/>
+    const chatList = chats.map((chat: any, i: number) => 
+        <li key={i} className="list-none">
+            <SidebarItem chat={chat}/>
         </li>)
     
     return (
