@@ -1,11 +1,13 @@
 import { NextResponse } from "next/server";
-import { connectDB } from "@/app/modules/chats/infra/data-access/MongoDB";
+import { GetAllChatsService } from "@/app/modules/chats/application/GetAllChatService";
+import { ChatRepositoryImpl } from "@/app/modules/chats/infra/ChatRepositoryImpl";
+
+const getAllChats = new GetAllChatsService(new ChatRepositoryImpl());
 
 export const GET = async () => {
-  const collection = await connectDB();
-  const chats = collection.find();
-
+  const chats = getAllChats.execute();
+  
   return NextResponse.json({
-    chats: await chats.toArray(),
+    chats: await chats,
   });
 };

@@ -1,10 +1,11 @@
 import Chat from "@/components/chat/chat";
-import { connectDB } from "../../modules/chats/infra/data-access/MongoDB";
 import { notFound } from "next/navigation";
+import { GetChatsService } from "@/app/modules/chats/application/GetChatService";
+import { ChatRepositoryImpl } from "@/app/modules/chats/infra/ChatRepositoryImpl";
 
 export default async function ChatPage({ params }: { params: any }) {
-  const collection = await connectDB();
-  const chat = await collection.findOne({ _id: params.id });
+  const getChat = new GetChatsService(new ChatRepositoryImpl());
+  const chat = await getChat.execute(params.id);
 
   if (!chat) {
     notFound();
