@@ -7,7 +7,7 @@ export default async function Sidebar({ children }: { children?: React.ReactNode
   const {chats} = await res.json();
   
   return (
-    <div className="hidden border-r dark:border-none bg-zinc-100/40 lg:block dark:bg-zinc-800/40 w-[20%] overflow-y-auto">
+    <div className="hidden border-r text-font dark:border-white/10 bg-secondary lg:block w-[20%] overflow-y-auto">
         <div className="flex flex-col gap-2 h-full">
           <div className="flex h-[60px] items-center px-6 gap-5 justify-between">
               <h2>Chat history</h2>

@@ -10,8 +10,8 @@ import useClipboard from "@/hooks/useClipboard";
 export default function Bubble({ message }: { message: Message }) {
   const bubbleClass =
     message.role === "user" 
-      ? "self-end dark:bg-primary-dark bg-gradient-to-r from-primary-dark to-primary text-white rounded-br-none"
-      : "self-start pt-4 bg-secondary dark:bg-secondary-dark text-font-dark dark:text-font rounded-bl-none shadow-md dark:shadow-none";
+      ? "self-end bg-gradient-to-r from-custom-blue to-primary text-white rounded-br-none"
+      : "self-start pt-4 bg-secondary text-font rounded-bl-none shadow-md dark:shadow-none";
 
   const { isCopied, copyToClipboard } = useClipboard({ timeout: 3000 });
 

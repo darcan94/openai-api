@@ -17,22 +17,11 @@ const config: Config = {
         "80": "80%",
       },
       colors: {
-        'primary':{
-          DEFAULT: '#1B4AEF',
-          dark: '#2870EA',
-        },
-        'secondary':{
-          DEFAULT: '#eaeaea',
-          dark: '#474747',
-        },
-        'background': {
-          DEFAULT: '#F8F8F9',
-          dark: '#031025',
-        },
-        'font': {
-          DEFAULT: '#F8F8F9',
-          dark: '#26262C',
-        },
+        'primary': 'var(--primary-color)',
+        'secondary':  'var(--secondary-color)',
+        'background': 'var(--background)',
+        'font': 'var(--foreground)',
+        'custom-blue': 'var(--custom-blue)',
         'disabled': {
           DEFAULT: '#F8F8F9',
           dark: '#26262C',
