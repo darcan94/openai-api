@@ -1,6 +1,4 @@
 import { CreateChatService } from "@/app/modules/chats/application/CreateChatService";
-import { GetChatsService } from "@/app/modules/chats/application/GetChatService";
-import { UpdateChatService } from "@/app/modules/chats/application/UpdateChatService";
 import { ChatRepositoryImpl } from "@/app/modules/chats/infra/ChatRepositoryImpl";
 import { OpenAIStream, StreamingTextResponse } from "ai";
 import { ObjectId } from "mongodb";
@@ -11,15 +9,11 @@ const config = new Configuration({
 });
 
 const openai = new OpenAIApi(config);
-
 const chatRepository = new ChatRepositoryImpl();
-const getChat = new GetChatsService(chatRepository);
 const createChat = new CreateChatService(chatRepository);
-const updateChat = new UpdateChatService(chatRepository);
 
 export const POST = async (request: Request) => {
   const { messages, id } = await request.json();
-  const chat = getChat.execute(id);
 
   const response = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
@@ -31,41 +25,19 @@ export const POST = async (request: Request) => {
 
   const stream = OpenAIStream(response, {
     onCompletion: async (completion) => {
-      if (!chat) {
-        const _id: ObjectId = id;
-        const title: string = messages[1].content.substring(0, 100);
-        const createdAt: Date = new Date();
-        const payload = {
-          _id,
-          title,
-          createdAt,
-          messages: [
-            ...messages,
-            {
-              content: completion,
-              role: "assistant",
-            },
-          ],
-        };
+      const newMessage = {content: completion, role: 'assistant'}
 
-        createChat.execute(payload);
-      } else {
-        /*collection.updateOne(
-          { _id: id },
-          {
-            $set: {
-              messages: [
-                ...messages,
-                {
-                  content: completion,
-                  role: "assistant",
-                },
-              ],
-            },
-          },
-        );*/
-      }
-    },
+      const _id: ObjectId = id;
+      const title: string = messages[1].content.substring(0, 100);
+      const createdAt: Date = new Date();
+      const chat = {
+        _id,
+        title,
+        createdAt,
+        messages,
+      };
+      createChat.execute(chat, newMessage);
+    }
   });
 
   return new StreamingTextResponse(stream);

@@ -5,10 +5,17 @@ import { collection } from "@/app/modules/chats/infra/data-access/MongoDB";
 
 export class ChatRepositoryImpl implements ChatRepository{
 
-    async save(chat: Chat): Promise<ObjectId>{
+    async save(chat: Chat, newMessage: any): Promise<ObjectId | null>{
+        const filter = { _id: chat._id };
+        const update = { 
+            $setOnInsert: { chat },
+            $push: { messages: newMessage }
+        };
+        const options = { upsert: true };
+
         try {
-            const result = await collection.insertOne(chat);
-            return result.insertedId;
+            const result = await collection.updateOne(filter, update, options);
+            return result.upsertedId;
         } catch (error) {
             console.error(`Error occurred while saving chat: ${error}`);
             throw error;
@@ -34,17 +41,7 @@ export class ChatRepositoryImpl implements ChatRepository{
             console.error(`Error occurred while getting a chat: ${error}`); 
             throw error;          
         }        
-    };    
-   
-    async update(chat: Chat): Promise<ObjectId | null>{
-        try {
-            const result = await collection.updateOne({_id: chat._id}, chat);
-            return result.upsertedId;
-        } catch (error) {
-            console.error(`Error occurred while updating chat: ${error}`);
-            throw error;
-        }
-    };    
+    };     
    
     async delete(id: ObjectId): Promise<number>{
         try {
