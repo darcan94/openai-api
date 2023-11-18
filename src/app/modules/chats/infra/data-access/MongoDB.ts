@@ -8,7 +8,8 @@ export async function connectDB() {
     const database: Db = mongoClient.db(process.env.DB_NAME);
     return database.collection(process.env.COLLECTION_NAME ?? '');
   } catch (error) {
-    throw new Error(`Failed to connect to MongoDB: ${error}`);
+    console.error(`Failed to connect mongo db: ${error}`);
+    return null;
   }
 }
 
