@@ -61,7 +61,7 @@ export default function Chat({
         <Button
           variant="rounded"
           className="absolute bottom-36 right-6 z-10 
-                    rounded-full bg-white px-0 py-0"
+                    rounded-full dark:bg-secondary-dark bg-white px-0 py-0"
           size="iconlg"
           onClick={scrollToBottom}
         >

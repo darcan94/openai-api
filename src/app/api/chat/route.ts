@@ -1,5 +1,6 @@
 import { CreateChatService } from "@/app/modules/chats/application/CreateChatService";
 import { GetChatsService } from "@/app/modules/chats/application/GetChatService";
+import { UpdateChatService } from "@/app/modules/chats/application/UpdateChatService";
 import { ChatRepositoryImpl } from "@/app/modules/chats/infra/ChatRepositoryImpl";
 import { OpenAIStream, StreamingTextResponse } from "ai";
 import { ObjectId } from "mongodb";
@@ -14,13 +15,10 @@ const openai = new OpenAIApi(config);
 const chatRepository = new ChatRepositoryImpl();
 const getChat = new GetChatsService(chatRepository);
 const createChat = new CreateChatService(chatRepository);
-
-
-//export const runtime = "edge";
+const updateChat = new UpdateChatService(chatRepository);
 
 export const POST = async (request: Request) => {
   const { messages, id } = await request.json();
-
   const chat = getChat.execute(id);
 
   const response = await openai.createChatCompletion({
