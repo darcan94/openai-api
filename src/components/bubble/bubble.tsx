@@ -9,7 +9,7 @@ import useClipboard from "@/hooks/useClipboard";
 
 export default function Bubble({ message }: { message: Message }) {
   const bubbleClass =
-    message.role === "user" 
+    message.role === "user"
       ? "self-end bg-gradient-to-r from-custom-blue to-primary text-white rounded-br-none"
       : "self-start pt-4 bg-secondary text-font rounded-bl-none shadow-md dark:shadow-none";
 
@@ -23,7 +23,7 @@ export default function Bubble({ message }: { message: Message }) {
   return (
     <div
       key={message.id}
-      className={`${bubbleClass} rounded-2xl w-auto max-w-80 p-3 hover:group-hover group relative`}
+      className={`${bubbleClass} hover:group-hover group relative w-auto max-w-80 rounded-2xl p-3`}
     >
       {message.role !== "user" && (
         <div className="absolute right-2 top-1 hidden group-hover:block">

@@ -25,7 +25,7 @@ export const POST = async (request: Request) => {
 
   const stream = OpenAIStream(response, {
     onCompletion: async (completion) => {
-      const newMessage = {content: completion, role: 'assistant'}
+      const newMessage = { content: completion, role: "assistant" };
 
       const _id: ObjectId = id;
       const title: string = messages[1].content.substring(0, 100);
@@ -37,7 +37,7 @@ export const POST = async (request: Request) => {
         messages,
       };
       createChat.execute(chat, newMessage);
-    }
+    },
   });
 
   return new StreamingTextResponse(stream);

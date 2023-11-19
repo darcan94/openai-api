@@ -39,18 +39,20 @@
 }
 
 :root {
-  --primary-color: #1B4AEF;
-  --secondary-color: #FFFFFF;
-  --background: #E8EFF9;
-  --foreground: #26262C;
-  --custom-blue: #2F7DFD;
+  --primary-color: #1b4aef;
+  --secondary-color: #ffffff;
+  --secondary-color-alpha: #ffffffb0;
+  --background: #e8eff9;
+  --foreground: #26262c;
+  --custom-blue: #2f7dfd;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --secondary-color: #343145;
-    --background: #252331;
-    --foreground: #FAFAFA;
+    --secondary-color: #292a33;
+    --secondary-color-alpha: #292a33b0;
+    --background: #343540;
+    --foreground: #fafafa;
   }
 }
 
@@ -95,10 +97,10 @@ td {
 }
 
 th {
-  background-color: #f2f2f2;
+  background-color: var(--background);
   font-weight: bold;
 }
 
 tr:nth-child(even) {
-  background-color: #f9f9f9;
+  background-color: var(--background);
 }

@@ -37,10 +37,14 @@ export default function PromptForm({
   const router = useRouter();
 
   return (
-    <div className="sticky bottom-0  w-full border-t border-t-black/10 bg-white/70 dark:bg-secondary backdrop-blur-lg">
+    <div className="sticky bottom-0  w-full border-t border-t-black/10 bg-secondary-alpha backdrop-blur-lg">
       <div className="mt-2 flex h-auto items-center justify-center py-1">
         {isLoading ? (
-          <Button variant="outline" onClick={() => stop()} className="bg-secondary">
+          <Button
+            variant="outline"
+            onClick={() => stop()}
+            className="bg-secondary"
+          >
             <IconStop />
             Stop generating
           </Button>
@@ -58,7 +62,7 @@ export default function PromptForm({
         )}
       </div>
       <form ref={formRef} onSubmit={handleSubmit} className="p-4">
-        <div className="flex items-center rounded-xl border border-black/10 dark:border-white/10 bg-secondary p-1 backdrop-blur-lg">
+        <div className="flex items-center rounded-xl border border-black/10 bg-secondary p-1 dark:border-white/10">
           <Button
             variant="ghost"
             disabled={!hasMessage}
@@ -84,7 +88,7 @@ export default function PromptForm({
             type="submit"
             disabled={isLoading || input === ""}
             variant="ghost"
-            className="text-primary-dark"
+            className="text-font"
           >
             <IconSubmit />
             <span className="sr-only"> Send message </span>

@@ -104,8 +104,8 @@ export function IconSidebar() {
   );
 }
 
-export function IconSidebarAlt({className}: {className: string}){
-  return(
+export function IconSidebarAlt({ className }: { className: string }) {
+  return (
     <svg
       className={`h-6 w-6 ${className}`}
       fill="none"
@@ -121,7 +121,7 @@ export function IconSidebarAlt({className}: {className: string}){
       <path d="M17 6.1H3" />
       <path d="M21 12.1H3" />
       <path d="M15.1 18H3" />
-  </svg>
+    </svg>
   );
 }
 

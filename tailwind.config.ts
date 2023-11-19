@@ -19,6 +19,7 @@ const config: Config = {
       colors: {
         'primary': 'var(--primary-color)',
         'secondary':  'var(--secondary-color)',
+        'secondary-alpha':  'var(--secondary-color-alpha)',
         'background': 'var(--background)',
         'font': 'var(--foreground)',
         'custom-blue': 'var(--custom-blue)',
