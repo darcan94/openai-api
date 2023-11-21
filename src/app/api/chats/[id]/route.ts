@@ -1,5 +1,5 @@
-import { DeleteChatsService } from "@/app/modules/chats/application/DeleteChatService";
-import { ChatRepositoryImpl } from "@/app/modules/chats/infra/ChatRepositoryImpl";
+import { DeleteChatsService } from "@/app/modules/chat/application/DeleteChatService";
+import { ChatRepositoryImpl } from "@/app/modules/chat/infra/ChatRepositoryImpl";
 import { ObjectId } from "mongodb";
 import { NextResponse } from "next/server";
 

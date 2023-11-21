@@ -1,7 +1,7 @@
 import Chat from "@/components/chat/chat";
 import { notFound } from "next/navigation";
-import { GetChatsService } from "@/app/modules/chats/application/GetChatService";
-import { ChatRepositoryImpl } from "@/app/modules/chats/infra/ChatRepositoryImpl";
+import { GetChatsService } from "@/app/modules/chat/application/GetChatService";
+import { ChatRepositoryImpl } from "@/app/modules/chat/infra/ChatRepositoryImpl";
 
 export default async function ChatPage({ params }: { params: any }) {
   const getChat = new GetChatsService(new ChatRepositoryImpl());

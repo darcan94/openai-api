@@ -1,8 +1,8 @@
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { coldarkDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
-import { IconCopy, IconCheck } from "@/components/icons/Icons";
+import { IconCopy, IconCheck } from "@/components/ui/icons/Icons";
 import useClipboard from "@/hooks/useClipboard";
-import { Button } from "@/components/button/Button";
+import { Button } from "@/components/ui/button/Button";
 
 interface CodeBlockProps {
   value: string;

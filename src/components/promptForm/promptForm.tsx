@@ -1,13 +1,13 @@
 import useEnterSend from "@/hooks/useEnterSend";
 import { ChangeEvent, FormEvent } from "react";
-import { Button } from "@/components/button/Button";
-import TextArea from "@/components/textArea/TextArea";
+import { Button } from "@/components/ui/button/Button";
+import TextArea from "@/components/ui/textArea/TextArea";
 import {
   IconClearChat,
   IconReload,
   IconStop,
   IconSubmit,
-} from "@/components/icons/Icons";
+} from "@/components/ui/icons/Icons";
 import { Message } from "ai";
 import { initialPrompt } from "@/components/chat/chat";
 import { useRouter } from "next/navigation";

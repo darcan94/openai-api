@@ -1,18 +1,23 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Button } from "@/components/button/Button";
-import { IconTrash } from "../icons/Icons";
+import { Button } from "@/components/ui/button/Button";
+import { IconTrash } from "@/components/ui/icons/Icons";
 import { ObjectId } from "mongodb";
+import { useRouter } from "next/navigation";
 
 export default function SidebarItem({ chat }: { chat: any }) {
+  const router = useRouter();
   const pathname: string = usePathname();
   const active: string =
     pathname === `/chat/${chat._id}` ? "bg-background" : "";
 
   const deleteChat = async (id: ObjectId) => {
     const res = await fetch(`http://localhost:3000/api/chats/${id}`, { method: 'DELETE'})
-    console.log(res);
+    if(!res.ok){
+      throw new Error(`Failed to delete chat with id ${id}: ${res.statusText}`);
+    }
+    router.push('/'); 
   }; 
 
   return (
@@ -26,7 +31,7 @@ export default function SidebarItem({ chat }: { chat: any }) {
         </Link>
         <div className={`h-4 pl-2 ${active ? 'block' : 'hidden'}`}>
           <Button 
-            variant="ghost" 
+            variant="ghost"
             size="iconsm"
             onClick={() => deleteChat(chat._id)}>
               <IconTrash />

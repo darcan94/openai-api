@@ -1,5 +1,5 @@
 import { ObjectId } from "mongodb";
-import { ChatRepository } from "../domain/ChatRepository";
+import { ChatRepository } from "@/app/modules/chat/domain/ChatRepository";
 
 export class DeleteChatsService {
   constructor(private chatRepository: ChatRepository) {}

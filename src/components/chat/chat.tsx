@@ -1,14 +1,14 @@
 "use client";
 import { useChat } from "ai/react";
-import ChatList from "@/components/chatList/chatList";
+import ChatList from "@/components/chat/chatList";
 import {
   useAutoScroll,
   useScrollDetection,
   useScrollToBottom,
 } from "@/hooks/useScroll";
 import PromptForm from "@/components/promptForm/promptForm";
-import { Button } from "@/components/button/Button";
-import { IconArrowDown } from "@/components/icons/Icons";
+import { Button } from "@/components/ui/button/Button";
+import { IconArrowDown } from "@/components/ui/icons/Icons";
 import { Message } from "ai";
 
 export const initialPrompt: Message[] = [

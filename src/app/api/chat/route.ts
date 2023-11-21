@@ -1,5 +1,5 @@
-import { CreateChatService } from "@/app/modules/chats/application/CreateChatService";
-import { ChatRepositoryImpl } from "@/app/modules/chats/infra/ChatRepositoryImpl";
+import { CreateChatService } from "@/app/modules/chat/application/CreateChatService";
+import { ChatRepositoryImpl } from "@/app/modules/chat/infra/ChatRepositoryImpl";
 import { OpenAIStream, StreamingTextResponse } from "ai";
 import { ObjectId } from "mongodb";
 import { Configuration, OpenAIApi } from "openai-edge";
@@ -30,12 +30,7 @@ export const POST = async (request: Request) => {
       const _id: ObjectId = id;
       const title: string = messages[1].content.substring(0, 100);
       const createdAt: Date = new Date();
-      const chat = {
-        _id,
-        title,
-        createdAt,
-        messages,
-      };
+      const chat = { _id, title, createdAt, messages };
       createChat.execute(chat, newMessage);
     },
   });

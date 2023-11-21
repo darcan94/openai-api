@@ -1,6 +1,6 @@
-import { IconSidebarAlt } from "@/components/icons/Icons";
+import { IconSidebarAlt } from "@/components/ui/icons/Icons";
 import SidebarItemList from "@/components/sidebar/sidebarItemlist";
-import { Button } from "@/components/button/Button";
+import { Button } from "@/components/ui/button/Button";
 
 export default async function Sidebar({
   children,

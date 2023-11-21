@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { GetAllChatsService } from "@/app/modules/chats/application/GetAllChatService";
-import { ChatRepositoryImpl } from "@/app/modules/chats/infra/ChatRepositoryImpl";
+import { GetAllChatsService } from "@/app/modules/chat/application/GetAllChatService";
+import { ChatRepositoryImpl } from "@/app/modules/chat/infra/ChatRepositoryImpl";
 
 const chatRepositoryImpl = new ChatRepositoryImpl()
 const getAllChats = new GetAllChatsService(chatRepositoryImpl);
