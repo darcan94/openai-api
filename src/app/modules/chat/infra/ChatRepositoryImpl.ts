@@ -1,7 +1,7 @@
 import { ObjectId } from "mongodb";
 import { Chat } from "../domain/Chat";
 import { ChatRepository } from "../domain/ChatRepository";
-import { collection } from "@/app/modules/chats/infra/data-access/MongoDB";
+import { collection } from "@/app/modules/chat/infra/data-access/MongoDB";
 
 export class ChatRepositoryImpl implements ChatRepository {
   async save(chat: Chat, newMessage: any): Promise<ObjectId | null> {
