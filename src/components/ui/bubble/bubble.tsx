@@ -6,13 +6,9 @@ import { MemoizedMarkdown } from "@/components/markdown/memoizedMarkdown";
 import { Button } from "@/components/ui/button/Button";
 import { IconCheck, IconCopy } from "@/components/ui/icons/Icons";
 import useClipboard from "@/hooks/useClipboard";
+import clsx from "clsx";
 
 export default function Bubble({ message }: { message: Message }) {
-  const bubbleClass =
-    message.role === "user"
-      ? "self-end bg-gradient-to-r from-custom-blue to-primary text-white rounded-br-none"
-      : "self-start pt-4 bg-secondary text-font rounded-bl-none shadow-md dark:shadow-none";
-
   const { isCopied, copyToClipboard } = useClipboard({ timeout: 3000 });
 
   const onCopy = () => {
@@ -23,8 +19,13 @@ export default function Bubble({ message }: { message: Message }) {
   return (
     <div
       key={message.id}
-      className={`${bubbleClass} hover:group-hover group relative w-auto max-w-80 rounded-2xl p-3`}
-    >
+      className={clsx("hover:group-hover group relative w-auto max-w-80 rounded-2xl p-3",
+        {
+          "self-end bg-gradient-to-r from-custom-blue to-primary text-white rounded-br-none": message.role === "user",
+          "self-start pt-4 bg-secondary text-font rounded-bl-none shadow-md dark:shadow-none": message.role === "assistant"
+        })
+      }>
+        
       {message.role !== "user" && (
         <div className="absolute right-2 top-1 hidden group-hover:block">
           <Button variant="ghost" size="iconsm" onClick={onCopy}>
@@ -39,10 +40,9 @@ export default function Bubble({ message }: { message: Message }) {
         components={{
           p({ children }) {
             const isEmoji = getEmojiPattern().test(`${children}`);
-            if (isEmoji) {
-              return <span className="text-6xl">{children}</span>;
-            }
-            return <p className="mb-2 last:mb-0">{children}</p>;
+            return isEmoji 
+              ? <span className="text-6xl">{children}</span> 
+              : <p className="mb-2 last:mb-0">{children}</p>
           },
           code({ node, inline, className, children, ...props }) {
             const match = /language-(\w+)/.exec(className || "");

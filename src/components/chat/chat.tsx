@@ -43,7 +43,7 @@ export default function Chat({
   const isAtBottom = useScrollDetection(chatListRef);
 
   return (
-    <div className=" relative flex w-full flex-col justify-end">
+    <div className="relative flex w-full flex-col justify-end">
       <div ref={chatListRef} className="overflow-y-auto">
         <ChatList messages={messages} />
         <PromptForm
