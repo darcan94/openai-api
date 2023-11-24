@@ -1,12 +1,11 @@
-import { Db, MongoClient } from "mongodb";
-
-export const mongoClient = new MongoClient(process.env.MONGO_DB_URI ?? "");
+import { MongoDBConnection } from "@/app/utils/MongoDBConnection";
+import { Db } from "mongodb";
 
 export async function connectDB() {
   try {
-    await mongoClient.connect();
-    const database: Db = mongoClient.db(process.env.DB_NAME);
-    return database.collection(process.env.COLLECTION_NAME ?? "");
+    const client = await MongoDBConnection.getInstance();
+    const database: Db = client.db(process.env.DB_NAME);
+    return database.collection(process.env.COLLECTION_NAME || '');
   } catch (error) {
     console.error(`Failed to connect mongo db: ${error}`);
     return null;
