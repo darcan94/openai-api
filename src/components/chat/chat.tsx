@@ -10,6 +10,7 @@ import PromptForm from "@/components/promptForm/promptForm";
 import { Button } from "@/components/ui/button/Button";
 import { IconArrowDown } from "@/components/ui/icons/Icons";
 import { Message } from "ai";
+import EmptyChat from "@/components/chat/EmptyChat";
 
 export const initialPrompt: Message[] = [
   {
@@ -45,7 +46,12 @@ export default function Chat({
   return (
     <div className="relative flex w-full flex-col justify-end">
       <div ref={chatListRef} className="overflow-y-auto">
-        <ChatList messages={messages} />
+        {messages.length > 1 ? (
+          <ChatList messages={messages} />
+        ) : (
+          <EmptyChat setInput={input} />
+        )}
+
         <PromptForm
           input={input}
           isLoading={isLoading}
