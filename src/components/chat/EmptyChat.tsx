@@ -4,28 +4,19 @@ import { IconArrowRight } from "@/components/ui/icons/Icons"
 const exampleMessages = [
     {
       heading: 'Explain technical concepts',
-      message: {
-        role: 'user',
-        constent:'What is a "serverless function"?'
-      }
+      message: 'What is a "serverless function"?'
     },
     {
       heading: 'Summarize an article',
-      message: {
-        role: 'user',
-        constent: 'Summarize the following article for a 2nd grader: \n'
-      }
+      message: 'Summarize the following article for a 2nd grader: \n'
     },
     {
       heading: 'Draft an email',
-      message: {
-        role: 'user',
-        consten: 'Draft an email to my boss about the following: \n'
-      }
+      message: 'Draft an email to my boss about the following: \n'
     }
   ]
 
-export default function EmptyChat({ setMessages } : any){
+export default function EmptyChat({ setInput } : any){
     return (
         <div className="mx-auto max-w-2xl px-4">
           <div className="bg-secondary rounded-lg dark:border-none p-8">
@@ -41,7 +32,7 @@ export default function EmptyChat({ setMessages } : any){
                   key={index}
                   variant="link"
                   className="h-auto p-0 text-base text-custom-blue"
-                  onClick={() => setMessages(message.message)}
+                  onClick={() => setInput(message.message)}
                 >
                   <IconArrowRight />
                   {message.heading}

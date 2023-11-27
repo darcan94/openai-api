@@ -32,6 +32,7 @@ export default function Chat({
     messages,
     input,
     isLoading,
+    setInput,
     setMessages,
     stop,
     reload,
@@ -49,7 +50,7 @@ export default function Chat({
         {messages.length > 1 ? (
           <ChatList messages={messages} />
         ) : (
-          <EmptyChat setMessages={setMessages} />
+          <EmptyChat setInput={setInput}/>
         )}
 
         <PromptForm
