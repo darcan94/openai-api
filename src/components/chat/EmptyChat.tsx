@@ -18,7 +18,7 @@ const exampleMessages = [
 
 export default function EmptyChat({ setInput } : any){
     return (
-        <div className="mx-auto max-w-2xl px-4">
+        <div className="mx-auto mb-48 max-w-2xl px-4">
           <div className="bg-secondary rounded-lg dark:border-none p-8">
             <h1 className="mb-2 text-font font-semibold">
               Welcome to Open AI Chatbot!

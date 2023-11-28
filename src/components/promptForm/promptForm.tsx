@@ -43,7 +43,7 @@ export default function PromptForm({
           <Button
             variant="outline"
             onClick={() => stop()}
-            className="bg-secondary"
+            className="bg-secondary text-font"
           >
             <IconStop />
             Stop generating
