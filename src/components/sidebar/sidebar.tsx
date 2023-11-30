@@ -7,7 +7,7 @@ export default async function Sidebar({
 }: {
   children?: React.ReactNode;
 }) {
-  const res = await fetch("http://localhost:3000/api/chats");
+  const res = await fetch("http://localhost:3000/api/chat");
   const { chats } = await res.json();
 
   return (

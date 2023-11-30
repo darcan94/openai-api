@@ -13,7 +13,7 @@ export default function SidebarItem({ chat }: { chat: any }) {
   const active: boolean = pathname === `/chat/${chat._id}`;
 
   const deleteChat = async (id: ObjectId) => {
-    const res = await fetch(`http://localhost:3000/api/chats/${id}`, { method: 'DELETE'})
+    const res = await fetch(`http://localhost:3000/api/chat/${id}`, { method: 'DELETE'})
     if(!res.ok){
       throw new Error(`Failed to delete chat with id ${id}: ${res.statusText}`);
     }

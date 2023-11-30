@@ -69,7 +69,6 @@ export default function PromptForm({
             className="text-primary-dark"
             onClick={(e) => {
               e.preventDefault();
-              router.refresh();
               router.push("/");
               setMessages(initialPrompt);
             }}
