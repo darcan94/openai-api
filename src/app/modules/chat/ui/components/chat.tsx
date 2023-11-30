@@ -1,16 +1,16 @@
 "use client";
 import { useChat } from "ai/react";
-import ChatList from "@/components/chat/chatList";
+import ChatList from "@/app/modules/chat/ui/components/chatList";
 import {
   useAutoScroll,
   useScrollDetection,
   useScrollToBottom,
-} from "@/hooks/useScroll";
-import PromptForm from "@/components/promptForm/promptForm";
-import { Button } from "@/components/ui/button/Button";
-import { IconArrowDown } from "@/components/ui/icons/Icons";
+} from "@/app/hooks/useScroll";
+import PromptForm from "@/app/components/promptForm/promptForm";
+import { Button } from "@/app/components/ui/button/Button";
+import { IconArrowDown } from "@/app/components/ui/icons/Icons";
 import { Message } from "ai";
-import EmptyChat from "@/components/chat/EmptyChat";
+import EmptyChat from "./EmptyChat";
 
 export const initialPrompt: Message[] = [
   {
@@ -50,7 +50,7 @@ export default function Chat({
         {messages.length > 1 ? (
           <ChatList messages={messages} />
         ) : (
-          <EmptyChat setInput={setInput}/>
+          <EmptyChat setInput={setInput} />
         )}
 
         <PromptForm

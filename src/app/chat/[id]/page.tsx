@@ -1,4 +1,4 @@
-import Chat from "@/components/chat/chat";
+import Chat from "@/app/modules/chat/ui/components/chat";
 import { notFound } from "next/navigation";
 import { GetChatsService } from "@/app/modules/chat/application/GetChatService";
 import { ChatRepositoryImpl } from "@/app/modules/chat/infra/ChatRepositoryImpl";

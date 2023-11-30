@@ -97,11 +97,11 @@ export function IconArrowRight() {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 256 256"
       fill="currentColor"
-      className='h-4 w-4'
+      className="h-4 w-4"
     >
       <path d="m221.66 133.66-72 72a8 8 0 0 1-11.32-11.32L196.69 136H40a8 8 0 0 1 0-16h156.69l-58.35-58.34a8 8 0 0 1 11.32-11.32l72 72a8 8 0 0 1 0 11.32Z" />
     </svg>
-  )
+  );
 }
 
 export function IconSidebarAlt({ className }: { className: string }) {
@@ -144,9 +144,9 @@ export function IconTrash() {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 256 256"
       fill="#D8514B"
-      className='h-4 w-4'
+      className="h-4 w-4"
     >
       <path d="M216 48h-40v-8a24 24 0 0 0-24-24h-48a24 24 0 0 0-24 24v8H40a8 8 0 0 0 0 16h8v144a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16V64h8a8 8 0 0 0 0-16ZM96 40a8 8 0 0 1 8-8h48a8 8 0 0 1 8 8v8H96Zm96 168H64V64h128Zm-80-104v64a8 8 0 0 1-16 0v-64a8 8 0 0 1 16 0Zm48 0v64a8 8 0 0 1-16 0v-64a8 8 0 0 1 16 0Z" />
     </svg>
-  )
+  );
 }

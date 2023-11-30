@@ -1,4 +1,4 @@
-import Bubble from "@/components/ui/bubble/bubble";
+import Bubble from "@/app/components/ui/bubble/bubble";
 import { type Message } from "ai";
 
 export default function ChatList({ messages }: { messages: Message[] }) {

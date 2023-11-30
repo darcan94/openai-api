@@ -42,7 +42,6 @@ export const POST = async (request: Request) => {
   return new StreamingTextResponse(stream);
 };
 
-
 export const GET = async () => {
   const chats = getAllChats.execute();
 

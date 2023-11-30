@@ -1,4 +1,4 @@
-import Chat from "@/components/chat/chat";
+import Chat from "@/app/modules/chat/ui/components/chat";
 import { v4 as uuidv4 } from "uuid";
 
 export const runtime = "edge";

@@ -1,8 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { TailwindIndicator } from "@/components/tailwind-indicator";
-import Sidebar from "@/components/sidebar/sidebar";
+import { TailwindIndicator } from "@/app/components/tailwind-indicator";
+import Sidebar from "@/app/components/sidebar/sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 

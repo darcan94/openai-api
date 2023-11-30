@@ -1,4 +1,4 @@
-import useTextareaAutoHeight from "@/hooks/useTextareaAutoHeight";
+import useTextareaAutoHeight from "@/app/hooks/useTextareaAutoHeight";
 import { KeyboardEvent, ChangeEvent } from "react";
 
 interface ChatFormProps {
@@ -18,7 +18,7 @@ export default function TextArea({
       ref={textareaRef}
       tabIndex={0}
       rows={1}
-      className="w-11/12 text-font resize-none bg-transparent px-4 py-[.5rem] outline-none sm:text-sm"
+      className="w-11/12 resize-none bg-transparent px-4 py-[.5rem] text-font outline-none sm:text-sm"
       onKeyDown={(evt) => onKeyDown(evt)}
       value={input}
       onChange={handleInputChange}

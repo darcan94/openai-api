@@ -1,11 +1,11 @@
 import { type Message } from "ai";
-import CodeBlock from "@/components/ui/codeBlock/codeBlock";
+import CodeBlock from "@/app/components/ui/codeBlock/codeBlock";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
-import { MemoizedMarkdown } from "@/components/markdown/memoizedMarkdown";
-import { Button } from "@/components/ui/button/Button";
-import { IconCheck, IconCopy } from "@/components/ui/icons/Icons";
-import useClipboard from "@/hooks/useClipboard";
+import { MemoizedMarkdown } from "@/app/components/markdown/memoizedMarkdown";
+import { Button } from "@/app/components/ui/button/Button";
+import { IconCheck, IconCopy } from "@/app/components/ui/icons/Icons";
+import useClipboard from "@/app/hooks/useClipboard";
 import clsx from "clsx";
 
 export default function Bubble({ message }: { message: Message }) {
@@ -19,13 +19,16 @@ export default function Bubble({ message }: { message: Message }) {
   return (
     <div
       key={message.id}
-      className={clsx("hover:group-hover group relative w-auto max-w-80 rounded-2xl p-3",
+      className={clsx(
+        "hover:group-hover group relative w-auto max-w-80 rounded-2xl p-3",
         {
-          "self-end bg-gradient-to-r from-custom-blue to-primary text-white rounded-br-none": message.role === "user",
-          "self-start pt-4 bg-secondary text-font rounded-bl-none shadow-md dark:shadow-none": message.role === "assistant"
-        })
-      }>
-        
+          "self-end rounded-br-none bg-gradient-to-r from-custom-blue to-primary text-white":
+            message.role === "user",
+          "self-start rounded-bl-none bg-secondary pt-4 text-font shadow-md dark:shadow-none":
+            message.role === "assistant",
+        },
+      )}
+    >
       {message.role !== "user" && (
         <div className="absolute right-2 top-1 hidden group-hover:block">
           <Button variant="ghost" size="iconsm" onClick={onCopy}>
@@ -40,9 +43,11 @@ export default function Bubble({ message }: { message: Message }) {
         components={{
           p({ children }) {
             const isEmoji = getEmojiPattern().test(`${children}`);
-            return isEmoji 
-              ? <span className="text-6xl">{children}</span> 
-              : <p className="mb-2 last:mb-0">{children}</p>
+            return isEmoji ? (
+              <span className="text-6xl">{children}</span>
+            ) : (
+              <p className="mb-2 last:mb-0">{children}</p>
+            );
           },
           code({ node, inline, className, children, ...props }) {
             const match = /language-(\w+)/.exec(className || "");
