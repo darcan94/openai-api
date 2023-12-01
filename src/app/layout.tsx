@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { TailwindIndicator } from "@/app/components/tailwind-indicator";
 import Sidebar from "@/app/components/sidebar/sidebar";
+import Header from "./components/header/header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,6 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <Header/>
         <main className="mx-auto my-0 flex h-screen w-full justify-end">
           <Sidebar />
           {children}
