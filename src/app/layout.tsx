@@ -1,7 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { TailwindIndicator } from "@/app/components/tailwind-indicator";
 import Sidebar from "@/app/components/sidebar/sidebar";
 import Header from "./components/header/header";
 
@@ -29,7 +28,6 @@ export default function RootLayout({
           <Sidebar />
           {children}
         </main>
-        <TailwindIndicator />
       </body>
     </html>
   );

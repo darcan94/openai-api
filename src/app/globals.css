@@ -44,7 +44,7 @@
   --secondary-color-alpha: #ffffffb0;
   --background: #e8eff9;
   --foreground: #26262c;
-  --custom-blue: #2f7dfd;
+  --custom-blue: #73a7fb;
 }
 
 @media (prefers-color-scheme: dark) {
