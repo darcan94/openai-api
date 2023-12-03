@@ -2,7 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Sidebar from "@/app/components/sidebar/sidebar";
-import Header from "./components/header/header";
+import Header from "@/app/components/header/header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,6 +15,13 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'white' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' }
+  ]
+}
+
 export default function RootLayout({
   children,
 }: {
@@ -23,11 +30,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header/>
-        <main className="mx-auto my-0 flex h-screen w-full justify-end">
-          <Sidebar />
-          {children}
-        </main>
+          <Header/>
+          <main className="mx-auto my-0 flex h-screen w-full justify-end">
+            <Sidebar />
+            {children}
+          </main>
       </body>
     </html>
   );
