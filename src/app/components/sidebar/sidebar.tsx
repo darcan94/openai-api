@@ -1,6 +1,8 @@
 import { IconSidebarAlt } from "@/app/components/ui/icons/Icons";
 import SidebarItemList from "@/app/components/sidebar/sidebarItemlist";
 import { Button } from "@/app/components/ui/button/Button";
+import ThemeToggle from "../ui/themeToggle/themeToggle";
+import { SidebarToggle } from "./sidebarToggle";
 
 export default async function Sidebar({
   children,
@@ -15,12 +17,12 @@ export default async function Sidebar({
       <div className="flex h-full flex-col gap-2">
         <div className="flex h-[60px] items-center justify-between gap-5 px-6">
           <h2>Chat history</h2>
-          <Button variant="ghost" size="icon">
-            <IconSidebarAlt className="" />
-            <span className="sr-only">Toggle Sidebar</span>
-          </Button>
+          <SidebarToggle />
         </div>
         <SidebarItemList chats={chats} />
+        <div>
+          <ThemeToggle />
+        </div>
       </div>
     </div>
   );

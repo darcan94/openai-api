@@ -104,10 +104,10 @@ export function IconArrowRight() {
   );
 }
 
-export function IconSidebarAlt({ className }: { className: string }) {
+export function IconSidebarAlt() {
   return (
     <svg
-      className={`h-6 w-6 ${className}`}
+      className="h-6 w-6"
       fill="none"
       height="24"
       stroke="currentColor"

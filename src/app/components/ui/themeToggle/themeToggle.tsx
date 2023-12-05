@@ -14,16 +14,14 @@ export default function ThemeToggle(){
             size="icon"
             onClick={() => {
                 startTransition(() => {
-                    setTheme(theme === 'ligth' ? 'dark' : 'ligth')
+                    setTheme(theme === 'light' ? 'dark' : 'light')
                 })
             }}>
-            {
-                !theme ? null : theme === 'dark' ? (
-                    <IconMoon />
-                ): (
-                    <IconSun />
-                )
-            }
+            {!theme ? null : theme === 'dark' ? (
+                <IconMoon />
+            ): (
+                <IconSun />
+            )}
             <span className="sr-only">Toggle theme</span>
         </Button>
     );
