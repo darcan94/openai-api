@@ -1,6 +1,6 @@
 'use client'
-import { Button } from "@/app/components/ui/button/Button";
-import { IconSidebarAlt } from "@/app/components/ui/icons/Icons";
+import { Button } from "@/app/components/ui/Button";
+import { IconSidebarAlt } from "@/app/components/ui/Icons";
 
 export function SidebarToggle(){
 

@@ -1,8 +1,8 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Button } from "@/app/components/ui/button/Button";
-import { IconTrash } from "@/app/components/ui/icons/Icons";
+import { Button } from "@/app/components/ui/Button";
+import { IconTrash } from "@/app/components/ui/Icons";
 import { ObjectId } from "mongodb";
 import { useRouter } from "next/navigation";
 import clsx from "clsx";

@@ -7,8 +7,8 @@ import {
   useScrollToBottom,
 } from "@/app/hooks/useScroll";
 import PromptForm from "@/app/components/promptForm/promptForm";
-import { Button } from "@/app/components/ui/button/Button";
-import { IconArrowDown } from "@/app/components/ui/icons/Icons";
+import { Button } from "@/app/components/ui/Button";
+import { IconArrowDown } from "@/app/components/ui/Icons";
 import { Message } from "ai";
 import EmptyChat from "./EmptyChat";
 

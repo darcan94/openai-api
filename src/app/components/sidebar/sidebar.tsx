@@ -1,5 +1,5 @@
 import SidebarItemList from "@/app/components/sidebar/sidebarItemlist";
-import ThemeToggle from "../ui/themeToggle/ThemeToggle";
+import ThemeToggle from "../ui/ThemeToggle";
 import { SidebarToggle } from "./sidebarToggle";
 
 export default async function Sidebar({

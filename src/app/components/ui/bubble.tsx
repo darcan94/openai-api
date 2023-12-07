@@ -1,10 +1,10 @@
 import { type Message } from "ai";
-import CodeBlock from "@/app/components/ui/codeBlock/codeBlock";
+import CodeBlock from "@/app/components/ui/codeBlock";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import { MemoizedMarkdown } from "@/app/components/markdown/memoizedMarkdown";
-import { Button } from "@/app/components/ui/button/Button";
-import { IconCheck, IconCopy } from "@/app/components/ui/icons/Icons";
+import { Button } from "@/app/components/ui/Button";
+import { IconCheck, IconCopy } from "@/app/components/ui/Icons";
 import useClipboard from "@/app/hooks/useClipboard";
 import clsx from "clsx";
 

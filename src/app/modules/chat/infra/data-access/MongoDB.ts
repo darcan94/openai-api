@@ -1,4 +1,4 @@
-import { MongoDBConnection } from "@/app/utils/MongoDBConnection";
+import { MongoDBConnection } from "@/app/modules/utils/MongoDBConnection";
 import { Db } from "mongodb";
 
 export async function connectDB() {
