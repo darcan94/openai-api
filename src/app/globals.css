@@ -56,6 +56,13 @@
   }
 }
 
+[data-theme='dark']{
+  --secondary-color: #292a33;
+  --secondary-color-alpha: #292a33b0;
+  --background: #343540;
+  --foreground: #fafafa;
+}
+
 body {
   color: rgb(var(--foreground));
   background: var(--background);

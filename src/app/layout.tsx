@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Sidebar from "@/app/components/sidebar/sidebar";
 import Header from "@/app/components/header/header";
+import { ChatThemeProvider } from "@/app/components/ChatThemeProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,11 +31,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-          <Header/>
-          <main className="mx-auto my-0 flex h-screen w-full justify-end">
-            <Sidebar />
-            {children}
-          </main>
+        <ChatThemeProvider
+          defaultTheme="system"
+          enableSystem>
+            <Header/>
+            <main className="mx-auto my-0 flex h-screen w-full justify-end">
+              <Sidebar />
+              {children}
+            </main>
+        </ChatThemeProvider>
       </body>
     </html>
   );
