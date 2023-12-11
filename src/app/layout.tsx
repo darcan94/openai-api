@@ -33,7 +33,8 @@ export default function RootLayout({
       <body className={inter.className}>
         <ChatThemeProvider
           defaultTheme="system"
-          enableSystem>
+          enableSystem
+          enableColorScheme>
             <Header/>
             <main className="mx-auto my-0 flex h-screen w-full justify-end">
               <Sidebar />

@@ -18,9 +18,9 @@ export default function ThemeToggle(){
                 })
             }}>
             {!theme ? null : theme === 'dark' ? (
-                <IconMoon />
-            ): (
                 <IconSun />
+            ): (
+                <IconMoon />
             )}
             <span className="sr-only">Toggle theme</span>
         </Button>
