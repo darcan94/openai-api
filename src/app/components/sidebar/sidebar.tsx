@@ -1,6 +1,7 @@
 import SidebarItemList from "@/app/components/sidebar/sidebarItemlist";
 import ThemeToggle from "../ui/ThemeToggle";
 import { SidebarToggle } from "./sidebarToggle";
+import React from "react";
 
 export default async function Sidebar({
   children,
@@ -17,7 +18,19 @@ export default async function Sidebar({
           <h2>Chat history</h2>
           <SidebarToggle />
         </div>
-        <SidebarItemList chats={chats} />
+        <React.Suspense
+          fallback={
+            <div className="flex flex-col flex-1 px-4 space-y-4 overflow-auto">
+              {Array.from({ length: 10 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="w-full h-6 rounded-md shrink-0 animate-pulse bg-zinc-200 dark:bg-zinc-800"
+                />
+            ))}
+          </div>
+        }>
+          <SidebarItemList chats={chats} />
+        </React.Suspense>
         <div>
           <ThemeToggle />
         </div>

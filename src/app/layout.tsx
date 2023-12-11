@@ -2,8 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Sidebar from "@/app/components/sidebar/sidebar";
-import Header from "@/app/components/header/header";
-import { ChatThemeProvider } from "@/app/components/ChatThemeProvider";
+import { ChatThemeProvider } from "@/app/components/chatThemeProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,10 +31,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ChatThemeProvider
+          attribute="class"
           defaultTheme="system"
           enableSystem
-          enableColorScheme>
-            <Header/>
+          >
             <main className="mx-auto my-0 flex h-screen w-full justify-end">
               <Sidebar />
               {children}
