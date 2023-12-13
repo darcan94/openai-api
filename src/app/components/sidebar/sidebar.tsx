@@ -24,7 +24,7 @@ export default async function Sidebar({
               {Array.from({ length: 10 }).map((_, i) => (
                 <div
                   key={i}
-                  className="w-full h-6 rounded-md shrink-0 animate-pulse bg-zinc-200 dark:bg-zinc-800"
+                  className="w-full h-6 rounded-md shrink-0 animate-pulse bg-background"
                 />
             ))}
           </div>
