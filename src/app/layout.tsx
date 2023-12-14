@@ -34,6 +34,7 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="system"
           enableSystem
+          enableColorScheme
           >
             <main className="mx-auto my-0 flex h-screen w-full justify-end">
               <Sidebar />

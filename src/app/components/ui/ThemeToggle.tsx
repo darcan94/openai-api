@@ -5,7 +5,7 @@ import { IconMoon, IconSun } from "@/app/components/ui/Icons";
 
 export default function ThemeToggle(){
     const {theme, setTheme} = useTheme();
-
+    
     return (
         <Button 
             variant="ghost"

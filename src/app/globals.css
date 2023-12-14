@@ -39,7 +39,7 @@
 }
 
 @layer base {
-  .light {
+  :root {
     --primary-color: #1b4aef;
     --secondary-color: #ffffff;
     --secondary-color-alpha: #ffffffb0;
