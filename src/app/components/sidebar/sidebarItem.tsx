@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/app/components/ui/Button";
-import { IconTrash } from "@/app/components/ui/Icons";
+import { IconMessage, IconTrash } from "@/app/components/ui/Icons";
 import { ObjectId } from "mongodb";
 import clsx from "clsx";
 import { deleteChat } from "@/app/modules/chat/application/actions";
@@ -18,10 +18,11 @@ export default function SidebarItem({ chat }: { chat: any }) {
   return (
     <div
       className={clsx(
-        "group flex items-center justify-between rounded-lg px-2 py-2 text-font hover:bg-background",
+        "group flex items-center justify-between gap-2 rounded-lg px-2 py-2 text-font hover:bg-background",
         { "bg-background": active },
       )}
     >
+      <IconMessage />
       <Link
         key={chat._id}
         className="w-full overflow-hidden whitespace-nowrap font-extralight text-font no-underline"

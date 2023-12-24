@@ -3,7 +3,10 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ChatThemeProvider } from '@/app/components/chatThemeProvider';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ 
+  subsets: ["latin"],
+  weight: ['100', '300', '500'] 
+});
 
 export const metadata: Metadata = {
   title: {
@@ -30,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ChatThemeProvider
             attribute="class"
