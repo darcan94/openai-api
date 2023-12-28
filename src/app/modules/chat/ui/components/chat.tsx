@@ -12,18 +12,18 @@ import { IconArrowDown } from "@/app/components/ui/Icons";
 import { Message } from "ai";
 import EmptyChat from "./EmptyChat";
 
-export const initialPrompt: Message[] = [
+/*export const initialPrompt: Message[] = [
   {
     id: new Date().toISOString(),
     role: "system",
     content:
       "You are a helpful assistant. Answer as concisely as possible. Markdown",
   },
-];
+];*/
 
 export default function Chat({
   id,
-  initialMessages = initialPrompt,
+  initialMessages,
 }: {
   id: string;
   initialMessages?: Message[];
@@ -38,7 +38,7 @@ export default function Chat({
     reload,
     handleInputChange,
     handleSubmit,
-  } = useChat({ initialMessages, body: { id } });
+  } = useChat({ initialMessages, body: { id }, api: '/api/chatGemini' });
 
   const chatListRef = useAutoScroll(messages);
   const scrollToBottom = useScrollToBottom(chatListRef);
@@ -47,7 +47,7 @@ export default function Chat({
   return (
     <div className="relative flex w-full flex-col justify-end">
       <div ref={chatListRef} className="overflow-y-auto">
-        {messages.length > 1 ? (
+        {messages.length > 0 ? (
           <ChatList messages={messages} />
         ) : (
           <EmptyChat setInput={setInput} />

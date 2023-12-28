@@ -29,7 +29,7 @@ export default function SidebarItem({ chat }: { chat: any }) {
         href={`/chat/${chat._id}`}>
         {chat.title}
       </Link>
-      <div className="h-4 pl-2 hidden group-hover:block">
+      <div className="h-4 hidden group-hover:block">
         <Button
           variant="ghost"
           size="iconsm"

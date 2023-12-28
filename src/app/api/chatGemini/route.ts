@@ -1,14 +1,27 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GoogleGenerativeAIStream, Message, StreamingTextResponse } from 'ai';
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
 
-export const GET = async () => {
-  const model = genAI.getGenerativeModel({ model: "gemini-pro"});
+export const runtime = 'edge';
 
-  const prompt = "Cuales son las mejores practicas para data fetch en next.js 14?."
+const buildGoogleGenAiprompt = (messages: Message[]) => ({
+  contents: messages
+            .filter(message => ['user', 'assistant'].includes(message.role))
+            .map(message => ({
+              role: message.role === 'user' ? 'user' : 'model',
+              parts: [{text: message.content}]
+            }))
+});
 
-  const result = await model.generateContent(prompt);
-  const response = await result.response;
-  const text = response.text();
-  console.log(text);
+export const POST = async (request: Request) => {
+  const { messages } = await request.json();
+
+  const response = await genAI
+                  .getGenerativeModel({ model: "gemini-pro"})
+                  .generateContentStream(buildGoogleGenAiprompt(messages));
+
+  const stream = GoogleGenerativeAIStream(response);
+
+  return new StreamingTextResponse(stream);
 }
