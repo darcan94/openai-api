@@ -1,5 +1,5 @@
 import Sidebar from "@/app/components/sidebar/sidebar";
-import SidebarItemList from "../components/sidebar/sidebarItemlist";
+import SidebarItemList from "@/app/components/sidebar/sidebarItemlist";
 
 export default function Layout({ children }: { children: React.ReactNode }){
     return(        

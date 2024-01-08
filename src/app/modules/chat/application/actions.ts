@@ -1,11 +1,11 @@
 'use server'
 import { ObjectId } from "mongodb";
-import { Chat } from "../domain/Chat";
-import { ChatRepositoryImpl } from "../infra/ChatRepositoryImpl";
-import { CreateChatService } from "./CreateChatService";
-import { GetAllChatsService } from "./GetAllChatService";
-import { GetChatsService } from "./GetChatService";
-import { DeleteChatsService } from "./DeleteChatService";
+import { Chat } from "@/app/modules/chat/domain/Chat";
+import { ChatRepositoryImpl } from "@/app/modules/chat/infra/ChatRepositoryImpl";
+import { CreateChatService } from "@/app/modules/chat/application/CreateChatService";
+import { GetAllChatsService } from "@/app/modules/chat/application/GetAllChatService";
+import { GetChatsService } from "@/app/modules/chat/application/GetChatService";
+import { DeleteChatsService } from "@/app/modules/chat/application/DeleteChatService";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 

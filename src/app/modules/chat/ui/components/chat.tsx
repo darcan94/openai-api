@@ -12,15 +12,6 @@ import { IconArrowDown } from "@/app/components/ui/Icons";
 import { Message } from "ai";
 import EmptyChat from "./EmptyChat";
 
-/*export const initialPrompt: Message[] = [
-  {
-    id: new Date().toISOString(),
-    role: "system",
-    content:
-      "You are a helpful assistant. Answer as concisely as possible. Markdown",
-  },
-];*/
-
 export default function Chat({
   id,
   initialMessages,
