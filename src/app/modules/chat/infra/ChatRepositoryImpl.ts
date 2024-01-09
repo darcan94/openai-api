@@ -26,10 +26,10 @@ export class ChatRepositoryImpl implements ChatRepository {
     }
   }
 
-  async getAll(): Promise<Chat[] | null> {
+  async getAll(): Promise<Chat[] | []> {
     if (!collection) {
       console.warn(`Database is not connected`);
-      return null;
+      return [];
     }
 
     try {

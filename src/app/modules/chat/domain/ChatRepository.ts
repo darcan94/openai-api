@@ -1,9 +1,10 @@
 import { ObjectId } from "mongodb";
 import { Chat } from "./Chat";
+import { Message } from "ai";
 
 export interface ChatRepository {
-  save(chat: Chat, newMessage: any): Promise<ObjectId | null>;
-  getAll(): Promise<Chat[] | null>;
+  save(chat: Chat, newMessage: Message): Promise<ObjectId | null>;
+  getAll(): Promise<Chat[] | []>;
   get(id: ObjectId): Promise<Chat | null>;
   delete(id: ObjectId): Promise<number>;
 }
