@@ -8,6 +8,6 @@ export const metadata: Metadata ={
 
 export default function Home() {
   const chatId = uuidv4();
-
+  
   return <Chat id={chatId} />;
 }

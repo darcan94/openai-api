@@ -24,7 +24,6 @@ export default function Chat({
     input,
     isLoading,
     setInput,
-    setMessages,
     stop,
     reload,
     handleInputChange,
@@ -47,7 +46,6 @@ export default function Chat({
         <PromptForm
           input={input}
           isLoading={isLoading}
-          setMessages={setMessages}
           hasMessage={messages.length > 1}
           stop={stop}
           reload={reload}

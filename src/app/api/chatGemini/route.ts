@@ -18,7 +18,7 @@ const buildGoogleGenAiprompt = (messages: Message[]) => ({
 
 export const POST = async (request: Request) => {
   const { messages, id } = await request.json();
-
+  console.log(id);
   const response = await genAI
                   .getGenerativeModel({ model: "gemini-pro"})
                   .generateContentStream(buildGoogleGenAiprompt(messages));
@@ -30,8 +30,8 @@ export const POST = async (request: Request) => {
       const _id: ObjectId = id;
       const title: string = messages[0].content.substring(0, 100);
       const createdAt: Date = new Date();
-      const chat: Chat = { _id, title, createdAt, messages };
-      await saveChat(chat, newMessage);
+      const chat: Chat = { _id, title, createdAt, messages: [...messages, newMessage] };
+      await saveChat(chat);
     },
   });
 

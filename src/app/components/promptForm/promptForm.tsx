@@ -8,14 +8,12 @@ import {
   IconStop,
   IconSubmit,
 } from "@/app/components/ui/Icons";
-import { Message } from "ai";
 import { useRouter } from "next/navigation";
 
 interface ChatFormProps {
   input: string;
   isLoading: boolean;
   hasMessage: boolean;
-  setMessages: (messages: Message[]) => void;
   stop: () => void;
   reload: () => void;
   handleInputChange: (event: ChangeEvent<HTMLTextAreaElement>) => void;
@@ -26,7 +24,6 @@ export default function PromptForm({
   input,
   isLoading,
   hasMessage,
-  setMessages,
   stop,
   reload,
   handleInputChange,
@@ -69,7 +66,6 @@ export default function PromptForm({
             onClick={(e) => {
               e.preventDefault();
               router.push("/chat");
-             // setMessages(initialPrompt);
             }}
           >
             <IconClearChat />

@@ -2,9 +2,10 @@ import { ObjectId } from "mongodb";
 import { Chat } from "../domain/Chat";
 import { ChatRepository } from "../domain/ChatRepository";
 import { collection } from "@/app/modules/chat/infra/data-access/MongoDB";
+import { CreateMessage } from "ai";
 
 export class ChatRepositoryImpl implements ChatRepository {
-  async save(chat: Chat, newMessage: any): Promise<ObjectId | null> {
+  async save(chat: Chat): Promise<ObjectId | null> {
     if (!collection) {
       console.warn(`Database is not connected. Chat will not be save`);
       return null;
@@ -12,8 +13,12 @@ export class ChatRepositoryImpl implements ChatRepository {
 
     const filter = { _id: chat._id };
     const update = {
-      $setOnInsert: { chat },
-      $push: { messages: newMessage },
+      $setOnInsert: { 
+        "_id": chat._id,
+        "title": chat.title,
+        "createdAt": chat.createdAt,
+       },
+      $set: { messages: chat.messages },
     };
     const options = { upsert: true };
 

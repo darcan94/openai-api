@@ -11,9 +11,11 @@ import { redirect } from "next/navigation";
 
 const chatRepository = new ChatRepositoryImpl();
 
-export async function saveChat(chat: Chat, newMessage: any) {
+export async function saveChat(chat: Chat) {
     const createChat = new CreateChatService(chatRepository);
-    return await createChat.execute(chat, newMessage);    
+    const chatId = await createChat.execute(chat);   
+    revalidatePath(`/chat`);
+    redirect(`/chat/${chatId}`);
 }
 
 export async function getChats() {
