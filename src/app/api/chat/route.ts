@@ -25,7 +25,7 @@ export const POST = async (request: Request) => {
       const newMessage = { content: completion, role: "assistant" };
 
       const _id: ObjectId = id;
-      const title: string = messages[1].content.substring(0, 100);
+      const title: string = messages[0].content.substring(0, 100);
       const createdAt: Date = new Date();
       const chat = { _id, title, createdAt, messages };
       await saveChat(chat, newMessage);

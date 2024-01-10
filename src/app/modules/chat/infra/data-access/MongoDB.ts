@@ -2,6 +2,7 @@ import { MongoDBConnection } from "@/app/modules/utils/MongoDBConnection";
 import { Db } from "mongodb";
 
 export async function connectDB() {
+  'use server'
   try {
     const client = await MongoDBConnection.getInstance();
     const database: Db = client.db(process.env.DB_NAME);
