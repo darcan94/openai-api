@@ -1,4 +1,5 @@
 import { saveChat } from "@/app/modules/chat/application/actions";
+import { Chat } from "@/app/modules/chat/domain/Chat";
 import { OpenAIStream, StreamingTextResponse } from "ai";
 import { ObjectId } from "mongodb";
 import { Configuration, OpenAIApi } from "openai-edge";
@@ -27,8 +28,8 @@ export const POST = async (request: Request) => {
       const _id: ObjectId = id;
       const title: string = messages[0].content.substring(0, 100);
       const createdAt: Date = new Date();
-      const chat = { _id, title, createdAt, messages };
-      await saveChat(chat, newMessage);
+      const chat: Chat = { _id, title, createdAt, messages: [...messages, newMessage] };
+      await saveChat(chat);
     },
   });
 

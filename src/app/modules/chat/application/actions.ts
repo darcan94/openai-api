@@ -8,14 +8,18 @@ import { GetChatsService } from "@/app/modules/chat/application/GetChatService";
 import { DeleteChatsService } from "@/app/modules/chat/application/DeleteChatService";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { UpdateChatService } from "./UpdateChatService";
 
 const chatRepository = new ChatRepositoryImpl();
 
 export async function saveChat(chat: Chat) {
     const createChat = new CreateChatService(chatRepository);
-    const chatId = await createChat.execute(chat);   
-    revalidatePath(`/chat`);
-    redirect(`/chat/${chatId}`);
+    return await createChat.execute(chat);    
+}
+
+export async function updateChat(chat: Chat) {
+    const createChat = new UpdateChatService(chatRepository);
+    return await createChat.execute(chat);
 }
 
 export async function getChats() {
@@ -30,7 +34,7 @@ export async function getChat(id: ObjectId) {
 
 export async function deleteChat(id: ObjectId) {
     const deleteChat = new DeleteChatsService(chatRepository);
-    deleteChat.execute(id);
+    await deleteChat.execute(id);
     revalidatePath('/chat');
     redirect('/chat');
 }

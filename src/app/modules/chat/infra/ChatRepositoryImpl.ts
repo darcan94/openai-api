@@ -2,7 +2,8 @@ import { ObjectId } from "mongodb";
 import { Chat } from "../domain/Chat";
 import { ChatRepository } from "../domain/ChatRepository";
 import { collection } from "@/app/modules/chat/infra/data-access/MongoDB";
-import { CreateMessage } from "ai";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/dist/server/api-utils";
 
 export class ChatRepositoryImpl implements ChatRepository {
   async save(chat: Chat): Promise<ObjectId | null> {
@@ -11,19 +12,28 @@ export class ChatRepositoryImpl implements ChatRepository {
       return null;
     }
 
+    try {
+      const result = await collection.insertOne(chat);
+      return result.insertedId;
+    } catch (error) {
+      console.error(`Error occurred while saving chat: ${error}`);
+      throw error;
+    }  
+  }
+
+  async update(chat: Chat): Promise<ObjectId | null> {
+    if (!collection) {
+      console.warn(`Database is not connected. Chat will not be update`);
+      return null;
+    }
+
     const filter = { _id: chat._id };
     const update = {
-      $setOnInsert: { 
-        "_id": chat._id,
-        "title": chat.title,
-        "createdAt": chat.createdAt,
-       },
       $set: { messages: chat.messages },
     };
-    const options = { upsert: true };
 
     try {
-      const result = await collection.updateOne(filter, update, options);
+      const result = await collection.updateOne(filter, update);
       return result.upsertedId;
     } catch (error) {
       console.error(`Error occurred while saving chat: ${error}`);
