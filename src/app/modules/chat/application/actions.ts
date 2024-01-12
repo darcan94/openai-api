@@ -35,6 +35,5 @@ export async function getChat(id: ObjectId) {
 export async function deleteChat(id: ObjectId) {
     const deleteChat = new DeleteChatsService(chatRepository);
     await deleteChat.execute(id);
-    revalidatePath('/chat');
-    redirect('/chat');
+    return revalidatePath('/chat');
 }

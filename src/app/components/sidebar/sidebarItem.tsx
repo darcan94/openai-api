@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/app/components/ui/Button";
 import { IconMessage, IconTrash } from "@/app/components/ui/Icons";
 import { ObjectId } from "mongodb";
@@ -10,6 +10,7 @@ import { deleteChat } from "@/app/modules/chat/application/actions";
 export default function SidebarItem({ chat }: { chat: any }) {
   const pathname: string = usePathname();
   const active: boolean = pathname === `/chat/${chat._id}`;
+  const router = useRouter();
 
   const delChat = async (id: ObjectId) => {
     await deleteChat(id);
@@ -18,7 +19,7 @@ export default function SidebarItem({ chat }: { chat: any }) {
   return (
     <div
       className={clsx(
-        "group flex items-center justify-between gap-2 rounded-lg px-2 py-2 text-font hover:bg-background",
+        "group flex items-center relative justify-between gap-2 rounded-lg px-2 py-2 text-font hover:bg-background",
         { "bg-background": active },
       )}
     >
@@ -29,11 +30,15 @@ export default function SidebarItem({ chat }: { chat: any }) {
         href={`/chat/${chat._id}`}>
         {chat.title}
       </Link>
-      <div className="h-4 hidden group-hover:block">
+      <div className="h-4 hidden absolute right-2.5 group-hover:block">
         <Button
           variant="ghost"
           size="iconsm"
-          onClick={() => delChat(chat._id)}
+          onClick={async () => {
+              await delChat(chat._id);
+              router.push('/chat')
+            }
+          }
         >
           <IconTrash />
           <span className="sr-only"> Delete chat </span>

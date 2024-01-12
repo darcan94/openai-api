@@ -4,7 +4,7 @@ import React from "react";
 
 export default function Sidebar({ children }: { children?: React.ReactNode}) {
   return (
-    <div className="hidden p-4 duration-300 ease-in-out data-[state=open]:translate-x-0 lg:flex  lg:w-[350px] overflow-y-auto border-r bg-secondary text-font border-white/10">
+    <div className="hidden p-2 duration-300 ease-in-out data-[state=open]:translate-x-0 lg:flex  lg:w-[350px] overflow-y-auto border-r bg-secondary text-font border-white/10">
       <div className="flex h-full w-full flex-col gap-2">
         <div className="flex h-[60px] items-center justify-between gap-5">
           <h2>Chat history</h2>
