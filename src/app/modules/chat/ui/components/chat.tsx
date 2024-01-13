@@ -11,6 +11,7 @@ import { Button } from "@/app/components/ui/Button";
 import { IconArrowDown } from "@/app/components/ui/Icons";
 import { Message } from "ai";
 import EmptyChat from "./EmptyChat";
+import { useRouter } from "next/navigation";
 
 export default function Chat({
   id,
@@ -19,6 +20,7 @@ export default function Chat({
   id: string;
   initialMessages?: Message[];
 }) {
+  const router = useRouter();
   const {
     messages,
     input,
@@ -28,7 +30,14 @@ export default function Chat({
     reload,
     handleInputChange,
     handleSubmit,
-  } = useChat({ initialMessages, body: { id }, api: '/api/chatGemini' });
+  } = useChat({ 
+    initialMessages,
+    body: { id },
+    api: '/api/chatGemini' ,
+    onFinish: () => {
+      router.push(`/chat/${id}`);
+    }
+  });
 
   const chatListRef = useAutoScroll(messages);
   const scrollToBottom = useScrollToBottom(chatListRef);

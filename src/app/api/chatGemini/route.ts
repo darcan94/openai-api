@@ -1,11 +1,8 @@
-'use server'
-import { GoogleGenerativeAI } from "@google/generative-ai";
-import { CreateMessage, GoogleGenerativeAIStream, Message, StreamingTextResponse } from 'ai';
 import { getChat, saveChat, updateChat } from "@/app/modules/chat/application/actions";
-import { ObjectId } from "mongodb";
 import { Chat } from "@/app/modules/chat/domain/Chat";
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
+import { CreateMessage, GoogleGenerativeAIStream, Message, StreamingTextResponse } from 'ai';
+import { ObjectId } from "mongodb";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
 

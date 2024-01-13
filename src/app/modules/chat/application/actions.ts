@@ -7,14 +7,14 @@ import { GetAllChatsService } from "@/app/modules/chat/application/GetAllChatSer
 import { GetChatsService } from "@/app/modules/chat/application/GetChatService";
 import { DeleteChatsService } from "@/app/modules/chat/application/DeleteChatService";
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 import { UpdateChatService } from "./UpdateChatService";
 
 const chatRepository = new ChatRepositoryImpl();
 
 export async function saveChat(chat: Chat) {
     const createChat = new CreateChatService(chatRepository);
-    return await createChat.execute(chat);    
+    const chatId = await createChat.execute(chat);
+    return chatId;
 }
 
 export async function updateChat(chat: Chat) {
