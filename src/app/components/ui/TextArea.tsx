@@ -15,6 +15,7 @@ export default function TextArea({
   const textareaRef = useTextareaAutoHeight(input);
   return (
     <textarea
+      autoFocus={true}
       ref={textareaRef}
       tabIndex={0}
       rows={1}
