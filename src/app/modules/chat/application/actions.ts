@@ -1,11 +1,10 @@
 'use server'
 import { ObjectId } from "mongodb";
 import { Chat } from "@/app/modules/chat/domain/Chat";
-import { ChatRepositoryImpl } from "@/app/modules/chat/infra/ChatRepositoryImpl";
 import { ChatService } from "@/app/modules/chat/application/ChatService";
 import { revalidatePath } from "next/cache";
 
-const chatService = new ChatService(new ChatRepositoryImpl());
+const chatService = ChatService.getInstance();
 
 export async function saveChat(chat: Chat) {
     return await chatService.create(chat);
