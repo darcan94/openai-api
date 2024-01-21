@@ -11,7 +11,7 @@ export default function Sidebar({ children }: { children?: React.ReactNode}) {
           <SidebarToggle />
         </div>
         { children }
-        <div>
+        <div  className="my-0 mx-auto">
           <ThemeToggle />
         </div>
       </div>

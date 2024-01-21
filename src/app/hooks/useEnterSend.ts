@@ -1,11 +1,11 @@
 import { KeyboardEvent, RefObject, useRef } from "react";
 
-interface enterSubmirProps {
+interface enterSubmitProps {
   formRef: RefObject<HTMLFormElement>;
   onKeyDown: (event: KeyboardEvent<HTMLTextAreaElement>) => void;
 }
 
-export default function useEnterSend(): enterSubmirProps {
+export default function useEnterSend(): enterSubmitProps {
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>): void => {

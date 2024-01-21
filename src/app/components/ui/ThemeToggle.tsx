@@ -1,7 +1,7 @@
 'use client'
 import { useTheme } from "next-themes";
 import { Button } from "@/app/components/ui/Button";
-import { IconMessage, IconMoon, IconSun } from "@/app/components/ui/Icons";
+import { IconMoon, IconSun, IconSystem } from "@/app/components/ui/Icons";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 
@@ -33,7 +33,7 @@ export default function ThemeToggle(){
                 className={clsx("rounded-full", {
                     "bg-background": mounted && theme === 'system' 
                })}>
-                    <IconMessage/>
+                    <IconSystem/>
                     <span className="sr-only">Toggle system theme</span>
             </Button>
 

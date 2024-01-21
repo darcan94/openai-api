@@ -4,11 +4,8 @@ import SidebarItemListSkeleton from "@/app/components/sidebar/sidebarItemListSke
 import { getChats } from "@/app/modules/chat/application/actions";
 import { Chat } from "@/app/modules/chat/domain/Chat";
 
-const loadChats = cache(async () => {
-  return await getChats();
-});
 export default async function SidebarItemList() {  
-  const chats = await loadChats();
+  const chats = await getChats();;
 
   const chatList = chats.map((chat: Chat) => 
     <li key={chat._id.toString()} className="list-none">

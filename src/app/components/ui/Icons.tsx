@@ -189,3 +189,19 @@ export function IconMessage() {
     </svg>
   )
 }
+
+export function IconSystem(){
+  return(
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      viewBox="0 0 24 24" 
+      fill="none" 
+      stroke="currentColor" 
+      strokeWidth="1.5" 
+      strokeLinecap="round" 
+      strokeLinejoin="round" 
+      className="h-4 w-4 lucide lucide-tv-2">
+        <path d="M7 21h10"/><rect width="20" height="14" x="2" y="3" rx="2"/>
+    </svg>
+  );
+}
