@@ -44,7 +44,7 @@ export default function Chat({
   const isAtBottom = useScrollDetection(chatListRef);
 
   return (
-    <div className="relative flex w-full flex-col justify-end">
+    <div className="pl-0 group relative flex w-full flex-col justify-end animate-in duration-300 ease-in-out peer-[[data-state=open]]:lg:pl-[350px]">
       <div ref={chatListRef} className="overflow-y-auto">
         {messages.length > 0 ? (
           <ChatList messages={messages} />
