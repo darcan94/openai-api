@@ -46,7 +46,7 @@ export class ChatRepositoryImpl implements ChatRepository {
     }
 
     try {
-      const chats = collection.find();
+      const chats = collection.find().sort({ createdAt: -1});
       return (await chats.toArray()) as Chat[];
     } catch (error) {
       console.error(`Error occurred while getting all chats: ${error}`);
