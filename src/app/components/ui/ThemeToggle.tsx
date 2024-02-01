@@ -14,7 +14,7 @@ export default function ThemeToggle(){
     }, []);
 
     return (
-        <div>
+        <div className="flex justify-center">
             <Button 
                 variant="ghost" 
                 size="icon" 
