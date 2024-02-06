@@ -10,7 +10,7 @@ export function SidebarToggle(){
     const toggleButton = <Button 
                             variant="ghost" 
                             size="icon"
-                            className={`fixed top-0 z-10 transition-all duration-300 ${isSidebarOpen ? 'left-[300px]' : 'left-0'}`}
+                            className={`fixed top-5 z-20 transition-all duration-300 ${isSidebarOpen ? 'left-[260px]' : 'left-0'}`}
                             onClick={() => toggleSidebar()}>
                                 <IconSidebarAlt />
                                 <span className="sr-only">Toggle Sidebar</span>
