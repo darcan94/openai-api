@@ -8,7 +8,7 @@ export default function Sidebar({ children }: { children?: React.ReactNode}) {
   return (
       <div 
         data-state = {isSidebarOpen && !isLoading ? 'open' : 'closed'}
-        className="peer left-0 absolute inset-y-0 z-10 flex flex-col w-[300px] gap-2  p-2 -translate-x-full duration-300 ease-in-out data-[state=open]:translate-x-0 overflow-y-auto border-r bg-secondary text-font border-white/10">
+        className="flex flex-col w-[330px] gap-2 p-2 duration-300 data-[state=closed]:w-16 overflow-y-auto border-r bg-secondary text-font border-white/10">
           { children }
       </div>
   );

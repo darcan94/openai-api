@@ -2,23 +2,18 @@
 import { Button } from "@/app/components/ui/Button";
 import { IconSidebarAlt } from "@/app/components/ui/Icons";
 import { useSidebar } from "../sidebarProvider";
-import { createPortal } from "react-dom";
 
 export function SidebarToggle(){
-    const { isSidebarOpen, toggleSidebar } = useSidebar();
-
-    const toggleButton = <Button 
-                            variant="ghost" 
-                            size="icon"
-                            className={`fixed top-5 z-20 transition-all duration-300 ${isSidebarOpen ? 'left-[260px]' : 'left-0'}`}
-                            onClick={() => toggleSidebar()}>
-                                <IconSidebarAlt />
-                                <span className="sr-only">Toggle Sidebar</span>
-                        </Button>
+    const { toggleSidebar } = useSidebar();
 
     return(
-        <>
-            {createPortal(toggleButton, document.body)}
-        </>        
+        <Button 
+            variant="ghost" 
+            size="icon"
+            className='z-20 transition-all duration-300 left-4 hover:bg-background rounded-full'
+            onClick={() => toggleSidebar()}>
+                <IconSidebarAlt />
+                <span className="sr-only">Toggle Sidebar</span>
+        </Button>       
     );
 }

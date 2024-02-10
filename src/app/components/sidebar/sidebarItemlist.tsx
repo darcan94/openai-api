@@ -1,11 +1,11 @@
 import SidebarItem from "@/app/components/sidebar/sidebarItem";
-import React, { cache } from "react";
+import React from "react";
 import SidebarItemListSkeleton from "@/app/components/sidebar/sidebarItemListSkeleton";
 import { getChats } from "@/app/modules/chat/application/actions";
 import { Chat } from "@/app/modules/chat/domain/Chat";
 
 export default async function SidebarItemList() {  
-  const chats = await getChats();;
+  const chats = await getChats();
 
   const chatList = chats.map((chat: Chat) => 
     <li key={chat._id.toString()} className="list-none">
