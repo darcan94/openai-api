@@ -6,14 +6,20 @@ import { IconMessage, IconTrash } from "@/app/components/ui/Icons";
 import { ObjectId } from "mongodb";
 import clsx from "clsx";
 import { deleteChat } from "@/app/modules/chat/application/actions";
+import Dialog from "../dialog/Dialog";
+import { useState } from "react";
 
 export default function SidebarItem({ chat }: { chat: any }) {
   const pathname: string = usePathname();
   const active: boolean = pathname === `/chat/${chat._id}`;
   const router = useRouter();
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  const delChat = async (id: ObjectId) => {
+
+  const handleDeleteConfirm = async (id: ObjectId) => {
     await deleteChat(id);
+    setIsDialogOpen(false);
+    router.push('/chat')
   };
 
   return (
@@ -36,15 +42,16 @@ export default function SidebarItem({ chat }: { chat: any }) {
         <Button
           variant="ghost"
           size="iconsm"
-          onClick={async () => {
-              await delChat(chat._id);
-              router.push('/chat')
-            }
-          }
-        >
+          onClick={ () => setIsDialogOpen(true)
+          }>
           <IconTrash />
           <span className="sr-only"> Delete chat </span>
         </Button>
+        <Dialog
+          isOpen={isDialogOpen}
+          onClose={() => setIsDialogOpen(false)}
+          onConfirm={() => handleDeleteConfirm(chat._id)}
+        />
       </div>
     </div>
   );
