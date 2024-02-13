@@ -42,8 +42,7 @@ export default function SidebarItem({ chat }: { chat: any }) {
         <Button
           variant="ghost"
           size="iconsm"
-          onClick={ () => setIsDialogOpen(true)
-          }>
+          onClick={ () => setIsDialogOpen(true)}>
           <IconTrash />
           <span className="sr-only"> Delete chat </span>
         </Button>
