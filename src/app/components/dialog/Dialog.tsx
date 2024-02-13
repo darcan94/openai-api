@@ -10,7 +10,7 @@ export default function Dialog( { isOpen, onClose, onConfirm}: DialogProps ){
     if (!isOpen) return null;
 
     return(
-        <div className="fixed z-10 inset-0 flex items-center justify-center bg-black bg-opacity-70">            
+        <div className="fixed z-10 inset-0 flex items-center justify-center bg-black bg-opacity-60">            
             <div className="bg-secondary p-4 rounded-lg shadow-md">
                 <p>¿Estás seguro de que deseas eliminar chat?</p>
                 <div className="mt-4 flex justify-end gap-2">
