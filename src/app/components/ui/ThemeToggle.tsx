@@ -17,7 +17,7 @@ export default function ThemeToggle( { setOpen }: { setOpen: (isOpen: boolean) =
                 variant="ghost"
                 onClick={() => handleCloseDialog('dark')}>
                     <IconMoon/>
-                    <span className="ml-3">Dark</span>
+                    <span className="ml-3 font-light">Dark</span>
                     <span className="sr-only">Toggle Dark theme</span>
             </Button>
 
@@ -25,7 +25,7 @@ export default function ThemeToggle( { setOpen }: { setOpen: (isOpen: boolean) =
                 variant="ghost" 
                 onClick={() => handleCloseDialog('system')}>
                     <IconSystem/>
-                    <span className="ml-3">System</span>
+                    <span className="ml-3 font-light">System</span>
                     <span className="sr-only">Toggle system theme</span>
             </Button>
 
@@ -33,7 +33,7 @@ export default function ThemeToggle( { setOpen }: { setOpen: (isOpen: boolean) =
                 variant="ghost" 
                 onClick={() => handleCloseDialog('light')}>
                     <IconSun/>
-                    <span className="ml-3">Light</span>
+                    <span className="ml-3 font-light">Light</span>
                     <span className="sr-only">Toggle dark theme</span>
             </Button>
         </div>

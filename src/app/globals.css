@@ -41,9 +41,9 @@
 @layer base {
   :root {
     --primary-color: #1b4aef;
-    --secondary-color: #ffffff;
+    --secondary-color: #f0f4f9;
     --secondary-color-alpha: #ffffffb0;
-    --background: #f0f4f9;
+    --background: #ffffff;
     --foreground: #26262c;
     --custom-blue: #73a7fb;
   }
