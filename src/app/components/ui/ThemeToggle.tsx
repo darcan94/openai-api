@@ -1,58 +1,41 @@
 'use client'
 import { useTheme } from "next-themes";
 import { Button } from "@/app/components/ui/Button";
-import { IconMoon, IconSetting, IconSun, IconSystem } from "@/app/components/ui/Icons";
-import clsx from "clsx";
-import { useState } from "react";
+import { IconMoon, IconSun, IconSystem } from "@/app/components/ui/Icons";
 
-export default function ThemeToggle(){
+export default function ThemeToggle( { setOpen }: { setOpen: (isOpen: boolean) => void } ){
     const {theme, setTheme} = useTheme();
-    const [openDialog, setOpenDialog] = useState(false);
-    const handleOpenDialog = () => {
-        setOpenDialog(true);
-    };
 
     const handleCloseDialog = (theme: string) => {
         setTheme(theme);
-        setOpenDialog(false);
+        setOpen(false);
     };
+
     return (
-        <div className="relative">
+        <div className="absolute left-10 bottom-0 py-5 px-2 rounded-md shadow-md flex flex-col items-start bg-background">
             <Button 
-                    variant="ghost" 
-                    size="icon" 
-                    onClick={handleOpenDialog}>
-                        <IconSetting/>
-                        <span className="sr-only">Settings</span>
+                variant="ghost"
+                onClick={() => handleCloseDialog('dark')}>
+                    <IconMoon/>
+                    <span className="ml-3">Dark</span>
+                    <span className="sr-only">Toggle Dark theme</span>
             </Button>
-           { openDialog && <div className="absolute left-10 bottom-0 py-5 px-2 rounded-md shadow-md flex flex-col items-start bg-background">
-                <Button 
-                    variant="ghost" 
-                    onClick={() => handleCloseDialog('dark')}
-                    className={clsx("rounded-full", {"bg-background": theme === 'dark'})}>
-                        <IconMoon/>
-                        <span className="ml-3">Dark</span>
-                        <span className="sr-only">Toggle light theme</span>
-                </Button>
 
-                <Button 
-                    variant="ghost" 
-                    onClick={() => handleCloseDialog('system')}
-                    className={clsx("rounded-full", { "bg-background": theme === 'system'})}>
-                        <IconSystem/>
-                        <span className="ml-3">System</span>
-                        <span className="sr-only">Toggle system theme</span>
-                </Button>
+            <Button 
+                variant="ghost" 
+                onClick={() => handleCloseDialog('system')}>
+                    <IconSystem/>
+                    <span className="ml-3">System</span>
+                    <span className="sr-only">Toggle system theme</span>
+            </Button>
 
-                <Button 
-                    variant="ghost" 
-                    onClick={() => handleCloseDialog('light')}
-                    className={clsx("rounded-full", {"bg-background": theme === 'light'})}>
-                        <IconSun/>
-                        <span className="ml-3">Light</span>
-                        <span className="sr-only">Toggle dark theme</span>
-                </Button>
-            </div>}
+            <Button 
+                variant="ghost" 
+                onClick={() => handleCloseDialog('light')}>
+                    <IconSun/>
+                    <span className="ml-3">Light</span>
+                    <span className="sr-only">Toggle dark theme</span>
+            </Button>
         </div>
     );
 }
