@@ -20,7 +20,7 @@ export default function Sidebar({ children }: { children?: React.ReactNode}) {
             <Button
               variant="rounded" 
               size="lg2"
-              className="bg-background"
+              className="bg-background w-max"
               onClick={(e) => {
                 e.preventDefault();
                 router.push("/chat");

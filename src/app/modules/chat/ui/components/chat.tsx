@@ -66,7 +66,7 @@ export default function Chat({
         <Button
           variant="rounded"
           className="absolute bottom-36 right-6 z-10 
-                    rounded-full bg-secondary px-0 py-0 dark:border-none"
+                     bg-secondary px-0 py-0 dark:border-none"
           size="iconlg"
           onClick={scrollToBottom}
         >

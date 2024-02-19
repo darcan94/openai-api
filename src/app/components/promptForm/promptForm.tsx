@@ -30,7 +30,7 @@ export default function PromptForm({
   const { formRef, onKeyDown } = useEnterSend();
 
   return (
-    <div className="sticky bottom-0 w-full bg-secondary-alpha backdrop-blur-md">
+    <div className="sticky bottom-0 w-full bg-background-alpha backdrop-blur-md">
       
         {isLoading ? (
             <div className="mt-2 flex h-auto items-center justify-center py-1">
@@ -56,8 +56,8 @@ export default function PromptForm({
           )
         )}
       
-      <form ref={formRef} onSubmit={handleSubmit} className="p-4">
-        <div className="flex items-center rounded-2xl border border-gray-200 bg-secondary p-1 dark:border-white/10">
+      <form ref={formRef} onSubmit={handleSubmit} className="p-4  w-8/12 mx-auto">
+        <div className="flex items-center rounded-full border border-gray-200 bg-secondary p-1 dark:border-white/10 h-14">
           <TextArea
             input={input}
             handleInputChange={handleInputChange}

@@ -19,7 +19,7 @@ export default function TextArea({
       ref={textareaRef}
       tabIndex={0}
       rows={1}
-      className="w-11/12 resize-none bg-transparent px-4 py-[.5rem] text-font outline-none sm:text-sm"
+      className="w-full resize-none bg-transparent px-4 py-[.5rem] text-font outline-none sm:text-sm"
       onKeyDown={(evt) => onKeyDown(evt)}
       value={input}
       onChange={handleInputChange}

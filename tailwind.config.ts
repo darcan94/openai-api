@@ -22,6 +22,7 @@ const config: Config = {
         'secondary':  'var(--secondary-color)',
         'secondary-alpha':  'var(--secondary-color-alpha)',
         'background': 'var(--background)',
+        'background-alpha': 'var(--background-alpha)',
         'font': 'var(--foreground)',
         'custom-blue': 'var(--custom-blue)',
         'disabled': {
