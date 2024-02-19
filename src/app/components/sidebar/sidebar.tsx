@@ -27,7 +27,7 @@ export default function Sidebar({ children }: { children?: React.ReactNode}) {
               }}
           >
             <IconClearChat />
-            <span data-state = {isSidebarOpen && !isLoading ? 'open' : 'closed'} className="transition-all ease-in-out duration-300 font-normal mr-2 data-[state=closed]:hidden">New Chat</span>
+            <span data-state = {isSidebarOpen && !isLoading ? 'open' : 'closed'} className="font-normal mr-2 data-[state=closed]:hidden">New Chat</span>
             <span className="sr-only">New Chat</span>
           </Button>
           </div>
