@@ -57,7 +57,7 @@ export default function PromptForm({
         )}
       
       <form ref={formRef} onSubmit={handleSubmit} className="p-4  w-8/12 mx-auto">
-        <div className="flex items-center rounded-full border border-gray-200 bg-secondary p-1 dark:border-white/10 h-14">
+        <div className="flex items-center rounded-full border border-gray-200 bg-secondary p-1 dark:border-white/10 min-h-[4rem]">
           <TextArea
             input={input}
             handleInputChange={handleInputChange}
