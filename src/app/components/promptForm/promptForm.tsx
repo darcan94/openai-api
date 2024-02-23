@@ -67,7 +67,7 @@ export default function PromptForm({
             type="submit"
             disabled={isLoading || input === ""}
             variant="ghost"
-            className="text-font">
+            className={`text-font ${isLoading || input === "" ? 'hidden' : 'block'}`}>
               <IconSubmit />
               <span className="sr-only"> Send message </span>
           </Button>
