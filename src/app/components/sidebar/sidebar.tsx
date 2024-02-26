@@ -14,7 +14,7 @@ export default function Sidebar({ children }: { children?: React.ReactNode}) {
   return (
       <div 
         data-state = {isSidebarOpen && !isLoading ? 'open' : 'closed'}
-        className="flex flex-col justify-between w-[330px] gap-2 p-2 duration-300 data-[state=closed]:w-16 overflow-y-auto border-r bg-secondary text-font border-white/10">
+        className="flex flex-col justify-between w-[330px] gap-2 p-2 duration-300 data-[state=closed]:w-16 border-r bg-secondary text-font border-white/10">
           <div className="flex flex-col gap-6">
             <SidebarToggle />
             <Button

@@ -9,11 +9,11 @@ export default function Settings() {
     return (
         <div className="relative">
             <Button 
-                    variant="ghost" 
-                    size="icon" 
-                    onClick={() => setOpen(!isOpen)}>
-                        <IconSetting/>
-                        <span className="sr-only">Settings</span>
+                variant="ghost" 
+                size="icon" 
+                onClick={() => setOpen(!isOpen)}>
+                    <IconSetting/>
+                    <span className="sr-only">Settings</span>
             </Button>
             { isOpen && <ThemeToggle setOpen={setOpen}/>}
         </div>

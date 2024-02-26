@@ -4,7 +4,7 @@ import { Button } from "@/app/components/ui/Button";
 import { IconMoon, IconSun, IconSystem } from "@/app/components/ui/Icons";
 
 export default function ThemeToggle( { setOpen }: { setOpen: (isOpen: boolean) => void } ){
-    const {theme, setTheme} = useTheme();
+    const {setTheme} = useTheme();
 
     const handleCloseDialog = (theme: string) => {
         setTheme(theme);
