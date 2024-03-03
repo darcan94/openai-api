@@ -25,7 +25,7 @@ export default function SidebarItem({ chat }: { chat: any }) {
   return (
     <div
       className={clsx(
-        "group flex items-center justify-start gap-2 rounded-lg px-2 py-2 text-font hover:bg-background",
+        "group relative flex items-center justify-start gap-2 rounded-lg px-2 py-2 text-font hover:bg-background",
         { "bg-background": active },
       )}
     >
@@ -38,7 +38,7 @@ export default function SidebarItem({ chat }: { chat: any }) {
         href={`/chat/${chat._id}`}>
         {chat.title}
       </Link>
-      <div className="h-4 hidden w-[5%] right-2.5 group-hover:block">
+      <div className="h-full hidden absolute right-2.5 group-hover:flex group-hover:items-center bg-background">
         <Button
           variant="ghost"
           size="iconsm"

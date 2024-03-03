@@ -7,7 +7,7 @@ export default function Settings() {
     const [isOpen, setOpen] = useState(false);
 
     return (
-        <div className="relative">
+        <div className="relative z-20">
             <Button 
                 variant="ghost" 
                 size="icon" 
