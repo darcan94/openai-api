@@ -46,7 +46,7 @@ export default function Chat({
 
   return (
     <div className="pl-0 flex w-full flex-col justify-end animate-in duration-300 ease-in-out">
-      <div className="fixed top-0">
+      <div className="fixed top-0 z-10">
         <ModelSelector />
       </div>
       <div ref={chatListRef} className="overflow-y-auto">
