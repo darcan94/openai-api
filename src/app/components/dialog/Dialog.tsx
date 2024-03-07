@@ -1,16 +1,14 @@
 import { Button } from "../ui/Button";
 
 interface DialogProps{
-    isOpen: boolean;
     onClose: () => void;
     onConfirm: () => void;
 }
 
-export default function Dialog( { isOpen, onClose, onConfirm}: DialogProps ){
-    if (!isOpen) return null;
+export default function Dialog( { onClose, onConfirm}: DialogProps ){
 
     return(
-        <div className="fixed z-10 inset-0 flex items-center justify-center bg-black bg-opacity-60">            
+        <div className="fixed z-20 inset-0 flex items-center justify-center bg-black bg-opacity-60">            
             <div className="bg-secondary p-4 rounded-lg shadow-md">
                 <p>¿Estás seguro de que deseas eliminar chat?</p>
                 <div className="mt-4 flex justify-end gap-2">

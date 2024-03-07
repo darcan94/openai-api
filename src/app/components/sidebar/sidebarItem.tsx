@@ -46,11 +46,10 @@ export default function SidebarItem({ chat }: { chat: any }) {
           <IconTrash />
           <span className="sr-only"> Delete chat </span>
         </Button>
-        <Dialog
-          isOpen={isDialogOpen}
+        {isDialogOpen && <Dialog
           onClose={() => setIsDialogOpen(false)}
           onConfirm={() => handleDeleteConfirm(chat._id)}
-        />
+        />}
       </div>
     </div>
   );

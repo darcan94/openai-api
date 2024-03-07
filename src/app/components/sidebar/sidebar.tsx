@@ -9,11 +9,12 @@ import { useRouter } from "next/navigation";
 
 export default function Sidebar({ children }: { children?: React.ReactNode}) {
   const { isSidebarOpen, isLoading } = useSidebar();
+  const state = isSidebarOpen && !isLoading ? 'open' : 'closed';
   const router = useRouter();
 
   return (
       <div 
-        data-state = {isSidebarOpen && !isLoading ? 'open' : 'closed'}
+        data-state = {state}
         className="flex flex-col justify-between w-[330px] gap-2 p-2 duration-300 data-[state=closed]:w-16 border-r bg-secondary text-font border-white/10">
           <div className="flex flex-col gap-6">
             <SidebarToggle />
@@ -27,7 +28,7 @@ export default function Sidebar({ children }: { children?: React.ReactNode}) {
               }}
           >
             <IconClearChat />
-            <span data-state = {isSidebarOpen && !isLoading ? 'open' : 'closed'} className="font-normal mr-2 data-[state=closed]:hidden">New Chat</span>
+            <span data-state = {state} className="font-normal mr-2 data-[state=closed]:hidden">New Chat</span>
             <span className="sr-only">New Chat</span>
           </Button>
           </div>
