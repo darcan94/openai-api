@@ -48,16 +48,15 @@
     --foreground: #26262c;
     --custom-blue: #73a7fb;
   }
-    
+
   .dark {
-      --secondary-color: #292a33;
-      --secondary-color-alpha: #292a33b0;
-      --background-alpha: #343540b0;
-      --background: #343540;
-      --foreground: #fafafa;
+    --secondary-color: #292a33;
+    --secondary-color-alpha: #292a33b0;
+    --background-alpha: #343540b0;
+    --background: #343540;
+    --foreground: #fafafa;
   }
 }
-
 
 body {
   color: rgb(var(--foreground));

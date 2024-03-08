@@ -1,17 +1,17 @@
-import '@/app/globals.css';
+import "@/app/globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { ChatThemeProvider } from '@/app/components/chatThemeProvider';
+import { ChatThemeProvider } from "@/app/components/chatThemeProvider";
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ["latin"],
-  weight: ['100', '300', '500'] 
+  weight: ["100", "300", "500"],
 });
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | open-ai',
-    default: 'Open-ai API chat'
+    template: "%s | open-ai",
+    default: "Open-ai API chat",
   },
   description: "Chatbot with open-ai llm",
   icons: {
@@ -22,10 +22,10 @@ export const metadata: Metadata = {
 
 export const viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' }
-  ]
-}
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
+};
 
 export default function RootLayout({
   children,
@@ -36,11 +36,12 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ChatThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            enableColorScheme>
-               { children }
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          enableColorScheme
+        >
+          {children}
         </ChatThemeProvider>
       </body>
     </html>

@@ -4,7 +4,6 @@ import { ObjectId } from "mongodb";
 import { ChatRepositoryImpl } from "../infra/ChatRepositoryImpl";
 
 export class ChatService {
-
   private static instance: ChatService;
   private chatRepository: ChatRepository;
 

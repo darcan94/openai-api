@@ -15,11 +15,10 @@ export default function SidebarItem({ chat }: { chat: any }) {
   const router = useRouter();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-
   const handleDeleteConfirm = async (id: ObjectId) => {
     await deleteChat(id);
     setIsDialogOpen(false);
-    router.push('/chat')
+    router.push("/chat");
   };
 
   return (
@@ -35,21 +34,25 @@ export default function SidebarItem({ chat }: { chat: any }) {
       <Link
         key={chat._id}
         className="w-[90%] overflow-hidden whitespace-nowrap font-light text-font no-underline"
-        href={`/chat/${chat._id}`}>
+        href={`/chat/${chat._id}`}
+      >
         {chat.title}
       </Link>
-      <div className="h-full hidden absolute right-2.5 group-hover:flex group-hover:items-center bg-background">
+      <div className="absolute right-2.5 hidden h-full bg-background group-hover:flex group-hover:items-center">
         <Button
           variant="ghost"
           size="iconsm"
-          onClick={ () => setIsDialogOpen(true)}>
+          onClick={() => setIsDialogOpen(true)}
+        >
           <IconTrash />
           <span className="sr-only"> Delete chat </span>
         </Button>
-        {isDialogOpen && <Dialog
-          onClose={() => setIsDialogOpen(false)}
-          onConfirm={() => handleDeleteConfirm(chat._id)}
-        />}
+        {isDialogOpen && (
+          <Dialog
+            onClose={() => setIsDialogOpen(false)}
+            onConfirm={() => handleDeleteConfirm(chat._id)}
+          />
+        )}
       </div>
     </div>
   );

@@ -1,54 +1,53 @@
-'use client'
+"use client";
 import { createContext, useContext, useEffect, useState } from "react";
 
-const LOCAL_STORAGE_KEY = 'sidebar'
+const LOCAL_STORAGE_KEY = "sidebar";
 
 interface SidebarContext {
-    isSidebarOpen: boolean
-    toggleSidebar: () => void
-    isLoading: boolean
+  isSidebarOpen: boolean;
+  toggleSidebar: () => void;
+  isLoading: boolean;
 }
 
-const SidebarContext = createContext<SidebarContext | undefined>(
-    undefined
-)
+const SidebarContext = createContext<SidebarContext | undefined>(undefined);
 
 export function useSidebar() {
-    const context = useContext(SidebarContext);
-    
-    if(!context){
-        throw new Error('useSidebarContext must be used within a SidebarProvider')
-    }
+  const context = useContext(SidebarContext);
 
-    return context;
+  if (!context) {
+    throw new Error("useSidebarContext must be used within a SidebarProvider");
+  }
+
+  return context;
 }
-  
 
-export function SidebarProvider({ children } : { children: React.ReactNode}){
-    const [ isSidebarOpen, setSidebarOpen ] = useState(true);
-    const [ isLoading, setLoading ] = useState(true);
+export function SidebarProvider({ children }: { children: React.ReactNode }) {
+  const [isSidebarOpen, setSidebarOpen] = useState(true);
+  const [isLoading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const value = localStorage.getItem(LOCAL_STORAGE_KEY);
-        if(value){
-            setSidebarOpen(JSON.parse(value));
-        }
-        setLoading(false);
-    }, []);
-
-    const toggleSidebar = () => {
-        setSidebarOpen(value => {
-            const newState = !value;
-            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newState));
-            return newState;
-        });
+  useEffect(() => {
+    const value = localStorage.getItem(LOCAL_STORAGE_KEY);
+    if (value) {
+      setSidebarOpen(JSON.parse(value));
     }
+    setLoading(false);
+  }, []);
 
-    if(isLoading) return null;
+  const toggleSidebar = () => {
+    setSidebarOpen((value) => {
+      const newState = !value;
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newState));
+      return newState;
+    });
+  };
 
-    return (
-        <SidebarContext.Provider value={{ isSidebarOpen, toggleSidebar, isLoading }}>
-            {children}
-        </SidebarContext.Provider>
-    );
+  if (isLoading) return null;
+
+  return (
+    <SidebarContext.Provider
+      value={{ isSidebarOpen, toggleSidebar, isLoading }}
+    >
+      {children}
+    </SidebarContext.Provider>
+  );
 }

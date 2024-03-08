@@ -5,9 +5,7 @@ export class MongoDBConnection {
 
   static async getInstance() {
     if (!this.instance) {
-      this.instance = new MongoClient(
-        process.env.MONGO_DB_URI ?? "",
-      );
+      this.instance = new MongoClient(process.env.MONGO_DB_URI ?? "");
       await this.instance.connect();
     }
     return this.instance;

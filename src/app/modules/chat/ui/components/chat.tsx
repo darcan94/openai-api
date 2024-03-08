@@ -31,13 +31,13 @@ export default function Chat({
     reload,
     handleInputChange,
     handleSubmit,
-  } = useChat({ 
+  } = useChat({
     initialMessages,
     body: { id },
-    api: '/api/chatGemini' ,
+    api: "/api/chatGemini",
     onFinish: () => {
       router.push(`/chat/${id}`);
-    }
+    },
   });
 
   const chatListRef = useAutoScroll(messages);
@@ -45,7 +45,7 @@ export default function Chat({
   const isAtBottom = useScrollDetection(chatListRef);
 
   return (
-    <div className="pl-0 flex w-full flex-col justify-end animate-in duration-300 ease-in-out">
+    <div className="animate-in flex w-full flex-col justify-end pl-0 duration-300 ease-in-out">
       <div className="fixed top-0 z-10">
         <ModelSelector />
       </div>

@@ -16,7 +16,7 @@ export class ChatRepositoryImpl implements ChatRepository {
     } catch (error) {
       console.error(`Error occurred while saving chat: ${error}`);
       throw error;
-    }  
+    }
   }
 
   async update(chat: Chat): Promise<ObjectId | null> {
@@ -46,7 +46,7 @@ export class ChatRepositoryImpl implements ChatRepository {
     }
 
     try {
-      const chats = collection.find().sort({ createdAt: -1});
+      const chats = collection.find().sort({ createdAt: -1 });
       return (await chats.toArray()) as Chat[];
     } catch (error) {
       console.error(`Error occurred while getting all chats: ${error}`);
