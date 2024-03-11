@@ -3,7 +3,7 @@ const models = [
   { model: "gemini-pro", path: "chatGemini" },
 ];
 
-export default function ModelSelector() {
+export default function DropDown() {
   return (
     <div className="w-full rounded-md bg-background-alpha p-2 text-xl backdrop-blur-md">
       <select name="select" className="bg-transparent focus:outline-none">

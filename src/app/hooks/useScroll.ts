@@ -7,11 +7,12 @@ export function useAutoScroll(
   const chatListRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const ref = chatListRef.current;
+    const reference = chatListRef.current;
     const scrollToBottom = () => {
-      if (ref) {
-        ref.scrollTop = ref.scrollHeight;
-      }
+      reference?.scrollTo({
+        top: reference.scrollHeight,
+        behavior: "smooth",
+      });
     };
 
     scrollToBottom();
@@ -21,10 +22,10 @@ export function useAutoScroll(
 }
 
 export function useScrollToBottom(ref: RefObject<HTMLDivElement>) {
+  const reference = ref.current;
   const scrollToBottom = () => {
-    const reference = ref.current;
     reference?.scrollTo({
-      top: reference?.scrollHeight,
+      top: reference.scrollHeight,
       behavior: "smooth",
     });
   };

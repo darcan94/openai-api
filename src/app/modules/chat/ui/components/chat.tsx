@@ -12,7 +12,7 @@ import { IconArrowDown } from "@/app/components/ui/Icons";
 import { Message } from "ai";
 import EmptyChat from "./EmptyChat";
 import { useRouter } from "next/navigation";
-import ModelSelector from "@/app/components/modelSelector/modelSelector";
+import DropDown from "@/app/components/dropDown/dropDown";
 
 export default function Chat({
   id,
@@ -47,7 +47,7 @@ export default function Chat({
   return (
     <div className="animate-in flex w-full flex-col justify-end pl-0 duration-300 ease-in-out">
       <div className="fixed top-0 z-10">
-        <ModelSelector />
+        <DropDown />
       </div>
       <div ref={chatListRef} className="overflow-y-auto">
         {messages.length > 0 ? (
