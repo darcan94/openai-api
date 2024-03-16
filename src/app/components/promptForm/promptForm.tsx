@@ -26,7 +26,7 @@ export default function PromptForm({
   const { formRef, onKeyDown } = useEnterSend();
 
   return (
-    <div className="sticky bottom-0 w-full bg-background-alpha backdrop-blur-md">
+    <div className="sticky w-full bg-background-alpha backdrop-blur-md">
       {isLoading ? (
         <div className="mt-2 flex h-auto items-center justify-center py-1">
           <Button
@@ -65,17 +65,13 @@ export default function PromptForm({
             onKeyDown={onKeyDown}
           />
 
-          <Button
+          {!(isLoading || input === "") && (<Button
             type="submit"
-            disabled={isLoading || input === ""}
             variant="ghost"
-            className={`text-font ${
-              isLoading || input === "" ? "hidden" : "block"
-            }`}
           >
             <IconSubmit />
             <span className="sr-only"> Send message </span>
-          </Button>
+          </Button>)}
         </div>
       </form>
     </div>

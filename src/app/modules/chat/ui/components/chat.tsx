@@ -1,26 +1,18 @@
 "use client";
 import { useChat } from "ai/react";
 import ChatList from "@/app/modules/chat/ui/components/chatList";
-import {
-  useAutoScroll,
-  useScrollDetection,
-  useScrollToBottom,
-} from "@/app/hooks/useScroll";
 import PromptForm from "@/app/components/promptForm/promptForm";
-import { Button } from "@/app/components/ui/Button";
-import { IconArrowDown } from "@/app/components/ui/Icons";
 import { Message } from "ai";
 import EmptyChat from "./EmptyChat";
 import { useRouter } from "next/navigation";
 import DropDown from "@/app/components/dropDown/dropDown";
 
-export default function Chat({
-  id,
-  initialMessages,
-}: {
+interface ChatProps{
   id: string;
-  initialMessages?: Message[];
-}) {
+  initialMessages?: Message[]; 
+}
+
+export default function Chat({ id, initialMessages }: ChatProps) {
   const router = useRouter();
   const {
     messages,
@@ -40,16 +32,12 @@ export default function Chat({
     },
   });
 
-  const chatListRef = useAutoScroll(messages);
-  const scrollToBottom = useScrollToBottom(chatListRef);
-  const isAtBottom = useScrollDetection(chatListRef);
-
   return (
-    <div className="animate-in flex w-full flex-col justify-end pl-0 duration-300 ease-in-out">
+    <div className="animate-in w-full pl-0 duration-300 ease-in-out">
       <div className="fixed top-0 z-10">
         <DropDown />
       </div>
-      <div ref={chatListRef} className="overflow-y-auto">
+      <div className="h-full flex flex-col justify-end">
         {messages.length > 0 ? (
           <ChatList messages={messages} />
         ) : (
@@ -66,17 +54,6 @@ export default function Chat({
           handleSubmit={handleSubmit}
         />
       </div>
-      {!isAtBottom && (
-        <Button
-          variant="rounded"
-          className="absolute bottom-36 right-6 z-10 
-                     bg-secondary px-0 py-0 dark:border-none"
-          size="iconlg"
-          onClick={scrollToBottom}
-        >
-          <IconArrowDown />
-        </Button>
-      )}
     </div>
   );
 }

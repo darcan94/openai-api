@@ -16,7 +16,7 @@ export default function ThemeToggle({
   };
 
   return (
-    <div className="absolute bottom-0 left-10 flex flex-col items-start rounded-md bg-background px-2 py-5 shadow-md">
+    <div className="absolute bottom-2 left-8 flex flex-col items-start rounded-md bg-background px-2 py-5 shadow-md">
       <Button variant="ghost" onClick={() => handleCloseDialog("dark")}>
         <IconMoon />
         <span className="ml-3 font-light">Dark</span>
