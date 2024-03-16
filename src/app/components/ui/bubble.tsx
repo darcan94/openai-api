@@ -22,7 +22,7 @@ export default function Bubble({ message }: { message: Message }) {
       className={clsx(
         "hover:group-hover group relative w-auto max-w-80 rounded-2xl p-3",
         {
-          "self-end rounded-br-none bg-gradient-to-r from-custom-blue to-primary text-white":
+          "self-end rounded-br-none bg-gradient-to-r from-primary-alt to-primary text-white":
             message.role === "user",
           "self-start rounded-bl-none bg-secondary pt-4 text-font shadow-md dark:shadow-none":
             message.role === "assistant",

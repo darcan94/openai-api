@@ -31,7 +31,7 @@ export default function EmptyChat({ setInput }: any) {
             <Button
               key={index}
               variant="link"
-              className="h-auto p-0 text-base text-custom-blue"
+              className="h-auto p-0 text-base text-primary-alt"
               onClick={() => setInput(message.message)}
             >
               <IconArrowRight />

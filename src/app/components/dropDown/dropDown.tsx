@@ -5,10 +5,10 @@ const models = [
 
 export default function DropDown() {
   return (
-    <div className="w-full rounded-md bg-background-alpha p-2 text-xl backdrop-blur-md">
+    <div className="w-full rounded-md bg-background-alpha p-2 text-xl text-font backdrop-blur-md">
       <select name="select" className="bg-transparent focus:outline-none">
         {models.map((model) => (
-          <option key={model.path} value={model.path} className="bg-background">
+          <option key={model.path} value={model.path} className="bg-background text-font">
             {model.model}
           </option>
         ))}
