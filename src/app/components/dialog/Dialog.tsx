@@ -6,11 +6,10 @@ interface DialogProps {
 }
 
 export default function Dialog({ onClose, onConfirm }: DialogProps) {
-  console.log('xxxxx');
   return (
     <div className="fixed inset-0 z-20 flex items-center justify-center bg-black bg-opacity-60"  onClick={onClose}>
       <div className="rounded-lg bg-secondary p-4 shadow-md">
-        <p>¿Estás seguro de que deseas eliminar chat?</p>
+        <p>¿Estás seguro de que deseas eliminar el chat? 😕</p>
         <div className="mt-4 flex justify-end gap-2">
           <Button
             variant="secondary"

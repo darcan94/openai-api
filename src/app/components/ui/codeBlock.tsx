@@ -18,10 +18,10 @@ export default function CodeBlock({ value, language }: CodeBlockProps) {
   };
 
   return (
-    <div className="codeblock relative my-2 w-full rounded-lg bg-zinc-700 font-sans">
-      <div className="flex w-full items-center justify-between rounded-se-lg rounded-ss-lg bg-zinc-800 px-6 py-2 pr-4 text-zinc-100">
-        <span className="text-m font-extralight lowercase">{language}</span>
-        <div className="flex items-center space-x-1">
+    <div className="rounded-lg my-4 bg-zinc-800 font-sans">
+      <div className="flex items-center justify-between rounded-se-lg rounded-ss-lg bg-zinc-800 px-6 py-2 text-zinc-100">
+        <span>{language}</span>
+        <div className="flex">
           <Button variant="ghost" size="iconsm" onClick={onCopy}>
             {isCopied ? <IconCheck /> : <IconCopy />}
           </Button>
@@ -34,15 +34,11 @@ export default function CodeBlock({ value, language }: CodeBlockProps) {
         PreTag="div"
         customStyle={{
           margin: 0,
-          width: "100%",
-          background: "transparent",
-          padding: "1.5rem 1rem",
-          lineHeight: "1.2rem",
+          background: "transparent"
         }}
         codeTagProps={{
           style: {
             fontSize: ".8rem",
-            fontFamily: "var(--font-mono)",
           },
         }}
       >

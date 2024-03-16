@@ -15,7 +15,7 @@ export default async function SidebarItemList() {
 
   return (
     <React.Suspense fallback={<SidebarItemListSkeleton />}>
-      <div className="flex grow flex-col">
+      <div className="flex grow flex-col overflow-y-auto">
         <nav>
           <ul className="mx-0 flex flex-col gap-2 overflow-hidden">
             {chatList}
