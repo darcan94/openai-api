@@ -5,7 +5,7 @@ import PromptForm from "@/app/components/promptForm/promptForm";
 import { Message } from "ai";
 import EmptyChat from "./EmptyChat";
 import { useRouter } from "next/navigation";
-import DropDown from "@/app/components/dropDown/dropDown";
+import { MemoizedDropDown } from "@/app/components/dropDown/dropDown";
 import { useState } from "react";
 
 interface ChatProps{
@@ -15,7 +15,7 @@ interface ChatProps{
 
 export default function Chat({ id, initialMessages }: ChatProps) {
   const router = useRouter();
-  const [ selectedModel, setSelectedModel ] = useState('');
+  const [ selectedModel, setSelectedModel ] = useState({ model: "gpt-3.5", path: "chat" });
   const {
     messages,
     input,
@@ -28,20 +28,20 @@ export default function Chat({ id, initialMessages }: ChatProps) {
   } = useChat({
     initialMessages,
     body: { id },
-    api: selectedModel,
+    api: `/api/${selectedModel.path}`,
     onFinish: () => {
       router.push(`/chat/${id}`);
     },
   });
 
-  const handleModelSelect = (path: string) => {   
-    setSelectedModel(`/api/${path}`);
+  const handleModelSelect = (model: { model: string, path: string}) => {
+    setSelectedModel(model);
   }
 
   return (
     <div className="animate-in w-full overflow-hidden pl-0 duration-300 ease-in-out">
       <div className="fixed top-0 z-10">
-        <DropDown onSelect = { handleModelSelect } />
+        <MemoizedDropDown onSelect = { handleModelSelect } selectedModel = { selectedModel} />
       </div>
       <div className="h-full block">
         {messages.length > 0 ? (

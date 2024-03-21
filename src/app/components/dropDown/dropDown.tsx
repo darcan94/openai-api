@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FC, memo, useState } from "react";
 
 const models = [
   { model: "gpt-3.5", path: "chat" },
@@ -6,20 +6,19 @@ const models = [
 ];
 
 interface DropDownProps {
-  onSelect: ( path:string ) => void;
+  selectedModel: { model: string, path: string};
+  onSelect: ( model:{ model: string, path: string} ) => void;
 }
 
-export default function DropDown({ onSelect }: DropDownProps) {
+function DropDown({ onSelect, selectedModel }: DropDownProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [selectedModel, setSelectedModel] = useState<string>(models[0].model); 
 
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
 
   const handleSelect = (model: { model: string, path: string}) => {
-    setSelectedModel(model.model);
-    onSelect(model.path);
+    onSelect(model);
     setIsOpen(false);
   };
 
@@ -30,7 +29,7 @@ export default function DropDown({ onSelect }: DropDownProps) {
           className="flex items-center w-full focus:outline-none hover:bg-background-beta transition duration-200 ease-in-out"
           onClick={handleClick}
         >
-          <span>{ selectedModel }</span>
+          <span>{ selectedModel.model }</span>
           <svg
             className="w-4 h-4 fill-current"
             viewBox="0 0 20 20"
@@ -62,3 +61,9 @@ export default function DropDown({ onSelect }: DropDownProps) {
     </div>
   );
 }
+
+export const MemoizedDropDown: FC<DropDownProps> = memo(
+  DropDown,
+  (prevProps, nextProps) =>
+    prevProps.selectedModel.path === nextProps.selectedModel.path
+);
