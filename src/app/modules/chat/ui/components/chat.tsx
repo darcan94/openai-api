@@ -40,7 +40,7 @@ export default function Chat({ id, initialMessages }: ChatProps) {
 
   return (
     <div className="animate-in w-full pl-0 duration-300 ease-in-out">
-      <div className="fixed top-0 z-10">
+      <div className="fixed top-0 z-10 bg-background-alpha w-full">
         <MemoizedDropDown onSelect = { handleModelSelect } selectedModel = { selectedModel} />
       </div>
       <div className="h-full flex flex-col justify-end">

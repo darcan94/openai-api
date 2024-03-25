@@ -26,7 +26,7 @@ export default function PromptForm({
   const { formRef, onKeyDown } = useEnterSend();
 
   return (
-    <div className="sticky w-full bg-background-alpha backdrop-blur-md">
+    <div className="sticky w-full bg-background-alpha">
       {isLoading ? (
         <div className="mt-2 flex h-auto items-center justify-center py-1">
           <Button

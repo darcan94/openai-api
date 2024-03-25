@@ -41,9 +41,9 @@
 @layer base {
   :root {
     --primary-color: #1b4aef;
-    --secondary-color: #f0f4f9;
-    --secondary-color-alpha: #ffffffb0;
-    --background-alpha: #ffffffb0;
+    --secondary-color: #e4eaf1;
+    --secondary-color-alpha: #ffffff8a;
+    --background-alpha: #ffffff8a;
     --background: #ffffff;
     --foreground: #484848;
     --primary-alt: #73a7fb;
@@ -52,8 +52,8 @@
   .dark {
     --primary-color: #003f5c;
     --secondary-color: #131314;
-    --secondary-color-alpha: #131314b0;
-    --background-alpha: #1e1f20b0;
+    --secondary-color-alpha: #1313148a;
+    --background-alpha: #1e1f208a;
     --background: #1e1f20;
     --foreground: #a2a2a2;
     --primary-alt: #005c86;
