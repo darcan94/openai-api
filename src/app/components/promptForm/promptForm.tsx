@@ -27,8 +27,6 @@ export default function PromptForm({
 
   return (
     <div className="sticky bottom-0 w-full bg-background-alpha backdrop-blur-md">
-    
-
       <form
         ref={formRef}
         onSubmit={handleSubmit}
