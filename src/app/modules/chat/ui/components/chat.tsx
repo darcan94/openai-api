@@ -44,7 +44,7 @@ export default function Chat({ id, initialMessages }: ChatProps) {
       <div className="fixed top-0 z-10">
         <DropDown onSelect = { handleModelSelect } />
       </div>
-      <div className="h-full flex flex-col justify-end">
+      <div className="h-full block">
         {messages.length > 0 ? (
           <ChatList messages={messages} />
         ) : (
