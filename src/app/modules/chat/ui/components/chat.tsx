@@ -40,7 +40,7 @@ export default function Chat({ id, initialMessages }: ChatProps) {
   }
 
   return (
-    <div className="animate-in w-full pl-0 duration-300 ease-in-out">
+    <div className="animate-in w-full overflow-hidden pl-0 duration-300 ease-in-out">
       <div className="fixed top-0 z-10">
         <DropDown onSelect = { handleModelSelect } />
       </div>

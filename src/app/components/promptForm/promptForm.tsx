@@ -27,31 +27,7 @@ export default function PromptForm({
 
   return (
     <div className="sticky bottom-0 w-full bg-background-alpha backdrop-blur-md">
-      {isLoading ? (
-        <div className="mt-2 flex h-auto items-center justify-center py-1">
-          <Button
-            variant="outline"
-            onClick={() => stop()}
-            className="bg-secondary text-font"
-          >
-            <IconStop />
-            Stop generating
-          </Button>
-        </div>
-      ) : (
-        hasMessage && (
-          <div className="mt-2 flex h-auto items-center justify-center py-1">
-            <Button
-              variant="outline"
-              onClick={() => reload()}
-              className="bg-secondary text-font"
-            >
-              <IconReload />
-              Regenerate response
-            </Button>
-          </div>
-        )
-      )}
+    
 
       <form
         ref={formRef}
@@ -65,6 +41,27 @@ export default function PromptForm({
             onKeyDown={onKeyDown}
           />
 
+          {
+            isLoading ? (
+                <Button
+                  variant="rounded"
+                  onClick={() => stop()}
+                  className="bg-background h-full text-font"
+                >
+                  <IconStop />
+                </Button>
+            ) : (
+            (hasMessage && input === "") && (
+                <Button
+                  variant="rounded"
+                  onClick={() => reload()}
+                  className="bg-background h-full text-font"
+                >
+                  <IconReload />                  
+                </Button>
+            )
+          )}
+          
           {!(isLoading || input === "") && (<Button
             type="submit"
             variant="ghost"
