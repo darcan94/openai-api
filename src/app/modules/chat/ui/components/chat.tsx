@@ -34,8 +34,7 @@ export default function Chat({ id, initialMessages }: ChatProps) {
     },
   });
 
-  const handleModelSelect = (path: string) => {
-    console.log(`/api/${path}`);    
+  const handleModelSelect = (path: string) => {   
     setSelectedModel(`/api/${path}`);
   }
 
