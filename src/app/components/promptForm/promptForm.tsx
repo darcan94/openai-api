@@ -26,37 +26,11 @@ export default function PromptForm({
   const { formRef, onKeyDown } = useEnterSend();
 
   return (
-    <div className="sticky w-full bg-background-alpha">
-      {isLoading ? (
-        <div className="mt-2 flex h-auto items-center justify-center py-1">
-          <Button
-            variant="outline"
-            onClick={() => stop()}
-            className="bg-secondary text-font"
-          >
-            <IconStop />
-            Stop generating
-          </Button>
-        </div>
-      ) : (
-        hasMessage && (
-          <div className="mt-2 flex h-auto items-center justify-center py-1">
-            <Button
-              variant="outline"
-              onClick={() => reload()}
-              className="bg-secondary text-font"
-            >
-              <IconReload />
-              Regenerate response
-            </Button>
-          </div>
-        )
-      )}
-
+    <div className="sticky bottom-0 w-full bg-background-alpha backdrop-blur-md ">
       <form
         ref={formRef}
         onSubmit={handleSubmit}
-        className="mx-auto  w-8/12 p-4"
+        className="mx-auto w-8/12 p-4"
       >
         <div className="flex min-h-[4rem] items-center rounded-full border border-gray-200 bg-secondary p-1 dark:border-white/10">
           <TextArea
@@ -65,6 +39,29 @@ export default function PromptForm({
             onKeyDown={onKeyDown}
           />
 
+          {
+            isLoading ? (
+                <Button
+                  variant="rounded"
+                  onClick={() => stop()}
+                  className="bg-background h-full text-font"
+                >
+                  <IconStop />
+                  <span className="sr-only"> Stop message </span>
+                </Button>
+            ) : (
+            (hasMessage && input === "") && (
+                <Button
+                  variant="rounded"
+                  onClick={() => reload()}
+                  className="bg-background h-full text-font"
+                >
+                  <IconReload />
+                  <span className="sr-only"> Reload message </span>                  
+                </Button>
+            )
+          )}
+          
           {!(isLoading || input === "") && (<Button
             type="submit"
             variant="ghost"
