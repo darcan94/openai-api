@@ -47,6 +47,7 @@ export default function PromptForm({
                   className="bg-background h-full text-font"
                 >
                   <IconStop />
+                  <span className="sr-only"> Stop message </span>
                 </Button>
             ) : (
             (hasMessage && input === "") && (
@@ -55,7 +56,8 @@ export default function PromptForm({
                   onClick={() => reload()}
                   className="bg-background h-full text-font"
                 >
-                  <IconReload />                  
+                  <IconReload />
+                  <span className="sr-only"> Reload message </span>                  
                 </Button>
             )
           )}
