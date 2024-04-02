@@ -18,9 +18,9 @@ const config: Config = {
         "80": "80%",
       },
       colors: {
-        'primary': 'var(--primary-color)',
-        'secondary':  'var(--secondary-color)',
-        'secondary-alpha':  'var(--secondary-color-alpha)',
+        'primary': 'var(--primary)',
+        'secondary':  'var(--secondary)',
+        'secondary-alpha':  'var(--secondary-alpha)',
         'background': 'var(--background)',
         'background-alpha': 'var(--background-alpha)',
         'font': 'var(--foreground)',
