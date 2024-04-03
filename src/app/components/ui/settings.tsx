@@ -4,7 +4,7 @@ import { IconSetting } from "./Icons";
 import ThemeToggle from "./ThemeToggle";
 
 export default function Settings() {
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setOpen] = useState<boolean>(false);
 
   return (
     <div className="relative z-10">

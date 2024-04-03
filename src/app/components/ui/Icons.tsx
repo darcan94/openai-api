@@ -107,7 +107,7 @@ export function IconArrowRight() {
 export function IconSidebarAlt() {
   return (
     <svg
-      className="h-5 w-5"
+      className="h-6 w-6"
       fill="none"
       height="24"
       stroke="currentColor"
@@ -198,7 +198,7 @@ export function IconSetting() {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      className=" lucide lucide-cog h-6 w-6"
+      className=" lucide lucide-cog h-7 w-7"
     >
       <path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z" />
       <path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />

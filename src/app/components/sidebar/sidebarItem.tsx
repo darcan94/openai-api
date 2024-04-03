@@ -13,7 +13,7 @@ export default function SidebarItem({ chat }: { chat: any }) {
   const pathname: string = usePathname();
   const active: boolean = pathname === `/chat/${chat._id}`;
   const router = useRouter();
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
 
   const handleDeleteConfirm = async (id: ObjectId) => {
     await deleteChat(id);
@@ -42,18 +42,20 @@ export default function SidebarItem({ chat }: { chat: any }) {
         <Button
           variant="ghost"
           size="iconsm"
-          onClick={() => setIsDialogOpen(true)}
+          onClick={() => setIsDialogOpen(!isDialogOpen)}
         >
           <IconTrash />
           <span className="sr-only"> Delete chat </span>
         </Button>
-        {isDialogOpen && (
-          <Dialog
-            onClose={() => setIsDialogOpen(false)}
-            onConfirm={() => handleDeleteConfirm(chat._id)}
-          />
-        )}
+        
       </div>
+      {isDialogOpen && 
+          <Dialog
+            chat={chat}
+            onClose={setIsDialogOpen}
+            onConfirm={handleDeleteConfirm}
+          />
+        }
     </div>
   );
 }
