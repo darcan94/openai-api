@@ -17,7 +17,7 @@ export default function Dialog({ chat, onClose, onConfirm }: DialogProps) {
   }
 
   return (
-    <div className="fixed inset-0 z-20 flex items-center justify-center bg-black bg-opacity-90"  onClick={() => handleClose()}>
+    <div className="fixed inset-0 z-20 flex items-center justify-center bg-black bg-opacity-80"  onClick={() => handleClose()}>
       <div className="rounded-lg bg-secondary p-4 shadow-md">
         <p>¿Estás seguro de que deseas eliminar el chat? 😕</p>
         <div className="mt-4 flex justify-end gap-2">
