@@ -20,7 +20,7 @@ export default function Dialog({ onClose, onConfirm }: DialogProps) {
           </Button>
           <Button
             variant="destructive"
-            className="mr-2 rounded bg-red-500 px-3 py-1 text-white"
+            className="mr-2 rounded bg-danger px-3 py-1 text-white"
             onClick={onConfirm}
           >
             Confirmar

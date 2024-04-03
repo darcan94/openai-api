@@ -46,7 +46,8 @@
     --background: #ffffff;
     --background-alpha: #ffffff8a;
     --foreground: #484848;
-    --primary-alt: #73a7fb;
+    --primary-300: #73a7fb;
+    --danger: #d8514b;
   }
 
   .dark {
@@ -56,7 +57,7 @@
     --background: #1e1f20;
     --background-alpha: #1e1f208a;
     --foreground: #a2a2a2;
-    --primary-alt: #005c86;
+    --primary-300: #005c86;
   }
 }
 

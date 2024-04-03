@@ -1,15 +1,14 @@
 export function IconSubmit() {
   return (
     <svg
-      className="mx-auto my-0"
+    xmlns="http://www.w3.org/2000/svg"
+      className="mx-auto my-0 fill-primary-300"
       width="25"
       height="25"
       viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
     >
       <path
         d="M12.8147 12.1969L5.28344 13.4521C5.10705 13.4815 4.95979 13.6029 4.89723 13.7704L2.29933 20.7278C2.05066 21.3673 2.72008 21.9773 3.33375 21.6705L21.3337 12.6705C21.8865 12.3941 21.8865 11.6052 21.3337 11.3288L3.33375 2.32885C2.72008 2.02201 2.05066 2.63206 2.29933 3.2715L4.89723 10.2289C4.95979 10.3964 5.10705 10.5178 5.28344 10.5472L12.8147 11.8024C12.9236 11.8205 12.9972 11.9236 12.9791 12.0325C12.965 12.1168 12.899 12.1829 12.8147 12.1969Z"
-        fill="#174ae4"
       ></path>
     </svg>
   );
@@ -18,10 +17,9 @@ export function IconSubmit() {
 export function IconStop() {
   return (
     <svg
-      className="h-10 w-6"
-      xmlns="http://www.w3.org/2000/svg"
+    xmlns="http://www.w3.org/2000/svg"
+      className="h-10 w-6 fill-danger"
       viewBox="0 0 256 256"
-      fill="#D8514B"
     >
       <path d="M128 24a104 104 0 1 0 104 104A104.11 104.11 0 0 0 128 24Zm0 192a88 88 0 1 1 88-88 88.1 88.1 0 0 1-88 88Zm24-120h-48a8 8 0 0 0-8 8v48a8 8 0 0 0 8 8h48a8 8 0 0 0 8-8v-48a8 8 0 0 0-8-8Zm-8 48h-32v-32h32Z" />
     </svg>
@@ -48,7 +46,7 @@ export function IconClearChat() {
       width="30"
       height="30"
       viewBox="0 0 24 24"
-      stroke="#174ae4"
+      className="stroke-primary-300"
     >
       <path d="M5 12h14" />
       <path d="M12 5v14" />
@@ -127,26 +125,12 @@ export function IconSidebarAlt() {
   );
 }
 
-export function IconClose() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 256 256"
-      fill="#174ae4"
-      className="h-6 w-6"
-    >
-      <path d="M205.66 194.34a8 8 0 0 1-11.32 11.32L128 139.31l-66.34 66.35a8 8 0 0 1-11.32-11.32L116.69 128 50.34 61.66a8 8 0 0 1 11.32-11.32L128 116.69l66.34-66.35a8 8 0 0 1 11.32 11.32L139.31 128Z" />
-    </svg>
-  );
-}
-
 export function IconTrash() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 256 256"
-      fill="#D8514B"
-      className="h-4 w-4"
+      className="h-4 w-4 fill-danger"
     >
       <path d="M216 48h-40v-8a24 24 0 0 0-24-24h-48a24 24 0 0 0-24 24v8H40a8 8 0 0 0 0 16h8v144a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16V64h8a8 8 0 0 0 0-16ZM96 40a8 8 0 0 1 8-8h48a8 8 0 0 1 8 8v8H96Zm96 168H64V64h128Zm-80-104v64a8 8 0 0 1-16 0v-64a8 8 0 0 1 16 0Zm48 0v64a8 8 0 0 1-16 0v-64a8 8 0 0 1 16 0Z" />
     </svg>

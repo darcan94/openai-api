@@ -24,7 +24,8 @@ const config: Config = {
         'background': 'var(--background)',
         'background-alpha': 'var(--background-alpha)',
         'font': 'var(--foreground)',
-        'primary-alt': 'var(--primary-alt)',
+        'primary-300': 'var(--primary-300)',
+        'danger': 'var(--danger)',
         'disabled': {
           DEFAULT: '#F8F8F9',
           dark: '#26262C',
