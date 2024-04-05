@@ -1,4 +1,4 @@
-import { FC, memo, useState } from "react";
+import { useState } from "react";
 
 const models = [
   { model: "gpt-3.5", path: "chat" },
@@ -10,7 +10,7 @@ interface DropDownProps {
   onSelect: ( model:{ model: string, path: string} ) => void;
 }
 
-function DropDown({ onSelect, selectedModel }: DropDownProps) {
+export default function DropDown({ onSelect, selectedModel }: DropDownProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleClick = () => {
@@ -61,9 +61,3 @@ function DropDown({ onSelect, selectedModel }: DropDownProps) {
     </div>
   );
 }
-
-export const MemoizedDropDown: FC<DropDownProps> = memo(
-  DropDown,
-  (prevProps, nextProps) =>
-    prevProps.selectedModel.path === nextProps.selectedModel.path
-);

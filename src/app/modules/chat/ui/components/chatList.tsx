@@ -13,14 +13,14 @@ export default function ChatList({ messages }: { messages: Message[] }) {
   const scrollToBottom = useScrollToBottom(chatListRef);
 
   return (
-    <div  ref={chatListRef} className="flex w-full h-full flex-col gap-4 px-2 pt-4 pb-24 overflow-y-auto">
+    <div  ref={chatListRef} className="flex w-full h-auto flex-col gap-4 px-2 pt-4 pb-4 overflow-y-auto">
       {messages.map((message: Message, index: number) => (
         <Bubble key={index} message={message} />
       ))}
       {!isAtBottom && (
         <Button
           variant="rounded"
-          className="absolute bottom-36 right-6 z-10 
+          className="absolute bottom-28 right-6 z-10 
                      bg-secondary px-0 py-0 dark:border-none"
           size="iconlg"
           onClick={scrollToBottom}

@@ -5,9 +5,10 @@ import PromptForm from "@/app/components/promptForm/promptForm";
 import { Message } from "ai";
 import EmptyChat from "./EmptyChat";
 import { useRouter } from "next/navigation";
-import { MemoizedDropDown } from "@/app/components/dropDown/dropDown";
-import { useState } from "react";
+import DropDown from "@/app/components/dropDown/dropDown";
+import { useLocalStorage } from "@/app/hooks/useLocalStorage";
 
+const LOCAL_STORAGE_KEY = "modelSelected";
 interface ChatProps{
   id: string;
   initialMessages?: Message[]; 
@@ -15,7 +16,7 @@ interface ChatProps{
 
 export default function Chat({ id, initialMessages }: ChatProps) {
   const router = useRouter();
-  const [ selectedModel, setSelectedModel ] = useState({ model: "gpt-3.5", path: "chat" });
+  const [ selectedModel, setSelectedModel ] = useLocalStorage(LOCAL_STORAGE_KEY, { model: "gpt-3.5", path: "chat" });
   const {
     messages,
     input,
@@ -41,9 +42,9 @@ export default function Chat({ id, initialMessages }: ChatProps) {
   return (
     <div className="animate-in w-full overflow-hidden pl-0 duration-300 ease-in-out">
       <div className="fixed top-0 z-10">
-        <MemoizedDropDown onSelect = { handleModelSelect } selectedModel = { selectedModel} />
+        <DropDown onSelect = { handleModelSelect } selectedModel = { selectedModel} />
       </div>
-      <div className="h-full block">
+      <div className="h-full flex flex-col justify-end">
         {messages.length > 0 ? (
           <ChatList messages={messages} />
         ) : (
