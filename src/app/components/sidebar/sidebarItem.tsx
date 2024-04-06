@@ -38,7 +38,7 @@ export default function SidebarItem({ chat }: { chat: any }) {
       >
         {chat.title}
       </Link>
-      <div className="absolute right-2.5 hidden h-full bg-background group-hover:flex group-hover:items-center">
+      <div className="absolute right-2.5 hidden h-full bg-background group-hover:flex group-hover:items-center pl-2">
         <Button
           variant="ghost"
           size="iconsm"

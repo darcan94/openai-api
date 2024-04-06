@@ -26,7 +26,7 @@ export default function PromptForm({
   const { formRef, onKeyDown } = useEnterSend();
 
   return (
-    <div className="sticky bottom-0 w-full bg-background-alpha backdrop-blur-md ">
+    <div className="sticky bottom-0 w-full bg-background-alpha backdrop-blur-md">
       <form
         ref={formRef}
         onSubmit={handleSubmit}
