@@ -6,5 +6,5 @@ export interface ChatRepository {
   update(chat: Chat): Promise<ObjectId | null>;
   getAll(): Promise<Chat[] | []>;
   get(id: ObjectId): Promise<Chat | null>;
-  delete(id: ObjectId): Promise<number>;
+  delete(id: ObjectId): Promise<void>;
 }

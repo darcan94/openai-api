@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { Button } from "@/app/components/ui/Button";
 import { IconMessage, IconTrash } from "@/app/components/ui/Icons";
 import { ObjectId } from "mongodb";
@@ -12,13 +12,11 @@ import { useState } from "react";
 export default function SidebarItem({ chat }: { chat: any }) {
   const pathname: string = usePathname();
   const active: boolean = pathname === `/chat/${chat._id}`;
-  const router = useRouter();
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
 
   const handleDeleteConfirm = async (id: ObjectId) => {
     await deleteChat(id);
     setIsDialogOpen(false);
-    router.push("/chat");
   };
 
   return (

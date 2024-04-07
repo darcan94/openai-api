@@ -2,6 +2,8 @@ import { ObjectId } from "mongodb";
 import { Chat } from "../domain/Chat";
 import { ChatRepository } from "../domain/ChatRepository";
 import { collection } from "@/app/modules/chat/infra/data-access/MongoDB";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 export class ChatRepositoryImpl implements ChatRepository {
   async save(chat: Chat): Promise<ObjectId | null> {
@@ -12,6 +14,7 @@ export class ChatRepositoryImpl implements ChatRepository {
 
     try {
       const result = await collection.insertOne(chat);
+      revalidatePath("/chat");
       return result.insertedId;
     } catch (error) {
       console.error(`Error occurred while saving chat: ${error}`);
@@ -69,18 +72,20 @@ export class ChatRepositoryImpl implements ChatRepository {
     }
   }
 
-  async delete(id: ObjectId): Promise<number> {
+  async delete(id: ObjectId): Promise<void> {
     if (!collection) {
       console.warn(`Database is not connected`);
-      return 0;
+      return;
     }
 
     try {
-      const result = await collection.deleteOne({ _id: id });
-      return result.deletedCount;
+      await collection.deleteOne({ _id: id });
     } catch (error) {
       console.error(`Error occurred while deleting chat: ${error}`);
       throw error;
     }
+
+    revalidatePath("/chat");
+    redirect("/chat");
   }
 }

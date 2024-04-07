@@ -2,7 +2,6 @@
 import { ObjectId } from "mongodb";
 import { Chat } from "@/app/modules/chat/domain/Chat";
 import { ChatService } from "@/app/modules/chat/application/ChatService";
-import { revalidatePath } from "next/cache";
 
 const chatService = ChatService.getInstance();
 
@@ -24,5 +23,4 @@ export async function getChat(id: ObjectId) {
 
 export async function deleteChat(id: ObjectId) {
   await chatService.delete(id);
-  return revalidatePath("/chat");
 }
