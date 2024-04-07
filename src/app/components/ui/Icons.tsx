@@ -46,7 +46,7 @@ export function IconClearChat() {
       width="30"
       height="30"
       viewBox="0 0 24 24"
-      className="stroke-primary-300"
+      className="stroke-primary dark:stroke-primary-300"
     >
       <path d="M5 12h14" />
       <path d="M12 5v14" />

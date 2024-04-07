@@ -33,6 +33,7 @@ export default function Bubble({ message }: { message: Message }) {
         <div className="absolute right-2 top-1 hidden group-hover:block">
           <Button variant="ghost" size="iconsm" onClick={onCopy}>
             {isCopied ? <IconCheck /> : <IconCopy />}
+            <span className="sr-only">Copy message</span>
           </Button>
         </div>
       )}
