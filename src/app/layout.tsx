@@ -5,7 +5,7 @@ import { ChatThemeProvider } from "@/app/components/chatThemeProvider";
 
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["100", "300", "500"],
+  display: "swap"
 });
 
 export const metadata: Metadata = {
@@ -32,8 +32,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+    <html lang="en" suppressHydrationWarning className={inter.className}>
+      <body>
         <ChatThemeProvider
           attribute="class"
           defaultTheme="system"

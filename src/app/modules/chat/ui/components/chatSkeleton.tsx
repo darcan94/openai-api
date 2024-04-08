@@ -9,7 +9,7 @@ export function ChatSkeleton(){
             </div>
             <div className="sticky bottom-0 w-full bg-background">
                 <div className="mx-auto w-8/12 p-4">         
-                    <div className="animate-pulse min-h-[4rem]  rounded-full border  bg-secondary p-1"/>
+                    <div className="animate-pulse min-h-[4rem] rounded-full bg-secondary p-1"/>
                 </div>
             </div>
     </div>

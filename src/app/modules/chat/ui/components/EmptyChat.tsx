@@ -20,7 +20,7 @@ export default function EmptyChat({ setInput }: any) {
   return (
     <div className="mx-auto max-w-2xl flex items-center justify-center h-full">
       <div className="rounded-lg bg-secondary p-8 dark:border-none shadow-lg dark:shadow-none">
-        <h1 className="mb-2 font-semibold text-font">
+        <h1 className="font-semibold text-font">
           Welcome to Open AI Chatbot!
         </h1>
         <p className="leading-normal text-font">

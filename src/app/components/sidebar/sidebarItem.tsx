@@ -6,7 +6,7 @@ import { IconMessage, IconTrash } from "@/app/components/ui/Icons";
 import { ObjectId } from "mongodb";
 import clsx from "clsx";
 import { deleteChat } from "@/app/modules/chat/application/actions";
-import Dialog from "../dialog/Dialog";
+import Dialog from "@/app/components/dialog/Dialog";
 import { useState } from "react";
 
 export default function SidebarItem({ chat }: { chat: any }) {
@@ -22,11 +22,11 @@ export default function SidebarItem({ chat }: { chat: any }) {
   return (
     <div
       className={clsx(
-        "group relative flex items-center justify-start gap-2 rounded-lg px-2 py-2 text-font hover:bg-background",
+        "group flex items-center justify-start gap-2 rounded-lg px-2 py-2 text-font hover:bg-background",
         { "bg-background": active },
       )}
     >
-      <div className="w-[5%]">
+      <div>
         <IconMessage />
       </div>
       <Link
@@ -36,7 +36,7 @@ export default function SidebarItem({ chat }: { chat: any }) {
       >
         {chat.title}
       </Link>
-      <div className="absolute right-2.5 hidden h-full bg-background group-hover:flex group-hover:items-center pl-2">
+      <div className="hidden bg-background group-hover:flex">
         <Button
           variant="ghost"
           size="iconsm"
@@ -47,13 +47,11 @@ export default function SidebarItem({ chat }: { chat: any }) {
         </Button>
         
       </div>
-      {isDialogOpen && 
-          <Dialog
-            chat={chat}
-            onClose={setIsDialogOpen}
-            onConfirm={handleDeleteConfirm}
-          />
-        }
+      
+      {isDialogOpen && <Dialog
+        onClose={setIsDialogOpen}
+        onConfirm={() => handleDeleteConfirm(chat._id)}
+      />}
     </div>
   );
 }

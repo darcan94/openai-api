@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/app/components/ui/Button";
 import { IconSidebarAlt } from "@/app/components/ui/Icons";
-import { useSidebar } from "../sidebarProvider";
+import { useSidebar } from "@/app/components/sidebarProvider";
 
 export function SidebarToggle() {
   const { toggleSidebar } = useSidebar();

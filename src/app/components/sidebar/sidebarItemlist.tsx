@@ -1,6 +1,5 @@
 import SidebarItem from "@/app/components/sidebar/sidebarItem";
-import React, { Suspense } from "react";
-import SidebarItemListSkeleton from "@/app/components/sidebar/sidebarItemListSkeleton";
+import React from "react";
 import { getChats } from "@/app/modules/chat/application/actions";
 import { Chat } from "@/app/modules/chat/domain/Chat";
 
@@ -13,8 +12,7 @@ export default async function SidebarItemList() {
     </li>
   ));
 
-  return (
-    <Suspense fallback={<SidebarItemListSkeleton />}>
+  return (   
       <div className="flex grow flex-col overflow-y-auto">
         <nav>
           <ul className="mx-0 flex flex-col gap-2 overflow-hidden">
@@ -22,6 +20,5 @@ export default async function SidebarItemList() {
           </ul>
         </nav>
       </div>
-    </Suspense>
   );
 }

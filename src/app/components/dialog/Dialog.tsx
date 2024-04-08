@@ -1,37 +1,28 @@
-import { ObjectId } from "mongodb";
-import { Button } from "../ui/Button";
+import { Button } from "@/app/components/ui/Button";
 
 interface DialogProps {
-  chat: any,
   onClose: (closed: boolean) => void;
-  onConfirm: (id: ObjectId) => void;
+  onConfirm: () => void;
 }
 
-export default function Dialog({ chat, onClose, onConfirm }: DialogProps) {
-  const handleClose = () => {
-    onClose(false);
-  }
-
-  const handleConfirm = (id: ObjectId) => {
-    onConfirm(id);
-  }
-
+export default function Dialog({ onClose, onConfirm }: DialogProps) {
+  
   return (
-    <div className="fixed inset-0 z-20 flex items-center justify-center bg-black bg-opacity-80"  onClick={() => handleClose()}>
+    <div className="fixed inset-0 z-20 flex items-center justify-center bg-black bg-opacity-80"  onClick={() => onClose(false)}>
       <div className="rounded-2xl bg-secondary px-8 py-4 shadow-md">
         <p>¿Estás seguro de que deseas eliminar el chat?</p>
         <div className="mt-8 flex justify-end gap-2">
           <Button
             variant="secondary"
             className="rounded bg-background px-3 py-1 text-font"
-            onClick={() => handleClose()}
+            onClick={() => onClose(false)}
           >
             Cancelar
           </Button>
           <Button
             variant="destructive"
             className="mr-2 rounded bg-danger px-3 py-1 text-white"
-            onClick={() => handleConfirm(chat._id)}
+            onClick={onConfirm}
           >
             Confirmar
           </Button>
