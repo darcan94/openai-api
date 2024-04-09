@@ -24,6 +24,7 @@ export default function CodeBlock({ value, language }: CodeBlockProps) {
         <div className="flex">
           <Button variant="ghost" size="iconsm" onClick={onCopy}>
             {isCopied ? <IconCheck /> : <IconCopy />}
+            <span className="sr-only">Copy code</span>
           </Button>
         </div>
       </div>

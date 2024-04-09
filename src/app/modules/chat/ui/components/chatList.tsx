@@ -26,6 +26,7 @@ export default function ChatList({ messages }: { messages: Message[] }) {
           onClick={scrollToBottom}
         >
           <IconArrowDown />
+          <span className="sr-only">Go to bottom page</span>
         </Button>
       )}
     </div>
