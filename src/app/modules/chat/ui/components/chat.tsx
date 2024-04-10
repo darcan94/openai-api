@@ -31,8 +31,8 @@ export default function Chat({ id, initialMessages }: ChatProps) {
     body: { id },
     api: `/api/${selectedModel.path}`,
     onFinish: () => {
-      router.push(`/chat/${id}`);
       router.refresh();
+      router.push(`/chat/${id}`);
     },
     onError: (error: Error) => {
         console.log(error.message);
@@ -44,11 +44,11 @@ export default function Chat({ id, initialMessages }: ChatProps) {
   }
 
   return (
-    <div className="animate-in w-full h-full overflow-hidden pl-0 duration-300 ease-in-out">
+    <div className="animate-in w-full h-full overflow-hidden duration-300 ease-in-out">
       <div className="fixed top-0 z-10">
         <DropDown onSelect = { handleModelSelect } selectedModel = { selectedModel} />
       </div>
-      <div className="h-full ">
+      <div className="h-full">
         {messages.length > 0 ? (
           <ChatList messages={messages} />
         ) : (

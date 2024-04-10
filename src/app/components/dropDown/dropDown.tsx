@@ -13,21 +13,17 @@ interface DropDownProps {
 export default function DropDown({ onSelect, selectedModel }: DropDownProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const handleClick = () => {
-    setIsOpen(!isOpen);
-  };
-
   const handleSelect = (model: { model: string, path: string}) => {
     onSelect(model);
     setIsOpen(false);
   };
 
   return (
-    <div className="reelative w-full rounded-md bg-background-alpha p-2 text-xl text-font backdrop-blur-md">
+    <div className="reelative rounded-md bg-background-alpha p-2 text-xl text-font backdrop-blur-md">
         <button
           type="button"
           className="flex items-center w-full focus:outline-none hover:bg-background-beta transition duration-200 ease-in-out"
-          onClick={handleClick}
+          onClick={() => setIsOpen(!isOpen)}
         >
           <span>{ selectedModel.model }</span>
           <svg

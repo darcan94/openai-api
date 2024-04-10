@@ -5,7 +5,7 @@ import SidebarItemListSkeleton from "@/app/components/sidebar/sidebarItemListSke
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="mx-auto my-0 flex h-screen w-full justify-end">
+    <div className="flex w-full h-full">
       <Sidebar>
         <Suspense fallback={<SidebarItemListSkeleton/>}>
           <SidebarItemList />

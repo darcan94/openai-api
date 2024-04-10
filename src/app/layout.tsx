@@ -33,7 +33,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning className={inter.className}>
-      <body>
+      <body className="h-screen">
         <ChatThemeProvider
           attribute="class"
           defaultTheme="system"

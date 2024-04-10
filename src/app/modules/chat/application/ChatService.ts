@@ -12,10 +12,10 @@ export class ChatService {
   }
 
   static getInstance(): ChatService {
-    if (!ChatService.instance) {
-      ChatService.instance = new ChatService();
+    if (!this.instance) {
+      this.instance = new ChatService();
     }
-    return ChatService.instance;
+    return this.instance;
   }
 
   async create(chat: Chat) {

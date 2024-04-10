@@ -1,5 +1,5 @@
 import { ObjectId } from "mongodb";
-import { Chat } from "./Chat";
+import { Chat } from "@/app/modules/chat/domain/Chat";
 
 export interface ChatRepository {
   save(chat: Chat): Promise<ObjectId | null>;
