@@ -1,4 +1,4 @@
-import SidebarItem from "@/app/components/sidebar/sidebarItem";
+import SidebarItem from "@/components/sidebar/sidebarItem";
 import React from "react";
 import { getChats } from "@/app/modules/chat/application/actions";
 import { Chat } from "@/app/modules/chat/domain/Chat";

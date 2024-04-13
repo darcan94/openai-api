@@ -1,8 +1,8 @@
-import useEnterSend from "@/app/hooks/useEnterSend";
+import useEnterSend from "@/hooks/useEnterSend";
 import { ChangeEvent, FormEvent } from "react";
-import { Button } from "@/app/components/ui/Button";
-import TextArea from "@/app/components/ui/TextArea";
-import { IconReload, IconStop, IconSubmit } from "@/app/components/ui/Icons";
+import { Button } from "@/components/ui/Button";
+import TextArea from "@/components/ui/TextArea";
+import { IconReload, IconStop, IconSubmit } from "@/components/ui/Icons";
 
 interface ChatFormProps {
   input: string;

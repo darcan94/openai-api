@@ -1,12 +1,12 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Button } from "@/app/components/ui/Button";
-import { IconTrash } from "@/app/components/ui/Icons";
+import { Button } from "@/components/ui/Button";
+import { IconTrash } from "@/components/ui/Icons";
 import { ObjectId } from "mongodb";
 import clsx from "clsx";
 import { deleteChat } from "@/app/modules/chat/application/actions";
-import Dialog from "@/app/components/dialog/Dialog";
+import Dialog from "@/components/dialog/Dialog";
 import { useState } from "react";
 
 export default function SidebarItem({ chat }: { chat: any }) {

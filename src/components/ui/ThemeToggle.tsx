@@ -1,7 +1,7 @@
 "use client";
 import { useTheme } from "next-themes";
-import { Button } from "@/app/components/ui/Button";
-import { IconMoon, IconSun, IconSystem } from "@/app/components/ui/Icons";
+import { Button } from "@/components/ui/Button";
+import { IconMoon, IconSun, IconSystem } from "@/components/ui/Icons";
 
 export default function ThemeToggle({
   setOpen,

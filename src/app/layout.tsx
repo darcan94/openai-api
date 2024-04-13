@@ -1,7 +1,7 @@
 import "@/app/globals.css";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
-import { ChatThemeProvider } from "@/app/components/chatThemeProvider";
+import { ChatThemeProvider } from "@/components/chatThemeProvider";
 
 const inter = Inter({
   subsets: ["latin"],

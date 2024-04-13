@@ -2,7 +2,7 @@ import { ObjectId } from "mongodb";
 import { Chat } from "../domain/Chat";
 import { ChatRepository } from "../domain/ChatRepository";
 import { collection } from "@/app/modules/chat/infra/data-access/MongoDB";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, unstable_noStore as noStore} from "next/cache";
 import { redirect } from "next/navigation";
 
 export class ChatRepositoryImpl implements ChatRepository {
@@ -43,6 +43,7 @@ export class ChatRepositoryImpl implements ChatRepository {
   }
 
   async getAll(): Promise<Chat[] | []> {
+    noStore();
     if (!collection) {
       console.warn(`Database is not connected`);
       return [];

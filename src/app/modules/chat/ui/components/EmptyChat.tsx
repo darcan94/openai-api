@@ -1,5 +1,5 @@
-import { Button } from "@/app/components/ui/Button";
-import { IconArrowRight } from "@/app/components/ui/Icons";
+import { Button } from "@/components/ui/Button";
+import { IconArrowRight } from "@/components/ui/Icons";
 
 const exampleMessages = [
   {

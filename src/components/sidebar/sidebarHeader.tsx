@@ -1,7 +1,7 @@
 import { useRouter } from "next/navigation";
-import { Button } from "@/app/components/ui/Button";
-import { IconClearChat } from "@/app/components/ui/Icons";
-import { SidebarToggle } from "@/app/components/sidebar/sidebarToggle";
+import { Button } from "@/components/ui/Button";
+import { IconClearChat } from "@/components/ui/Icons";
+import { SidebarToggle } from "@/components/sidebar/sidebarToggle";
 
 export default function SidebaHeader({state}: {state: string}){
     const router = useRouter();

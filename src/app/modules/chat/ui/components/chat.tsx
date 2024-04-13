@@ -1,12 +1,12 @@
 "use client";
 import { useChat } from "ai/react";
 import ChatList from "@/app/modules/chat/ui/components/chatList";
-import PromptForm from "@/app/components/promptForm/promptForm";
+import PromptForm from "@/components/promptForm/promptForm";
 import { Message } from "ai";
 import EmptyChat from "./EmptyChat";
 import { useRouter } from "next/navigation";
-import DropDown from "@/app/components/dropDown/dropDown";
-import { useLocalStorage } from "@/app/hooks/useLocalStorage";
+import DropDown from "@/components/dropDown/dropDown";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 
 const LOCAL_STORAGE_KEY = "modelSelected";
 interface ChatProps{

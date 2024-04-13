@@ -1,11 +1,11 @@
 import { type Message } from "ai";
-import CodeBlock from "@/app/components/ui/codeBlock";
+import CodeBlock from "@/components/ui/codeBlock";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
-import { MemoizedMarkdown } from "@/app/components/markdown/memoizedMarkdown";
-import { Button } from "@/app/components/ui/Button";
-import { IconCheck, IconCopy } from "@/app/components/ui/Icons";
-import useClipboard from "@/app/hooks/useClipboard";
+import { MemoizedMarkdown } from "@/components/markdown/memoizedMarkdown";
+import { Button } from "@/components/ui/Button";
+import { IconCheck, IconCopy } from "@/components/ui/Icons";
+import useClipboard from "@/hooks/useClipboard";
 import clsx from "clsx";
 
 export default function Bubble({ message }: { message: Message }) {

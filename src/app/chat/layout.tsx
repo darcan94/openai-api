@@ -1,7 +1,7 @@
-import Sidebar from "@/app/components/sidebar/sidebar";
-import SidebarItemList from "@/app/components/sidebar/sidebarItemlist";
+import Sidebar from "@/components/sidebar/sidebar";
+import SidebarItemList from "@/components/sidebar/sidebarItemlist";
 import { Suspense } from "react";
-import SidebarItemListSkeleton from "@/app/components/sidebar/sidebarItemListSkeleton";
+import SidebarItemListSkeleton from "@/components/sidebar/sidebarItemListSkeleton";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (

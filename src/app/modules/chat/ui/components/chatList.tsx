@@ -1,7 +1,7 @@
-import { Button } from "@/app/components/ui/Button";
-import { IconArrowDown } from "@/app/components/ui/Icons";
-import Bubble from "@/app/components/ui/bubble";
-import { useAutoScroll, useScrollDetection, useScrollToBottom } from "@/app/hooks/useScroll";
+import { Button } from "@/components/ui/Button";
+import { IconArrowDown } from "@/components/ui/Icons";
+import Bubble from "@/components/ui/bubble";
+import { useAutoScroll, useScrollDetection, useScrollToBottom } from "@/hooks/useScroll";
 import { type Message } from "ai";
 
 export default function ChatList({ messages }: { messages: Message[] }) {
