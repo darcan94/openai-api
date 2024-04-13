@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Button } from "./Button";
-import { IconSetting } from "./Icons";
-import ThemeToggle from "./ThemeToggle";
+import { Button } from "@/components/ui/Button";
+import { IconSetting } from "@/components/ui/Icons";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 
 export default function Settings() {
   const [isOpen, setOpen] = useState<boolean>(false);

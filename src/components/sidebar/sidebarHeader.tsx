@@ -11,7 +11,7 @@ export default function SidebaHeader({state}: {state: string}){
             <Button
                 variant="rounded"
                 size="lg2"
-                className="w-max bg-background"
+                className="w-max bg-background-alpha hover:bg-background"
                 onClick={(e) => {
                     e.preventDefault();
                     router.push("/chat");

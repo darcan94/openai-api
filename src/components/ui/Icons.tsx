@@ -75,7 +75,7 @@ export function IconArrowRight() {
 export function IconSidebarAlt() {
   return (
     <svg
-      className="h-6 w-6"
+      className="h-6 w-6 hover:stroke-highlight"
       fill="none"
       height="24"
       stroke="currentColor"
@@ -133,16 +133,31 @@ export function IconSystem() {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      width="21" height="21"
+      width="20" height="20"
     >
       <path d="M7 21h10" />
-      <rect width="20" height="14" x="2" y="3" rx="2" />
+      <rect width="19" height="13" x="2" y="3" rx="2" />
     </svg>
   );
 }
 
 export function IconSetting() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" width="30" height="30"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"/><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0-12v2m0 18v-2m5 .66-1-1.73m-5-8.66L7 3.34M20.66 17l-1.73-1M3.34 7l1.73 1M14 12h8M2 12h2m16.66-5-1.73 1M3.34 17l1.73-1M17 3.34l-1 1.73m-5 8.66-4 6.93"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="hover:stroke-highlight" fill="none" stroke="currentColor" width="30" height="30"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"/><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0-12v2m0 18v-2m5 .66-1-1.73m-5-8.66L7 3.34M20.66 17l-1.73-1M3.34 7l1.73 1M14 12h8M2 12h2m16.66-5-1.73 1M3.34 17l1.73-1M17 3.34l-1 1.73m-5 8.66-4 6.93"/></svg>
   );
+}
+
+export function DropDownIcon() {
+  return (
+    <svg
+      className="w-4 h-4 fill-current"
+      viewBox="0 0 20 20"
+      xmlns="http://www.w3.org/2000/svg">
+        <path
+          fillRule="evenodd"
+          d="M5.293 7.293a1 1 0 011.414 0L10 10.293l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414-1.414L10 11.707l-4.707-4.707z"
+          clipRule="evenodd"
+        />
+    </svg>
+  )
 }

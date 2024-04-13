@@ -10,7 +10,7 @@ export function SidebarToggle() {
     <Button
       variant="ghost"
       size="icon"
-      className="left-4 z-20 rounded-full transition-all duration-300 hover:bg-background"
+      className="left-4 z-20 rounded-full transition-all duration-300"
       onClick={() => toggleSidebar()}
     >
       <IconSidebarAlt />

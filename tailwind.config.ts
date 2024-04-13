@@ -26,6 +26,7 @@ const config: Config = {
         'font': 'var(--foreground)',
         'primary-300': 'var(--primary-300)',
         'danger': 'var(--danger)',
+        'highlight': 'var(--highlight)',
         'disabled': {
           DEFAULT: '#F8F8F9',
           dark: '#26262C',

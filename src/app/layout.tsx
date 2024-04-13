@@ -5,6 +5,7 @@ import { ChatThemeProvider } from "@/components/chatThemeProvider";
 
 const inter = Inter({
   subsets: ["latin"],
+  weight: ["100", "300", "500", "700"],
   display: "swap"
 });
 
