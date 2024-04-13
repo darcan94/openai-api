@@ -33,7 +33,7 @@ export default function SidebarItem({ chat }: { chat: any }) {
       >
         {chat.title}
       </Link>
-      <div className="hidden bg-background group-hover:flex">
+      <div className={`${active ? 'flex' : 'hidden'} bg-background group-hover:flex`}>
         <Button
           variant="ghost"
           size="iconsm"

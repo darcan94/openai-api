@@ -2,6 +2,7 @@ import "@/app/globals.css";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { ChatThemeProvider } from "@/components/chatThemeProvider";
+import { TailwindIndicator } from "@/components/tailwindIndicator";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -42,6 +43,7 @@ export default function RootLayout({
           enableColorScheme
         >
           {children}
+          <TailwindIndicator />
         </ChatThemeProvider>
       </body>
     </html>
