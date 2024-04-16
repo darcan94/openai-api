@@ -13,7 +13,7 @@ export default function ChatList({ messages }: { messages: Message[] }) {
   const scrollToBottom = useScrollToBottom(chatListRef);
 
   return (
-    <div  ref={chatListRef} className="flex w-full h-full flex-col gap-4 px-2 pt-4 pb-24 overflow-y-auto">
+    <div  ref={chatListRef} className="flex w-full h-full flex-col gap-4 px-2 pt-4 pb-24 overflow-y-auto overflow-x-hidden">
       {messages.map((message: Message, index: number) => (
         <Bubble key={index} message={message} />
       ))}

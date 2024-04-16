@@ -1,13 +1,13 @@
 import Chat from "@/app/modules/chat/ui/components/chat";
 import { Metadata } from "next";
-import { v4 as uuidv4 } from "uuid";
+import { nanoid } from "nanoid";
 
 export const metadata: Metadata = {
   title: "Chat",
 };
 
 export default function Page() {
-  const chatId = uuidv4();
+  const chatId = nanoid(7);
 
   return (
     <main className="w-full">

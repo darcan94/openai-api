@@ -20,7 +20,7 @@ export default function Bubble({ message }: { message: Message }) {
     <div
       key={message.id}
       className={clsx(
-        "hover:group-hover group relative w-auto max-w-80 rounded-2xl p-3",
+        "hover:group-hover group relative max-w-80 rounded-2xl p-3",
         {
           "self-end rounded-br-none bg-gradient-to-r from-primary-300 to-primary text-white":
             message.role === "user",

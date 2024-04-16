@@ -33,10 +33,7 @@ export default function Chat({ id, initialMessages }: ChatProps) {
     onFinish: () => {
       router.refresh();
       router.push(`/chat/${id}`);
-    },
-    onError: (error: Error) => {
-        console.log(error.message);
-    },
+    }
   });
 
   const handleModelSelect = (model: { model: string, path: string}) => {
