@@ -28,7 +28,7 @@ export default function SidebarItem({ chat }: { chat: any }) {
     >
       <Link
         key={chat._id}
-        className="w-[90%] overflow-hidden whitespace-nowrap font-light text-font no-underline"
+        className="w-100 overflow-hidden whitespace-nowrap font-light text-font no-underline"
         href={`/chat/${chat._id}`}
       >
         {chat.title}
