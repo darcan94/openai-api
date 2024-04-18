@@ -1,10 +1,10 @@
 export default function SidebarItemListSkeleton() {
   return (
-    <div className="flex flex-1 flex-col space-y-4 overflow-auto px-4">
-      {Array.from({ length: 10 }).map((_, i) => (
+    <div className="flex grow flex-col space-y-6 overflow-auto px-2">
+      {Array.from({ length: 5 }).map((_, i) => (
         <div
           key={i}
-          className="animate-pulse h-6 w-full shrink-0 rounded-md bg-background"
+          className="animate-pulse w-full h-8 w-full shrink-0 rounded-md bg-background"
         />
       ))}
     </div>
