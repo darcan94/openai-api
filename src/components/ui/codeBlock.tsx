@@ -1,8 +1,7 @@
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { coldarkDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { IconCopy, IconCheck } from "@/components/ui/Icons";
 import useClipboard from "@/hooks/useClipboard";
 import { Button } from "@/components/ui/Button";
+import SyntaxHighlighter from "@/components/ui/syntaxHighlighter";
 
 interface CodeBlockProps {
   value: string;
@@ -18,8 +17,8 @@ export default function CodeBlock({ value, language }: CodeBlockProps) {
   };
 
   return (
-    <div className="rounded-lg my-4 bg-zinc-800 font-sans">
-      <div className="flex items-center justify-between rounded-se-lg rounded-ss-lg bg-zinc-800 px-6 py-2 text-zinc-100">
+    <div className="rounded-lg m-2 bg-zinc-800 font-sans">
+      <div className="flex items-center justify-between rounded-se-lg rounded-ss-lg bg-zinc-800 p-2 text-zinc-100">
         <span>{language}</span>
         <div className="flex">
           <Button variant="ghost" size="iconsm" onClick={onCopy}>
@@ -28,23 +27,7 @@ export default function CodeBlock({ value, language }: CodeBlockProps) {
           </Button>
         </div>
       </div>
-      <SyntaxHighlighter
-        language={language}
-        style={coldarkDark}
-        showLineNumbers
-        PreTag="div"
-        customStyle={{
-          margin: 0,
-          background: "transparent"
-        }}
-        codeTagProps={{
-          style: {
-            fontSize: ".8rem",
-          },
-        }}
-      >
-        {value}
-      </SyntaxHighlighter>
+      <SyntaxHighlighter language={language} code={value} showLineNumbers/>
     </div>
   );
 }
