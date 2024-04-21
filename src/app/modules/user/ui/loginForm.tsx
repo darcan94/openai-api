@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/Button";
 import { IconArrowRight } from "@/components/ui/Icons";
 import { useFormState, useFormStatus } from "react-dom"
-import { authenticate } from "../application/actions";
+import { authenticate } from "@/app/modules/user/application/actions";
 
 export default function LoginForm(){
     const [errorMessage, dispatch] = useFormState(authenticate, undefined);
@@ -64,7 +64,7 @@ export default function LoginForm(){
 function LoginButton() {
     const { pending } = useFormStatus();
     return (
-      <Button className="mt-4 w-full text-white rounded-lg flex justify-between p-4 bg-blue-500" aria-disabled={pending}>
+      <Button className="mt-4 w-full text-white rounded-lg flex justify-between p-4 bg-primary" aria-disabled={pending}>
         Log in <IconArrowRight/>
       </Button>
     );
