@@ -1,21 +1,21 @@
-import { collection } from "@/app/modules/chat/infra/data-access/MongoDB";
-import { unstable_noStore as noStore} from "next/cache";
-import { UserRepository } from "../domain/UserRepository";
-import { User } from "../domain/User";
+import connectDB from "@/app/modules/user/infra/data-access/MongoDB";
+import { UserRepository } from "@/app/modules/user/domain/UserRepository";
+import { User } from "@/app/modules/user/domain/User";
 import { signIn } from "@/../auth";
 import { AuthError } from "next-auth";
 
+let collection: any;
+(async function(){collection = await connectDB()})();
 export class UserRepositoryImpl implements UserRepository{ 
-  async getUser(): Promise<User | null> {
-    noStore();
+  async getUser(email: string): Promise<User | null> {
     if (!collection) {
       console.warn(`Database is not connected`);
       return null;
     }
 
     try {
-      const user = null//collection.find().sort({ createdAt: -1 });
-      return user ;
+      const user = await collection.findOne({ email: email });
+      return user as unknown as User;
     } catch (error) {
       console.error(`Error occurred while getting user: ${error}`);
       throw error;
