@@ -20,8 +20,4 @@ export class UserService {
   async getUser(email: string) {
     return await this.userRepository.getUser(email);
   }
-
-  async authenticate(prevState: string | undefined, formData: FormData) {
-    return await this.userRepository.authenticate(prevState, formData);
-  };
 }
