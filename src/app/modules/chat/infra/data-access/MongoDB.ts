@@ -1,9 +1,9 @@
-import { MongoDBConnection } from "@/app/modules/utils/MongoDBConnection";
+import mongoClient from "@/app/modules/utils/MongoDBConnection";
 
 async function connectDB() {
   "use server";
   try {
-    const client = await MongoDBConnection.getInstance();
+    const client = await mongoClient;
     const database = client.db(process.env.DB_NAME);
     return database.collection(process.env.COLLECTION_NAME || "");
   } catch (error) {

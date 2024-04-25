@@ -1,9 +1,9 @@
-import { MongoDBConnection } from "@/app/modules/utils/MongoDBConnection";
+import mongoClient from "@/app/modules/utils/MongoDBConnection";
 
-async function connectDB() {
+async function collection() {
   "use server";
   try {
-    const client = await MongoDBConnection.getInstance();
+    const client = await mongoClient;
     const database = client.db(process.env.DB_NAME);
     return database.collection(process.env.COLLECTION_USERS_NAME || "");
   } catch (error) {
@@ -12,4 +12,5 @@ async function connectDB() {
   }
 }
 
-export default connectDB;
+const promiseCollection = collection();
+export default promiseCollection;

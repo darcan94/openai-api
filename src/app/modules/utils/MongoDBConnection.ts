@@ -1,13 +1,26 @@
 import { MongoClient } from "mongodb";
 
-export class MongoDBConnection {
-  private static instance: MongoClient;
+const url = process.env.MONGO_DB_URI ?? "";
+class MongoDBConnection {
+  private static _instance: MongoDBConnection;
+  private client: MongoClient;
+  private clientPromise: Promise<MongoClient>;
 
-  static async getInstance() {
-    if (!this.instance) {
-      this.instance = new MongoClient(process.env.MONGO_DB_URI ?? "");
-      await this.instance.connect();
+  private constructor() {
+    this.client = new MongoClient(url);
+    this.clientPromise = this.client.connect();
+  }
+
+  public static get instance(): Promise<MongoClient> { 
+    if (!this._instance) {
+      this._instance = new MongoDBConnection();
     }
-    return this.instance;
+    return this._instance.clientPromise;
   }
 }
+
+const mongoClient = MongoDBConnection.instance;
+
+export default mongoClient;
+
+
