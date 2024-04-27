@@ -39,7 +39,6 @@ export default function Bubble({ message }: { message: Message }) {
       )}
 
       <MemoizedMarkdown
-        key={message.id}
         remarkPlugins={[remarkGfm, remarkMath]}
         components={{
           p({ children }) {
@@ -52,17 +51,21 @@ export default function Bubble({ message }: { message: Message }) {
           },
           code({ node, inline, className, children, ...props }) {
             const match = /language-(\w+)/.exec(className || "");
-            return !inline && match ? (
-              <CodeBlock
-                key={message.id}
-                language={match[1]}
-                value={String(children).replace(/\n$/, "")}
-              />
-            ) : (
-              <code className={className} {...props}>
-                {children}
-              </code>
-            );
+            if(inline){
+                return(
+                    <code className={className} {...props}>
+                        { children }
+                    </code>
+                )
+            }
+
+            return (
+                <CodeBlock
+                    key={message.id}
+                    language={ (match && match[1]) || "" }
+                    value={String(children).replace(/\n$/, "")}
+                />
+            )
           },
         }}
       >

@@ -15,7 +15,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
 
-const buildGoogleGenAiprompt = (messages: Message[]) => ({
+const buildGoogleGenAiPrompt = (messages: Message[]) => ({
   contents: messages
     .filter((message) => ["user", "assistant"].includes(message.role))
     .map((message) => ({
@@ -29,7 +29,7 @@ export const POST = async (request: Request) => {
 
   const response = await genAI
     .getGenerativeModel({ model: "gemini-pro" })
-    .generateContentStream(buildGoogleGenAiprompt(messages));
+    .generateContentStream(buildGoogleGenAiPrompt(messages));
 
   const stream = GoogleGenerativeAIStream(response, {
     onCompletion: async (completion) => {

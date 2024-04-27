@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/Button";
 import { IconClearChat } from "@/components/ui/Icons";
 import { SidebarToggle } from "@/components/sidebar/sidebarToggle";
 
-export default function SidebaHeader({state}: {state: string}){
+export default function SidebarHeader({state}: {state: string}){
     const router = useRouter();
     return (
         <div className="flex flex-col gap-6">

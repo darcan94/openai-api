@@ -1,36 +1,27 @@
 import { RefObject, useEffect, useRef, useState } from "react";
 import { type Message } from "ai";
 
+const scrollToBottom = (reference: HTMLDivElement | null) => {
+  reference?.scrollTo({
+    top: reference.scrollHeight,
+    behavior: "smooth",
+  });
+}
+
 export function useAutoScroll(
   refDependency: Message[],
 ): RefObject<HTMLDivElement> {
   const chatListRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const reference = chatListRef.current;
-    const scrollToBottom = () => {
-      reference?.scrollTo({
-        top: reference.scrollHeight,
-        behavior: "smooth",
-      });
-    };
-
-    scrollToBottom();
+    scrollToBottom(chatListRef.current);
   }, [refDependency]);
 
   return chatListRef;
 }
 
 export function useScrollToBottom(ref: RefObject<HTMLDivElement>) {
-  const reference = ref.current;
-  const scrollToBottom = () => {
-    reference?.scrollTo({
-      top: reference.scrollHeight,
-      behavior: "smooth",
-    });
-  };
-
-  return scrollToBottom;
+  return () => scrollToBottom(ref.current);
 }
 
 export function useScrollDetection(chatListRef: RefObject<HTMLDivElement>) {

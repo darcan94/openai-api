@@ -3,7 +3,7 @@ import { getChats } from "@/app/modules/chat/application/actions";
 import SidebarItems from "@/components/sidebar/sidebarItems";
 import { Chat } from "@/app/modules/chat/domain/Chat";
 
-const loadChats = cache(async (userId?: string) => {
+const loadChats = cache(async () => {
   return await getChats();
 })
 

@@ -3,7 +3,7 @@ import { UserService } from "@/app/modules/user/application/UserService";
 import { signIn } from "@/../auth";
 import { AuthError } from "next-auth";
 
-const userService = UserService.getInstance();
+const userService = UserService.instance;
 
 export async function getUser(email: string) {
   return await userService.getUser(email);

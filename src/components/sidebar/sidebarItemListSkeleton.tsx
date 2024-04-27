@@ -4,7 +4,7 @@ export default function SidebarItemListSkeleton() {
       {Array.from({ length: 5 }).map((_, i) => (
         <div
           key={i}
-          className="animate-pulse w-full h-8 w-full shrink-0 rounded-md bg-background"
+          className="animate-pulse w-full h-8 shrink-0 rounded-md bg-background"
         />
       ))}
     </div>
