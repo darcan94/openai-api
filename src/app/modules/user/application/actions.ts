@@ -9,7 +9,10 @@ export async function getUser(email: string) {
   return await userService.getUser(email);
 }
 
-export async function authenticate(prevState: string | undefined, formData: FormData){
+export async function authenticate(
+    prevState: string | undefined,
+    formData: FormData
+){
   try {
     await signIn('credentials', formData);
   } catch (error) {

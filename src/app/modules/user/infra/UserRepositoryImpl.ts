@@ -1,8 +1,6 @@
 import collection from "@/app/modules/user/infra/data-access/MongoDB";
 import { UserRepository } from "@/app/modules/user/domain/UserRepository";
 import { User } from "@/app/modules/user/domain/User";
-import { signIn } from "@/../auth";
-import { AuthError } from "next-auth";
 
 export class UserRepositoryImpl implements UserRepository{ 
 
@@ -18,25 +16,6 @@ export class UserRepositoryImpl implements UserRepository{
       return user as unknown as User;
     } catch (error) {
       console.error(`Error occurred while getting user: ${error}`);
-      throw error;
-    }
-  }
-
-  async authenticate(
-    prevState: string | undefined,
-    formData: FormData,
-  ): Promise<string | undefined> {
-    try {
-      await signIn('credentials', formData);
-    } catch (error) {
-      if (error instanceof AuthError) {
-        switch (error.type) {
-          case 'CredentialsSignin':
-            return 'Invalid credentials.';
-          default:
-            return 'Something went wrong.';
-        }
-      }
       throw error;
     }
   }

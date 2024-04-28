@@ -1,5 +1,4 @@
 import {
-  getChat,
   saveChat,
   updateChat,
 } from "@/app/modules/chat/application/actions";
@@ -26,7 +25,6 @@ const buildGoogleGenAiPrompt = (messages: Message[]) => ({
 
 export const POST = async (request: Request) => {
   const { messages, id } = await request.json();
-
   const response = await genAI
     .getGenerativeModel({ model: "gemini-pro" })
     .generateContentStream(buildGoogleGenAiPrompt(messages));
@@ -37,13 +35,9 @@ export const POST = async (request: Request) => {
         content: completion,
         role: "assistant",
       };
-      const chat = await getChat(id);
 
-      if (chat) {
-        chat.messages = [...messages, newMessage];
-        await updateChat(chat);
-        return;
-      }
+      messages.push(newMessage);
+      if( await updateChat(id, messages) ) return;
 
       const _id: ObjectId = id;
       const title: string = messages[0].content.substring(0, 100);
@@ -52,7 +46,7 @@ export const POST = async (request: Request) => {
         _id,
         title,
         createdAt,
-        messages: [...messages, newMessage],
+        messages,
       };
       await saveChat(newChat);
     },

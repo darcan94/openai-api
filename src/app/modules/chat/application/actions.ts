@@ -2,15 +2,16 @@
 import { ObjectId } from "mongodb";
 import { Chat } from "@/app/modules/chat/domain/Chat";
 import { ChatService } from "@/app/modules/chat/application/ChatService";
+import {CreateMessage} from "ai";
 
-const chatService = ChatService.getInstance();
+const chatService = ChatService.instance;
 
 export async function saveChat(chat: Chat) {
   return await chatService.create(chat);
 }
 
-export async function updateChat(chat: Chat) {
-  return await chatService.update(chat);
+export async function updateChat(id: ObjectId, newMessage: CreateMessage) {
+  return await chatService.update(id, newMessage);
 }
 
 export async function getChats() {

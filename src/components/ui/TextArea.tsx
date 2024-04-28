@@ -3,13 +3,13 @@ import { KeyboardEvent, ChangeEvent } from "react";
 
 interface ChatFormProps {
   input: string;
-  handleInputChange: (event: ChangeEvent<HTMLTextAreaElement>) => void;
+  setInput: (value: string) => void;
   onKeyDown: (event: KeyboardEvent<HTMLTextAreaElement>) => void;
 }
 
 export default function TextArea({
   input,
-  handleInputChange,
+  setInput,
   onKeyDown,
 }: ChatFormProps) {
   const textareaRef = useTextareaAutoHeight(input);
@@ -19,10 +19,10 @@ export default function TextArea({
       ref={textareaRef}
       tabIndex={0}
       rows={1}
+      onChange={e => setInput(e.target.value)}
       className="w-full rounded-full max-h-32 resize-none bg-transparent px-4 py-[.5rem] text-font outline-none sm:text-sm"
       onKeyDown={(evt) => onKeyDown(evt)}
       value={input}
-      onChange={handleInputChange}
       placeholder="Send a message"
     ></textarea>
   );

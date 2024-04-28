@@ -24,15 +24,14 @@ export default function Chat({ id, initialMessages }: ChatProps) {
     setInput,
     stop,
     reload,
-    handleInputChange,
-    handleSubmit,
+    append
   } = useChat({
     initialMessages,
     body: { id },
     api: `/api/${selectedModel.path}`,
     onFinish: () => {
-      router.refresh();
       router.push(`/chat/${id}`);
+      router.refresh();
     }
   });
 
@@ -54,12 +53,18 @@ export default function Chat({ id, initialMessages }: ChatProps) {
 
         <PromptForm
           input={input}
+          setInput={setInput}
           isLoading={isLoading}
           hasMessage={messages.length > 1}
           stop={stop}
           reload={reload}
-          handleInputChange={handleInputChange}
-          handleSubmit={handleSubmit}
+          onSubmit={
+            async (value: string) => {
+              await append({
+                content: value,
+                role: 'user'
+            })
+          }}
         />
       </div>
     </div>
