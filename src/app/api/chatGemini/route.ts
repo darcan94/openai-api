@@ -30,7 +30,7 @@ export const POST = async (request: Request) => {
     .generateContentStream(buildGoogleGenAiPrompt(messages));
 
   const stream = GoogleGenerativeAIStream(response, {
-    onCompletion: async (completion) => {
+    onCompletion: async (completion: string) => {
       const newMessage: CreateMessage = {
         content: completion,
         role: "assistant",

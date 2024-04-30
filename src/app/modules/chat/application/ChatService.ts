@@ -2,7 +2,7 @@ import { Chat } from "@/app/modules/chat/domain/Chat";
 import { ChatRepository } from "@/app/modules/chat/domain/ChatRepository";
 import { ObjectId } from "mongodb";
 import { ChatRepositoryImpl } from "../infra/ChatRepositoryImpl";
-import {CreateMessage} from "ai";
+import { Message } from "ai";
 
 export class ChatService {
   private static _instance: ChatService;
@@ -23,8 +23,8 @@ export class ChatService {
     return await this.chatRepository.save(chat);
   }
 
-  async update(id: ObjectId, newMessage: CreateMessage) {
-    return await this.chatRepository.update(id, newMessage);
+  async update(id: ObjectId, messages: Message[]) {
+    return await this.chatRepository.update(id, messages);
   }
 
   async getAll() {
