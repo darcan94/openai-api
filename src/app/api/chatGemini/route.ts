@@ -30,17 +30,11 @@ export const POST = async (request: Request) => {
     .generateContentStream(buildGoogleGenAiPrompt(messages));
 
   const stream = GoogleGenerativeAIStream(response, {
-    onCompletion: async (completion: string) => {
-      const newMessage: CreateMessage = {
-        content: completion,
-        role: "assistant",
-      };
-
-      messages.push(newMessage);
-      if( await updateChat(id, messages) ) return;
+    onStart: async () => {
+      if (await updateChat(id, messages[messages.length - 1])) return;
 
       const _id: ObjectId = id;
-      const title: string = messages[0].content.substring(0, 100);
+      const title: string = messages[0].content.substring(0, 50);
       const createdAt: Date = new Date();
       const newChat: Chat = {
         _id,
@@ -49,6 +43,9 @@ export const POST = async (request: Request) => {
         messages,
       };
       await saveChat(newChat);
+    },
+    onCompletion: async (completion: string) => {
+      await updateChat(id, {content: completion, role: "assistant"});
     },
   });
 

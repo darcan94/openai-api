@@ -4,7 +4,7 @@ import { ChatRepository } from "../domain/ChatRepository";
 import { collection } from "@/app/modules/chat/infra/data-access/MongoDB";
 import { revalidatePath, unstable_noStore as noStore} from "next/cache";
 import { redirect } from "next/navigation";
-import { Message } from "ai";
+import {CreateMessage, Message} from "ai";
 
 export class ChatRepositoryImpl implements ChatRepository {
   async save(chat: Chat): Promise<ObjectId | null> {
@@ -23,7 +23,7 @@ export class ChatRepositoryImpl implements ChatRepository {
     }
   }
 
-  async update(id: ObjectId, messages: Message[]): Promise<number | null> {
+  async update(id: ObjectId, message: CreateMessage): Promise<number | null> {
     if (!collection) {
       console.warn(`Database is not connected. Chat will not be update`);
       return null;
@@ -31,7 +31,7 @@ export class ChatRepositoryImpl implements ChatRepository {
 
     const filter = { _id: id };
     const update = {
-      $set: { messages: messages },
+      $push: { messages: message },
     };
 
     try {
