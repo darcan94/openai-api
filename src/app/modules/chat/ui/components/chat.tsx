@@ -4,7 +4,7 @@ import ChatList from "@/app/modules/chat/ui/components/chatList";
 import PromptForm from "@/components/promptForm/promptForm";
 import { Message } from "ai";
 import EmptyChat from "./EmptyChat";
-import { useRouter } from "next/navigation";
+import {usePathname, useRouter} from "next/navigation";
 import DropDown from "@/components/dropDown/dropDown";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 
@@ -16,6 +16,7 @@ interface ChatProps{
 
 export default function Chat({ id, initialMessages }: ChatProps) {
   const router = useRouter();
+  const path = usePathname();
   const [ selectedModel, setSelectedModel ] = useLocalStorage(LOCAL_STORAGE_KEY, { model: "gpt-3.5", path: "chat" });
   const {
     messages,
@@ -30,8 +31,10 @@ export default function Chat({ id, initialMessages }: ChatProps) {
     body: { id },
     api: `/api/${selectedModel.path}`,
     onFinish: () => {
-      router.push(`/chat/${id}`);
-      router.refresh();
+      if(!path.includes(id)) {
+        router.push(`/chat/${id}`);
+        router.refresh();
+      }
     }
   });
 

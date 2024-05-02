@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default async function LoginPage(){
     const session: Session | null = await auth();
-    console.log(session);
+
     if(session){
         redirect('/chat');
     }
