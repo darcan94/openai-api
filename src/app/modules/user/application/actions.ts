@@ -1,12 +1,12 @@
 "use server";
-import { UserService } from "@/app/modules/user/application/UserService";
 import { signIn } from "@/../auth";
 import { AuthError } from "next-auth";
+import { UserRepositoryImpl } from "../infra/UserRepositoryImpl";
 
-const userService = UserService.instance;
+const userRepository = new UserRepositoryImpl();
 
 export async function getUser(email: string) {
-  return await userService.getUser(email);
+  return await userRepository.getUser(email);
 }
 
 export async function authenticate(

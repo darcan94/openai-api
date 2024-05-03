@@ -1,6 +1,6 @@
 import { ObjectId } from "mongodb";
 import { Chat } from "@/app/modules/chat/domain/Chat";
-import {CreateMessage, Message} from "ai";
+import { CreateMessage } from "ai";
 
 export interface ChatRepository {
   save(chat: Chat): Promise<ObjectId | null>;

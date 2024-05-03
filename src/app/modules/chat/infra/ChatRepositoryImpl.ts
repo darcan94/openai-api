@@ -4,7 +4,7 @@ import { ChatRepository } from "../domain/ChatRepository";
 import { collection } from "@/app/modules/chat/infra/data-access/MongoDB";
 import { revalidatePath, unstable_noStore as noStore} from "next/cache";
 import { redirect } from "next/navigation";
-import {CreateMessage, Message} from "ai";
+import { CreateMessage } from "ai";
 
 export class ChatRepositoryImpl implements ChatRepository {
   async save(chat: Chat): Promise<ObjectId | null> {

@@ -4,7 +4,6 @@ import {
 } from "@/app/modules/chat/application/actions";
 import { Chat } from "@/app/modules/chat/domain/Chat";
 import {
-  CreateMessage,
   GoogleGenerativeAIStream,
   Message,
   StreamingTextResponse,

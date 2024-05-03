@@ -10,7 +10,7 @@ export default function Header() {
             await signOut();
           }}
         >
-          <Button className="">
+          <Button variant="rounded" className="text-white bg-primary">
             <div className="hidden md:block">Sign Out</div>
           </Button>
         </form>

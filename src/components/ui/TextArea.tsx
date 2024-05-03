@@ -15,6 +15,7 @@ export default function TextArea({
   const textareaRef = useTextareaAutoHeight(input);
   return (
     <textarea
+      id="prompt_field"
       autoFocus={true}
       ref={textareaRef}
       tabIndex={0}

@@ -1,27 +1,27 @@
 "use server";
 import { ObjectId } from "mongodb";
 import { Chat } from "@/app/modules/chat/domain/Chat";
-import { ChatService } from "@/app/modules/chat/application/ChatService";
-import {CreateMessage, Message} from "ai";
+import { CreateMessage } from "ai";
+import { ChatRepositoryImpl } from "@/app/modules/chat/infra/ChatRepositoryImpl";
 
-const chatService = ChatService.instance;
+const chatRepository = new ChatRepositoryImpl();
 
 export async function saveChat(chat: Chat) {
-  return await chatService.create(chat);
+  return await chatRepository.save(chat);
 }
 
 export async function updateChat(id: ObjectId, message: CreateMessage) {
-  return await chatService.update(id, message);
+  return await chatRepository.update(id, message);
 }
 
 export async function getChats() {
-  return await chatService.getAll();
+  return await chatRepository.getAll();
 }
 
 export async function getChat(id: ObjectId) {
-  return await chatService.getById(id);
+  return await chatRepository.get(id);
 }
 
 export async function deleteChat(id: ObjectId) {
-  await chatService.delete(id);
+  await chatRepository.delete(id);
 }
