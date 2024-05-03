@@ -1,3 +1,4 @@
+import Header from "@/components/header/header";
 import Sidebar from "@/components/sidebar/sidebar";
 import SidebarItemListSkeleton from "@/components/sidebar/sidebarItemListSkeleton";
 import SidebarItemList from "@/components/sidebar/sidebarItemlist";
@@ -11,7 +12,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <SidebarItemList />
         </Suspense>
       </Sidebar>
-      {children}
+      <div className="relative w-full h-full">
+        <Header />
+        {children}
+      </div>
     </div>
   );
 }

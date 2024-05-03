@@ -7,6 +7,7 @@ import EmptyChat from "./EmptyChat";
 import {usePathname, useRouter} from "next/navigation";
 import DropDown from "@/components/dropDown/dropDown";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
+import React from "react";
 
 const LOCAL_STORAGE_KEY = "modelSelected";
 interface ChatProps{

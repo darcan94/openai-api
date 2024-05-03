@@ -10,7 +10,7 @@ export default function Page() {
   const chatId = nanoid(7);
 
   return (
-    <main className="w-full">
+    <main className="w-full h-full">
         <Chat id={chatId} />
     </main>
 )}

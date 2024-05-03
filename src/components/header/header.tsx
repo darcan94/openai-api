@@ -1,19 +1,18 @@
 import { signOut } from "@/../auth";
+import { Button } from "../ui/Button";
 
 export default function Header() {
   return (
-    <header className="fixed top-0 z-10 hidden h-16 w-full shrink-0 items-center justify-between bg-secondary px-4 text-font">
-      <div className="flex items-center"></div>
-      <h2>GPT 3.5</h2>
-      <form
+    <header className="absolute z-10 top-0 h-14 w-full text-font bg-background-alpha backdrop-blur-md">
+      <form className="flex w-full h-full items-center justify-end px-4"
           action={async () => {
             'use server';
             await signOut();
           }}
         >
-          <button className="flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3">
+          <Button className="">
             <div className="hidden md:block">Sign Out</div>
-          </button>
+          </Button>
         </form>
     </header>
   );

@@ -10,7 +10,7 @@ export default async function ChatPage({ params }: { params: any }) {
   }
 
   return (
-      <main className="w-full">
+      <main className="w-full h-full">
         <Chat id={chat._id.toString()} initialMessages={chat.messages} />
       </main>  
     );

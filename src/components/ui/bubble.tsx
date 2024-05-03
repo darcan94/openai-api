@@ -6,10 +6,10 @@ import { MemoizedMarkdown } from "@/components/markdown/memoizedMarkdown";
 import { Button } from "@/components/ui/Button";
 import { IconCheck, IconCopy } from "@/components/ui/Icons";
 import useClipboard from "@/hooks/useClipboard";
-import clsx from "clsx";
 
 export default function Bubble({ message }: { message: Message }) {
   const { isCopied, copyToClipboard } = useClipboard({ timeout: 3000 });
+  const isUser = message.role === "user";
 
   const onCopy = () => {
     if (isCopied) return;
@@ -19,24 +19,17 @@ export default function Bubble({ message }: { message: Message }) {
   return (
     <div
       key={message.id}
-      className={clsx(
-        "hover:group-hover group relative max-w-80 rounded-2xl p-3",
-        {
-          "self-end rounded-br-none bg-gradient-to-r from-primary-300 to-primary text-white":
-            message.role === "user",
-          "self-start rounded-bl-none bg-secondary pt-4 text-font shadow-md dark:shadow-none":
-            message.role === "assistant",
-        },
-      )}
-    >
-      {message.role !== "user" && (
-        <div className="absolute right-2 top-1 hidden group-hover:block">
+      className={"hover:group-hover group w-full p-3 text-font"}>
+      
+      <div className="flex relative justify-between items-center h-6 w-full">
+        <p className="font-bold">{ isUser ? "You" : "AI"}</p>
+        <div className="hidden group-hover:block h-full absolute right-0">
           <Button variant="ghost" size="iconsm" onClick={onCopy}>
             {isCopied ? <IconCheck /> : <IconCopy />}
             <span className="sr-only">Copy message</span>
           </Button>
         </div>
-      )}
+      </div>
 
       <MemoizedMarkdown
         remarkPlugins={[remarkGfm, remarkMath]}
