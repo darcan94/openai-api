@@ -6,7 +6,7 @@ import React, { Suspense } from "react";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex w-full h-full">
+    <div className="flex w-full h-full overflow-hidden">
       <Sidebar>
         <Suspense fallback={<SidebarItemListSkeleton/>}>
           <SidebarItemList />

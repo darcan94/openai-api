@@ -39,7 +39,7 @@ export default function PromptForm({
         }}
         className="mx-auto w-8/12 p-4"
       >
-        <div className="flex min-h-[4rem] items-center rounded-full border border-gray-200 bg-secondary p-1 dark:border-white/10">
+        <div className="flex min-h-[4rem] items-center rounded-[30px] border border-gray-200 bg-secondary p-1 dark:border-white/10">
           <TextArea
             input={input}
             setInput={setInput}

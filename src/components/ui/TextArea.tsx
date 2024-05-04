@@ -21,7 +21,7 @@ export default function TextArea({
       tabIndex={0}
       rows={1}
       onChange={e => setInput(e.target.value)}
-      className="w-full rounded-full max-h-32 resize-none bg-transparent px-4 py-[.5rem] text-font outline-none sm:text-sm"
+      className="w-full rounded-3xl max-h-32 resize-none bg-transparent px-4 py-[.5rem] text-font outline-none sm:text-sm"
       onKeyDown={(evt) => onKeyDown(evt)}
       value={input}
       placeholder="Send a message"

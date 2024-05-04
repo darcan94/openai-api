@@ -16,8 +16,8 @@ export default async function SidebarItemList() {
           chats?.length ? (
             <SidebarItems chats={chats}/>
           ):(
-            <div className="p-8 text-center">
-              <p className="text-sm text-muted-foreground">No chat history</p>
+            <div className="p-4 text-center w-full">
+              <h3 className="text-sm text-muted-foreground">No chat history</h3>
             </div>
           )
         }
