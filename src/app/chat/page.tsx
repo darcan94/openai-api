@@ -1,4 +1,4 @@
-import Chat from "@/app/modules/chat/ui/components/chat";
+import Chat from "@/app/modules/chat/ui/chat";
 import { Metadata } from "next";
 import { nanoid } from "nanoid";
 

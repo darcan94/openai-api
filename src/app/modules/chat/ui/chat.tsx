@@ -1,6 +1,6 @@
 "use client";
 import { useChat } from "ai/react";
-import ChatList from "@/app/modules/chat/ui/components/chatList";
+import ChatList from "@/app/modules/chat/ui/chatList";
 import PromptForm from "@/components/promptForm/promptForm";
 import { Message } from "ai";
 import EmptyChat from "./EmptyChat";

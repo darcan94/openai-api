@@ -22,18 +22,18 @@ export default function SidebarItem({ chat }: { chat: any }) {
   return (
     <div
       className={clsx(
-        "group flex items-center justify-between gap-2 rounded-lg px-2 py-2 text-font hover:bg-background",
+        "relative w-full group flex items-center justify-between gap-2 rounded-lg p-2 text-font hover:bg-background",
         { "bg-background": active },
       )}
     >
       <Link
         key={chat._id}
-        className="w-100 overflow-hidden whitespace-nowrap font-light text-font no-underline"
+        className="whitespace-nowrap font-light text-font no-underline"
         href={`/chat/${chat._id}`}
       >
         {chat.title}
       </Link>
-      <div className={`${active ? 'flex' : 'hidden'} bg-background group-hover:flex`}>
+      <div className={`${active ? 'flex' : 'hidden'} bg-background group-hover:flex absolute right-2`}>
         <Button
           variant="ghost"
           size="iconsm"
