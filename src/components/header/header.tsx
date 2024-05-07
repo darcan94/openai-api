@@ -1,4 +1,4 @@
-import { signOut } from "@/../auth";
+import { signOut } from "@/auth";
 import { Button } from "@/components/ui/Button";
 
 export default function Header() {

@@ -50,16 +50,13 @@ export default function LoginForm(){
                     aria-live="polite"
                     aria-atomic="true">
                         { errorMessage && (
-                            <>
-                                <p className="text-sm text-danger">{ errorMessage }</p>
-                            </>
+                            <p className="text-sm text-danger">{ errorMessage }</p>
                         ) }
                 </div>
             </div>
         </form>
     )
 }
-
 
 function LoginButton() {
     const { pending } = useFormStatus();
