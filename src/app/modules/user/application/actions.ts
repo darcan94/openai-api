@@ -2,6 +2,7 @@
 import { signIn } from "@/auth";
 import { AuthError } from "next-auth";
 import { UserRepositoryImpl } from "../infra/UserRepositoryImpl";
+import {LoginFormSchema, LoginFormState} from "@/app/login/definitions";
 
 const userRepository = new UserRepositoryImpl();
 
@@ -10,18 +11,31 @@ export async function getUser(email: string) {
 }
 
 export async function authenticate(
-    prevState: string | undefined,
+    prevState: LoginFormState,
     formData: FormData
 ){
+  const validatedFields = LoginFormSchema.safeParse({
+    email: formData.get('email'),
+    password: formData.get('password')
+  });
+
+  if(!validatedFields.success){
+    return{
+      errors: validatedFields.error.flatten().fieldErrors,
+    }
+  }
+
   try {
-    await signIn('credentials', formData);
+    await signIn('credentials', validatedFields.data);
   } catch (error) {
+
     if (error instanceof AuthError) {
       switch (error.type) {
         case 'CredentialsSignin':
-          return 'Invalid credentials.';
+          console.log('Invalid credentials.');
+          break
         default:
-          return 'Something went wrong.';
+          console.log('Something went wrong.');
       }
     }
     throw error;

@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/Button";
-import { IconArrowRight } from "@/components/ui/Icons";
+import {auth} from "@/auth";
+import {Session} from "next-auth";
 
 const exampleMessages = [
   {
@@ -16,12 +17,13 @@ const exampleMessages = [
   },
 ];
 
-export default function EmptyChat({ setInput }: any) {
+export default async function EmptyChat({ setInput }: any) {
+  const session: Session | null = await auth();
   return (
     <div className=" flex max-w-80 mx-auto items-center justify-center h-full">
       <div className="flex flex-col p-2 h-1/2">
         <h1 className="font-semibold text-5xl bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%">
-          Welcome to AI Chatbot!
+          Welcome { session ? session.user?.name : "" }
         </h1>
         <p className="text-2xl text-font">
           You can start a conversation here or try the following examples:

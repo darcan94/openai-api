@@ -19,7 +19,7 @@
     "mongodb": "^6.2.0",
     "nanoid": "^5.0.7",
     "next": "^14.0.1",
-    "next-auth": "^5.0.0-beta.16",
+    "next-auth": "^5.0.0-beta.18",
     "next-themes": "^0.2.1",
     "openai-edge": "^1.2.2",
     "prism-react-renderer": "^2.3.1",

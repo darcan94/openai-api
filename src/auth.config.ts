@@ -1,16 +1,16 @@
-import type { NextAuthConfig } from 'next-auth';
+import { NextAuthConfig } from "next-auth";
 
 export const authConfig = {
-    pages:{
+    pages: {
         signIn: '/login',
     },
     callbacks: {
-        authorized({ auth, request: {nextUrl} }){
-            const isLoggedIn: boolean = !!auth?.user;
-            const isOnChat: boolean = nextUrl.pathname.startsWith('/chat');
+        authorized({ auth, request: { nextUrl } }){
+            const isLoggedIn = !!auth?.user;
+            const isOnChatPage = nextUrl.pathname.startsWith('/chat');
 
-            if(isOnChat)
-                return isLoggedIn
+            if(isOnChatPage)
+                return isLoggedIn;
 
             return isLoggedIn
                 ? Response.redirect(new URL('/chat', nextUrl) )
@@ -18,4 +18,4 @@ export const authConfig = {
         }
     },
     providers: [],
-}satisfies NextAuthConfig;
+} satisfies NextAuthConfig
