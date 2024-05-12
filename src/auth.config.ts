@@ -6,15 +6,15 @@ export const authConfig = {
     },
     callbacks: {
         authorized({ auth, request: {nextUrl} }){
-            const isLoggedIn = !!auth?.user;
-            const isOnChat = nextUrl.pathname.startsWith('/chat');
-            if (isOnChat) {
-                if (isLoggedIn) return true;
-                return false; // Redirect unauthenticated users to login page
-              } else if (isLoggedIn) {
-                return Response.redirect(new URL('/chat', nextUrl));
-              }
-              return true;
+            const isLoggedIn: boolean = !!auth?.user;
+            const isOnChat: boolean = nextUrl.pathname.startsWith('/chat');
+
+            if(isOnChat)
+                return isLoggedIn
+
+            return isLoggedIn
+                ? Response.redirect(new URL('/chat', nextUrl) )
+                : true;
         }
     },
     providers: [],

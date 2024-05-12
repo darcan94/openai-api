@@ -18,7 +18,11 @@ interface ChatProps{
 export default function Chat({ id, initialMessages }: ChatProps) {
   const router = useRouter();
   const path = usePathname();
-  const [ selectedModel, setSelectedModel ] = useLocalStorage(LOCAL_STORAGE_KEY, { model: "gpt-3.5", path: "chat" });
+  const [
+      selectedModel,
+      setSelectedModel
+  ] = useLocalStorage(LOCAL_STORAGE_KEY, { model: "gpt-3.5", path: "chat" });
+
   const {
     messages,
     input,
