@@ -1,6 +1,4 @@
 import { Button } from "@/components/ui/Button";
-import {auth} from "@/auth";
-import {Session} from "next-auth";
 
 const exampleMessages = [
   {
@@ -17,13 +15,12 @@ const exampleMessages = [
   },
 ];
 
-export default async function EmptyChat({ setInput }: any) {
-  const session: Session | null = await auth();
+export default function EmptyChat({ setInput }: any) {
   return (
     <div className=" flex max-w-80 mx-auto items-center justify-center h-full">
       <div className="flex flex-col p-2 h-1/2">
         <h1 className="font-semibold text-5xl bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%">
-          Welcome { session ? session.user?.name : "" }
+          Welcome 
         </h1>
         <p className="text-2xl text-font">
           You can start a conversation here or try the following examples:
