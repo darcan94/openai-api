@@ -1,11 +1,12 @@
 import "@/app/globals.css";
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Comfortaa } from "next/font/google";
 import { ChatThemeProvider } from "@/components/chatThemeProvider";
+import React from "react";
 
-const inter = Inter({
+const comfortaa = Comfortaa({
   subsets: ["latin"],
-  weight: ["100", "300", "500", "700"],
+  weight: ["300", "500", "700"],
   display: "swap"
 });
 
@@ -32,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={inter.className}>
+    <html lang="en" suppressHydrationWarning className={comfortaa.className}>
       <body className="h-screen w-screen">
         <ChatThemeProvider
           attribute="class"

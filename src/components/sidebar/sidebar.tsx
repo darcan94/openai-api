@@ -12,7 +12,7 @@ export default function Sidebar({ children }: { children?: React.ReactNode }) {
   return (
     <div
       data-state={state}
-      className="flex w-[300px] data-[state=open]:min-w-[300px] flex-col justify-between gap-2 border-r border-white/10 bg-secondary p-2 text-font duration-300 data-[state=closed]:w-16"
+      className="flex w-[300px] transition-all data-[state=open]:min-w-[300px] flex-col justify-between gap-2 border-r border-white/10 bg-secondary p-2 text-font duration-300 data-[state=closed]:w-16"
     >
       <SidebarHeader state={state}/>
       {isSidebarOpen && children}
