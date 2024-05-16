@@ -15,7 +15,7 @@ export class ChatRepositoryImpl implements ChatRepository {
 
     try {
       const result = await collection.insertOne(chat);
-      revalidatePath("/chat");
+      revalidatePath("/");
       return result.insertedId;
     } catch (error) {
       console.error(`Error occurred while saving chat: ${error}`);
@@ -87,7 +87,7 @@ export class ChatRepositoryImpl implements ChatRepository {
       throw error;
     }
 
-    revalidatePath("/chat");
-    redirect("/chat");
+    revalidatePath("/");
+    redirect("/");
   }
 }

@@ -14,7 +14,7 @@ export default function SidebarHeader({state}: {state: string}){
                 className="w-max bg-background-alpha hover:bg-background"
                 onClick={(e) => {
                     e.preventDefault();
-                    router.push("/chat");
+                    router.push("/");
                 }}
                 >
                 <IconClearChat />

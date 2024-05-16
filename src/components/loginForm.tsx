@@ -40,18 +40,7 @@ export default function LoginForm(){
                                 placeholder="Password"/>
                         </div>
                     </div>
-                        {
-                            errorMessage?.errors?.password && (
-                                <div className="text-red-600">
-                                    <p>Password must be:</p>
-                                    <ul>
-                                        {errorMessage.errors.password.map((error: any) => (
-                                            <li key={error}> - {error}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            )
-                        }
+                    {errorMessage?.errors?.password && <p className="text-danger">{errorMessage.errors.password}</p>}
                 </div>
                 <LoginButton/>
 
