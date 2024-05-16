@@ -46,6 +46,7 @@
     --background: #f7f7f7;
     --background-alpha: #f7f7f78a;
     --foreground: #484848;
+    --primary-500: #4b84fd;
     --primary-300: #73a7fb;
     --danger: #d8514b;
     --highlight: #000000;
@@ -58,6 +59,7 @@
     --background: #1e1f20;
     --background-alpha: #1e1f208a;
     --foreground: #a2a2a2;
+    --primary-500: #0084c3;
     --primary-300: #0092d6;
     --highlight: #dddddd;
   }

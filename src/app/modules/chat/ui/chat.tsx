@@ -8,14 +8,16 @@ import {usePathname, useRouter} from "next/navigation";
 import DropDown from "@/components/dropDown/dropDown";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import React from "react";
+import {Session} from "next-auth";
 
 const LOCAL_STORAGE_KEY = "modelSelected";
 interface ChatProps{
   id: string;
-  initialMessages?: Message[]; 
+  initialMessages?: Message[];
+  session?: Session | null;
 }
 
-export default function Chat({ id, initialMessages }: ChatProps) {
+export default function Chat({ id, initialMessages, session }: ChatProps) {
   const router = useRouter();
   const path = usePathname();
   const [
@@ -56,7 +58,7 @@ export default function Chat({ id, initialMessages }: ChatProps) {
         {messages.length > 0 ? (
           <ChatList messages={messages} />
         ) : (
-          <EmptyChat setInput={setInput} />
+          <EmptyChat setInput={setInput} session={session} />
         )}
 
         <PromptForm

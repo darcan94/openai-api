@@ -24,6 +24,7 @@ const config: Config = {
         'background': 'var(--background)',
         'background-alpha': 'var(--background-alpha)',
         'font': 'var(--foreground)',
+        'primary-500': 'var(--primary-500)',
         'primary-300': 'var(--primary-300)',
         'danger': 'var(--danger)',
         'highlight': 'var(--highlight)',
