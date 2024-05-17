@@ -14,7 +14,7 @@ const LOCAL_STORAGE_KEY = "modelSelected";
 interface ChatProps{
   id: string;
   initialMessages?: Message[];
-  session?: Session | null;
+  session: Session | null;
 }
 
 export default function Chat({ id, initialMessages, session }: ChatProps) {

@@ -26,12 +26,7 @@ export const POST = async (request: Request) => {
 
   const stream = OpenAIStream(response, {
     onCompletion: async (completion) => {
-      const newMessage: CreateMessage = {
-        content: completion,
-        role: "assistant",
-      };
-
-      messages.push(newMessage);
+      messages.push({content: completion, role: "assistant"});
       if(await updateChat(id, messages)) return;
 
       const _id: ObjectId = id;
