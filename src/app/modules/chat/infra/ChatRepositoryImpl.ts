@@ -23,13 +23,13 @@ export class ChatRepositoryImpl implements ChatRepository {
     }
   }
 
-  async update(id: ObjectId, message: CreateMessage): Promise<number | null> {
+  async update(id: string, message: CreateMessage): Promise<number | null> {
     if (!collection) {
       console.warn(`Database is not connected. Chat will not be update`);
       return null;
     }
 
-    const filter = { _id: id };
+    const filter = { id: id };
     const update = {
       $push: { messages: message },
     };
@@ -52,36 +52,37 @@ export class ChatRepositoryImpl implements ChatRepository {
 
     try {
       const chats = collection.find().sort({ createdAt: -1 });
-      return (await chats.toArray()) as Chat[];
+      return (await chats.toArray()) as unknown as Chat[];
     } catch (error) {
       console.error(`Error occurred while getting all chats: ${error}`);
       throw error;
     }
   }
 
-  async get(id: ObjectId): Promise<Chat | null> {
+  async get(id: string): Promise<Chat | null> {
     if (!collection) {
       console.warn(`Database is not connected`);
       return null;
     }
 
     try {
-      const chat = await collection.findOne({ _id: id });
-      return chat as Chat;
+      const chat = await collection.findOne({ id: id });
+      console.log(chat);
+      return chat as unknown as Chat;
     } catch (error) {
       console.error(`Error occurred while getting a chat: ${error}`);
       throw error;
     }
   }
 
-  async delete(id: ObjectId): Promise<void> {
+  async delete(id: string): Promise<void> {
     if (!collection) {
       console.warn(`Database is not connected`);
       return;
     }
 
     try {
-      await collection.deleteOne({ _id: id });
+      await collection.deleteOne({ id: id });
     } catch (error) {
       console.error(`Error occurred while deleting chat: ${error}`);
       throw error;

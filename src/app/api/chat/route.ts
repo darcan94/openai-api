@@ -29,11 +29,10 @@ export const POST = async (request: Request) => {
       messages.push({content: completion, role: "assistant"});
       if(await updateChat(id, messages)) return;
 
-      const _id: ObjectId = id;
       const title: string = messages[0].content.substring(0, 100);
       const createdAt: Date = new Date();
       const newChat: Chat = {
-        _id,
+        id,
         title,
         createdAt,
         messages,

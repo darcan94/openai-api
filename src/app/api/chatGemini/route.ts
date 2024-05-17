@@ -31,12 +31,11 @@ export const POST = async (request: Request) => {
   const stream = GoogleGenerativeAIStream(response, {
     onStart: async () => {
       if (await updateChat(id, messages[messages.length - 1])) return;
-
-      const _id: ObjectId = id;
+      
       const title: string = messages[0].content.substring(0, 50);
       const createdAt: Date = new Date();
       const newChat: Chat = {
-        _id,
+        id,
         title,
         createdAt,
         messages,

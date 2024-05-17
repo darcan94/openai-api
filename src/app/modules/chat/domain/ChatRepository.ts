@@ -4,8 +4,8 @@ import { CreateMessage } from "ai";
 
 export interface ChatRepository {
   save(chat: Chat): Promise<ObjectId | null>;
-  update(id: ObjectId, message: CreateMessage): Promise<number | null>;
+  update(id: string, message: CreateMessage): Promise<number | null>;
   getAll(): Promise<Chat[] | []>;
-  get(id: ObjectId): Promise<Chat | null>;
-  delete(id: ObjectId): Promise<void>;
+  get(id: string): Promise<Chat | null>;
+  delete(id: string): Promise<void>;
 }

@@ -10,7 +10,7 @@ export async function saveChat(chat: Chat) {
   return await chatRepository.save(chat);
 }
 
-export async function updateChat(id: ObjectId, message: CreateMessage) {
+export async function updateChat(id: string, message: CreateMessage) {
   return await chatRepository.update(id, message);
 }
 
@@ -18,10 +18,10 @@ export async function getChats() {
   return await chatRepository.getAll();
 }
 
-export async function getChat(id: ObjectId) {
+export async function getChat(id: string) {
   return await chatRepository.get(id);
 }
 
-export async function deleteChat(id: ObjectId) {
+export async function deleteChat(id: string) {
   await chatRepository.delete(id);
 }

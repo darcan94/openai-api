@@ -2,7 +2,7 @@ import { Message } from "ai";
 import { ObjectId } from "mongodb";
 
 export interface Chat {
-  _id: ObjectId;
+  id: string;
   title: string;
   createdAt: Date;
   messages: Message[];
