@@ -3,11 +3,51 @@ import { signIn } from "@/auth";
 import { AuthError } from "next-auth";
 import { UserRepositoryImpl } from "../infra/UserRepositoryImpl";
 import {LoginFormSchema, LoginFormState} from "@/app/login/definitions";
+import { FormState, SignupFormSchema } from "@/app/signup/definitions";
+import bcrypt from "bcrypt";
+import { User } from "../domain/User";
 
 const userRepository = new UserRepositoryImpl();
 
 export async function getUser(email: string) {
   return await userRepository.getUser(email);
+}
+
+export async function saveUser(user: User) {
+  return await userRepository.saveUser(user);
+}
+
+export async function signup(
+  prevState: FormState,
+  formData: FormData
+){
+  const validatedFields = SignupFormSchema.safeParse({
+      name: formData.get('name'),
+      email: formData.get('email'),
+      password: formData.get('password'),
+  })
+
+  if (!validatedFields.success){
+      return{
+          errors: validatedFields.error.flatten().fieldErrors,
+      }
+  }
+
+  const { name, email, password } = validatedFields.data
+  const hashedPassword = await bcrypt.hash(password, 10)
+
+  const userId = await saveUser({name, email, password: hashedPassword})
+  if(!userId){
+      return {
+          message: 'An error occurred while creating your account.',
+      }
+  }
+
+  try {
+      await signIn('credentials', validatedFields.data)
+  }catch (error){
+      throw error
+  }
 }
 
 export async function authenticate(
@@ -32,10 +72,9 @@ export async function authenticate(
     if (error instanceof AuthError) {
       switch (error.type) {
         case 'CredentialsSignin':
-          console.log('Invalid credentials.');
-          break
+          return { message: 'Invalid credentials.' };
         default:
-          console.log('Something went wrong.');
+          return { message: 'Something went wrong.' };
       }
     }
     throw error;

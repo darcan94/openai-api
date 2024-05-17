@@ -1,14 +1,14 @@
 'use client'
 import { Button } from "@/components/ui/Button";
 import { useFormState, useFormStatus } from "react-dom"
-import { authenticate } from "@/app/modules/user/application/actions";
+import { signup } from "@/app/modules/user/application/actions";
 import Link from "next/link";
 import {EyeIcon} from "@/components/ui/Icons";
 import {useState} from "react";
 
-export default function LoginForm(){
+export default function SignupForm(){
     const [isPasswordVisible, setPasswordVisible] = useState(false);
-    const [errorMessage, dispatch] = useFormState(authenticate, undefined);
+    const [errorMessage, dispatch] = useFormState(signup, undefined);
 
     const handleChangePasswordVisibility = () => {
         setPasswordVisible(!isPasswordVisible);
@@ -18,17 +18,32 @@ export default function LoginForm(){
         <div className="w-full max-w-sm space-y-8">
             <div>
                 <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-font">
-                    Sign in to your account.
+                    Create an account.
                 </h2>
                 <p className="mt-2 text-center text-sm text-gray-400">
-                    <span>Or </span>
-                    <Link className="font-medium text-primary-500 hover:text-indigo-400" href="#">
-                        Sign up
+                    <span>Already have an account? </span>
+                    <Link className="font-medium text-primary-500 hover:text-indigo-400" href="/login">
+                        Sign in
                     </Link>
                 </p>
             </div>
 
             <form action={dispatch} className="space-y-6">
+                <div className="space-y-1">
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-400">
+                        Name
+                    </label>
+
+                    <input
+                        className="block w-full rounded-md border border-gray-200 py-2 px-3 text-sm
+                        outline-1 placeholder-gray-400 sm:text-sm"
+                        id="name"
+                        type="name"
+                        name="name"
+                        placeholder="name"/>
+                </div>
+                {errorMessage?.errors?.name && <p className="text-danger">{errorMessage.errors.name}</p>}
+
                 <div className="space-y-1">
                     <label htmlFor="email" className="block text-sm font-medium text-gray-400">
                         Email address
@@ -63,7 +78,19 @@ export default function LoginForm(){
                         </div>
                     </div>
                 </div>
-                {errorMessage?.errors?.password && <p className="text-danger">{errorMessage.errors.password}</p>}
+                {
+                    errorMessage?.errors?.password && (
+                        <div className="text-danger">
+                            <p>Password must be:</p>
+                            <ul>
+                                {errorMessage.errors.password.map( error => (
+                                    <li key={error}> - {error}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    )
+                }
+                {errorMessage?.message && <p className="text-danger">{errorMessage.message}</p>}
 
                 <LoginButton/>
             </form>
@@ -90,7 +117,7 @@ function LoginButton() {
                 aria-disabled={pending}
                 disabled={pending}
                 type="submit">
-            {pending ? 'Submitting...' : 'Sign In' }
+            {pending ? 'Submitting...' : 'Sign Up' }
         </Button>
     );
 }
