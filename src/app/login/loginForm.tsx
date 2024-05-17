@@ -2,9 +2,9 @@
 import { Button } from "@/components/ui/Button";
 import { useFormState, useFormStatus } from "react-dom"
 import { authenticate } from "@/app/modules/user/application/actions";
-import Link from "next/link";
 import {EyeIcon} from "@/components/ui/Icons";
 import {useState} from "react";
+import { Link } from "next-view-transitions";
 
 export default function LoginForm(){
     const [isPasswordVisible, setPasswordVisible] = useState(false);

@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { IconTrash } from "@/components/ui/Icons";
@@ -8,6 +7,7 @@ import clsx from "clsx";
 import { deleteChat } from "@/app/modules/chat/application/actions";
 import Dialog from "@/components/dialog/Dialog";
 import { useState } from "react";
+import { Link } from "next-view-transitions";
 
 export default function SidebarItem({ chat }: { chat: any }) {
   const pathname: string = usePathname();
