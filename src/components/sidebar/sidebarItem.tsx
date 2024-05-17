@@ -2,7 +2,6 @@
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { IconTrash } from "@/components/ui/Icons";
-import { ObjectId } from "mongodb";
 import clsx from "clsx";
 import { deleteChat } from "@/app/modules/chat/application/actions";
 import Dialog from "@/components/dialog/Dialog";
@@ -14,7 +13,7 @@ export default function SidebarItem({ chat }: { chat: any }) {
   const active: boolean = pathname === `/chat/${chat._id}`;
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
 
-  const handleDeleteConfirm = async (id: ObjectId) => {
+  const handleDeleteConfirm = async (id: string) => {
     await deleteChat(id);
     setIsDialogOpen(false);
   };
@@ -29,7 +28,7 @@ export default function SidebarItem({ chat }: { chat: any }) {
       <Link
         key={chat._id}
         className="whitespace-nowrap font-light text-font no-underline"
-        href={`/chat/${chat._id}`}
+        href={`/chat/${chat.id}`}
       >
         {chat.title}
       </Link>
@@ -47,7 +46,7 @@ export default function SidebarItem({ chat }: { chat: any }) {
       
       {isDialogOpen && <Dialog
         onClose={setIsDialogOpen}
-        onConfirm={() => handleDeleteConfirm(chat._id)}
+        onConfirm={() => handleDeleteConfirm(chat.id)}
       />}
     </div>
   );

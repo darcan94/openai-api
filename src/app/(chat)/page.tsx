@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default async function Page() {
   const chatId = nanoid(7);
   const session: Session | null = await auth();
-
+  
   return (
     <main className="w-full h-full">
         <Chat id={chatId} session={session}/>

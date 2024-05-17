@@ -6,6 +6,7 @@ import {LoginFormSchema, LoginFormState} from "@/app/login/definitions";
 import { FormState, SignupFormSchema } from "@/app/signup/definitions";
 import bcrypt from "bcrypt";
 import { User } from "../domain/User";
+import { nanoid } from "nanoid";
 
 const userRepository = new UserRepositoryImpl();
 
@@ -36,7 +37,13 @@ export async function signup(
   const { name, email, password } = validatedFields.data
   const hashedPassword = await bcrypt.hash(password, 10)
 
-  const userId = await saveUser({name, email, password: hashedPassword})
+  const userId = await saveUser({
+    id: nanoid(7),
+    name,
+    email,
+    password: hashedPassword
+  })
+  
   if(!userId){
       return {
           message: 'An error occurred while creating your account.',

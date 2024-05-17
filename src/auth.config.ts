@@ -21,15 +21,27 @@ export const authConfig = {
             }
 
             return isLoggedIn;
-           /* const isOnChatPage = nextUrl.pathname.startsWith('/');
+        },
+        async jwt({ token, user }) {
+            if (user) {
+              token = { ...token, id: user.id }
+            }
+      
+            return token
+        },
+        async session({ session, token }) {
+            if (token) {
+              const { id } = token as { id: string }
+              const { user } = session
+      
+              session = { ...session, user: { ...user, id } }
+            }
 
-            if(isOnChatPage)
-                return isLoggedIn;
-
-            return isLoggedIn
-                ? Response.redirect(new URL('/', nextUrl) )
-                : true;*/
-        }
+            return session
+          }
     },
     providers: [],
+    session: {
+        maxAge: 2 * 60 * 60 // 2 hours
+    }
 } satisfies NextAuthConfig

@@ -2,13 +2,16 @@ import React, { cache } from "react";
 import { getChats } from "@/app/modules/chat/application/actions";
 import SidebarItems from "@/components/sidebar/sidebarItems";
 import { Chat } from "@/app/modules/chat/domain/Chat";
+import { Session } from "next-auth";
+import { auth } from "@/auth";
 
-const loadChats = cache(async () => {
-  return await getChats();
+const loadChats = cache(async (userId: string = "") => {
+  return await getChats(userId);
 })
 
 export default async function SidebarItemList() {
-  const chats: Chat[] = await loadChats();
+  const session: Session | null = await auth();
+  const chats: Chat[] = await loadChats(session?.user?.id);
 
   return (   
       <div className="flex grow overflow-y-auto overflow-x-hidden">

@@ -23,7 +23,8 @@ const buildGoogleGenAiPrompt = (messages: Message[]) => ({
 });
 
 export const POST = async (request: Request) => {
-  const { messages, id } = await request.json();
+  const { messages, id, userId } = await request.json();
+  
   const response = await genAI
     .getGenerativeModel({ model: "gemini-pro" })
     .generateContentStream(buildGoogleGenAiPrompt(messages));
@@ -38,6 +39,7 @@ export const POST = async (request: Request) => {
         id,
         title,
         createdAt,
+        userId,
         messages,
       };
       await saveChat(newChat);

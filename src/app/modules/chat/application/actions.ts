@@ -1,5 +1,4 @@
 "use server";
-import { ObjectId } from "mongodb";
 import { Chat } from "@/app/modules/chat/domain/Chat";
 import { CreateMessage } from "ai";
 import { ChatRepositoryImpl } from "@/app/modules/chat/infra/ChatRepositoryImpl";
@@ -14,12 +13,12 @@ export async function updateChat(id: string, message: CreateMessage) {
   return await chatRepository.update(id, message);
 }
 
-export async function getChats() {
-  return await chatRepository.getAll();
+export async function getChats(userId: string) {
+  return await chatRepository.getAll(userId);
 }
 
-export async function getChat(id: string) {
-  return await chatRepository.get(id);
+export async function getChat(id: string, userId: string) {
+  return await chatRepository.get(id, userId);
 }
 
 export async function deleteChat(id: string) {

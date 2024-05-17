@@ -43,7 +43,7 @@ export class ChatRepositoryImpl implements ChatRepository {
     }
   }
 
-  async getAll(): Promise<Chat[] | []> {
+  async getAll(userId: string): Promise<Chat[] | []> {
     noStore();
     if (!collection) {
       console.warn(`Database is not connected`);
@@ -51,7 +51,7 @@ export class ChatRepositoryImpl implements ChatRepository {
     }
 
     try {
-      const chats = collection.find().sort({ createdAt: -1 });
+      const chats = collection.find({userId}).sort({ createdAt: -1 });
       return (await chats.toArray()) as unknown as Chat[];
     } catch (error) {
       console.error(`Error occurred while getting all chats: ${error}`);
@@ -59,14 +59,14 @@ export class ChatRepositoryImpl implements ChatRepository {
     }
   }
 
-  async get(id: string): Promise<Chat | null> {
+  async get(id: string, userId: string): Promise<Chat | null> {
     if (!collection) {
       console.warn(`Database is not connected`);
       return null;
     }
 
     try {
-      const chat = await collection.findOne({ id: id });
+      const chat = await collection.findOne({ id, userId });
       console.log(chat);
       return chat as unknown as Chat;
     } catch (error) {

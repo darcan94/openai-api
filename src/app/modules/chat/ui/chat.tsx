@@ -35,7 +35,7 @@ export default function Chat({ id, initialMessages, session }: ChatProps) {
     append
   } = useChat({
     initialMessages,
-    body: { id },
+    body: { id, userId: session?.user?.id },
     api: `/api/${selectedModel.path}`,
     onFinish: () => {
       if(!path.includes(id)) {
