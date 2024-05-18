@@ -1,5 +1,5 @@
 import useTextareaAutoHeight from "@/hooks/useTextareaAutoHeight";
-import { KeyboardEvent, ChangeEvent } from "react";
+import { KeyboardEvent } from "react";
 
 interface ChatFormProps {
   input: string;

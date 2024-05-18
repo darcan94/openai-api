@@ -3,8 +3,7 @@ import {
   updateChat,
 } from "@/app/modules/chat/application/actions";
 import { Chat } from "@/app/modules/chat/domain/Chat";
-import { CreateMessage, OpenAIStream, StreamingTextResponse } from "ai";
-import { ObjectId } from "mongodb";
+import { OpenAIStream, StreamingTextResponse } from "ai";
 import { Configuration, OpenAIApi } from "openai-edge";
 
 const config = new Configuration({

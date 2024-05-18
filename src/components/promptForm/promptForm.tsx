@@ -1,5 +1,4 @@
 import useEnterSend from "@/hooks/useEnterSend";
-import { ChangeEvent, FormEvent } from "react";
 import { Button } from "@/components/ui/Button";
 import TextArea from "@/components/ui/TextArea";
 import { IconReload, IconStop, IconSubmit } from "@/components/ui/Icons";

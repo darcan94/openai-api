@@ -1,5 +1,5 @@
 import "@/app/globals.css";
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 import { Comfortaa } from "next/font/google";
 import { ChatThemeProvider } from "@/components/chatThemeProvider";
 import React from "react";
@@ -23,10 +23,10 @@ export const metadata: Metadata = {
   },
 };
 
-export const viewport: Viewport = {
+/*export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-};
+};*/
 
 export default function RootLayout({
   children,

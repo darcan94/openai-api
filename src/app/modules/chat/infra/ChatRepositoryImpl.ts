@@ -67,7 +67,6 @@ export class ChatRepositoryImpl implements ChatRepository {
 
     try {
       const chat = await collection.findOne({ id, userId });
-      console.log(chat);
       return chat as unknown as Chat;
     } catch (error) {
       console.error(`Error occurred while getting a chat: ${error}`);

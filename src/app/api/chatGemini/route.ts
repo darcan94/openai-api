@@ -8,7 +8,6 @@ import {
   Message,
   StreamingTextResponse,
 } from "ai";
-import { ObjectId } from "mongodb";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");

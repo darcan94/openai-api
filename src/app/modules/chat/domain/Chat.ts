@@ -1,5 +1,4 @@
 import { Message } from "ai";
-import { ObjectId } from "mongodb";
 
 export interface Chat {
   id: string;

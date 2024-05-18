@@ -10,7 +10,7 @@ import { Link } from "next-view-transitions";
 
 export default function SidebarItem({ chat }: { chat: any }) {
   const pathname: string = usePathname();
-  const active: boolean = pathname === `/chat/${chat._id}`;
+  const active: boolean = pathname === `/chat/${chat.id}`;
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
 
   const handleDeleteConfirm = async (id: string) => {
@@ -26,8 +26,8 @@ export default function SidebarItem({ chat }: { chat: any }) {
       )}
     >
       <Link
-        key={chat._id}
-        className="whitespace-nowrap font-light text-font no-underline"
+        key={chat.id}
+        className="w-full whitespace-nowrap font-light text-font no-underline overflow-hidden"
         href={`/chat/${chat.id}`}
       >
         {chat.title}
