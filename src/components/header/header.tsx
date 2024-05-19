@@ -7,7 +7,7 @@ export default function Header() {
       <form className="flex h-full items-center justify-end px-6"
           action={async () => {
             'use server';
-            await signOut();
+            await signOut({redirectTo: '/login'});
           }}
         >
           <Button variant="rounded" className="text-white bg-primary">

@@ -3,8 +3,8 @@ import { Highlight } from 'prism-react-renderer';
 export default function SyntaxHighlighter({ code, language, showLineNumbers}: any){    
     return (
         <Highlight code={code} language={language}>
-            {({ className, tokens, getLineProps, getTokenProps }) => (                
-                <pre className={`${className} overflow-x-scroll p-2`} >
+            {({tokens, getLineProps, getTokenProps }) => (
+                <div className="overflow-x-scroll p-2" >
                     {tokens.map((line, i) => (
                         <div key={ i } {...getLineProps({ line })}>
                             {showLineNumbers && <small className="text-gray-600 mr-4 select-none">
@@ -16,7 +16,7 @@ export default function SyntaxHighlighter({ code, language, showLineNumbers}: an
                             })}
                         </div>
                     ))}
-                </pre>
+                </div>
             )}
         </Highlight>    
     );

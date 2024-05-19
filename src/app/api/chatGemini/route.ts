@@ -11,9 +11,11 @@ import {
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
+const MESSAGE_LIMIT = 40;
 
 const buildGoogleGenAiPrompt = (messages: Message[]) => ({
   contents: messages
+    .slice(MESSAGE_LIMIT)
     .filter((message) => ["user", "assistant"].includes(message.role))
     .map((message) => ({
       role: message.role === "user" ? "user" : "model",
@@ -50,3 +52,17 @@ export const POST = async (request: Request) => {
 
   return new StreamingTextResponse(stream);
 };
+
+
+/**
+ * const buildGoogleGenAiPrompt = (messages: Message[]) => ({
+ *   contents: messages
+ *     .filter((message) => ["user", "assistant"].includes(message.role))
+ *     // Limita la lista de mensajes al número de MESSAGE_LIMIT
+ *     .slice(0, MESSAGE_LIMIT)
+ *     .map((message) => ({
+ *       role: message.role === "user" ? "user" : "model",
+ *       parts: [{ text: message.content }],
+ *     })),
+ * });
+ */
