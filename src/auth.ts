@@ -3,8 +3,9 @@ import { authConfig } from "@/auth.config";
 import Credentials from "next-auth/providers/credentials";
 import { getUser } from "@/app/modules/user/application/actions";
 import bcrypt from 'bcrypt';
+import github from "next-auth/providers/github";
 
-export const { auth, signIn, signOut } = NextAuth({
+export const { auth, signIn, signOut, handlers: { GET, POST } } = NextAuth({
     ...authConfig,
     providers: [
         Credentials({
@@ -18,6 +19,7 @@ export const { auth, signIn, signOut } = NextAuth({
                  console.warn('Invalid Credentials');
                  return null;
             },
-        })
+        }),
+        github
     ],
 });
