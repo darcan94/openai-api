@@ -1,4 +1,4 @@
-import Header from "@/components/header/header";
+import Header from "@/components/header";
 import React from "react";
 import SidebarContainer from "@/components/sidebar/sidebarContainer";
 

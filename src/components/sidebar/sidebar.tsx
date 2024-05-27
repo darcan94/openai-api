@@ -2,7 +2,7 @@
 import React from "react";
 import { useSidebar } from "@/components/sidebarProvider";
 import SidebarHeader from "@/components/sidebar/sidebarHeader";
-import SidebarFooter from "./sidebarFooter";
+import SidebarFooter from "@/components/sidebar/sidebarFooter";
 
 export default function Sidebar({ children }: { children?: React.ReactNode }) {
   const { isSidebarOpen, isLoading } = useSidebar();

@@ -1,11 +1,11 @@
 "use client";
 import { useChat } from "ai/react";
 import ChatList from "@/app/modules/chat/ui/chatList";
-import PromptForm from "@/components/promptForm/promptForm";
+import PromptForm from "@/components/promptForm";
 import { Message } from "ai";
 import EmptyChat from "./EmptyChat";
 import {usePathname, useRouter} from "next/navigation";
-import DropDown from "@/components/dropDown/dropDown";
+import DropDown from "@/components/dropDown";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import React from "react";
 import {Session} from "next-auth";

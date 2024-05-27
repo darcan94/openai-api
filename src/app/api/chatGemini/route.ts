@@ -11,11 +11,9 @@ import {
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
-const MESSAGE_LIMIT = 40;
 
 const buildGoogleGenAiPrompt = (messages: Message[]) => ({
   contents: messages
-    .slice(MESSAGE_LIMIT)
     .filter((message) => ["user", "assistant"].includes(message.role))
     .map((message) => ({
       role: message.role === "user" ? "user" : "model",
