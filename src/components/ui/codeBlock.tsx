@@ -1,6 +1,6 @@
 import { IconCopy, IconCheck } from "@/components/ui/Icons";
 import useClipboard from "@/hooks/useClipboard";
-import { Button } from "@/components/ui/Button";
+import Button from "@/components/ui/Button";
 import SyntaxHighlighter from "@/components/ui/syntaxHighlighter";
 
 interface CodeBlockProps {

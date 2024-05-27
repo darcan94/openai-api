@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button } from "@/components/ui/Button";
+import Button from "@/components/ui/Button";
 import { IconSetting } from "@/components/ui/Icons";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 

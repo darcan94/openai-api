@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/Button";
+import Button from "@/components/ui/Button";
 import { IconArrowDown } from "@/components/ui/Icons";
 import Bubble from "@/components/ui/bubble";
 import { useAutoScroll, useScrollDetection, useScrollToBottom } from "@/hooks/useScroll";
@@ -26,8 +26,7 @@ export default function ChatList({ messages }: { messages: Message[] }) {
       {!isAtBottom && (
         <Button
           variant="rounded"
-          className="absolute bottom-28 right-6 z-10 
-                     bg-secondary px-0 py-0 dark:border-none"
+          className="absolute bottom-28 right-6 z-10 bg-secondary"
           size="iconlg"
           onClick={scrollToBottom}
         >

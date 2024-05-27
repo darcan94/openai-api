@@ -1,5 +1,5 @@
 'use client'
-import { Button } from "@/components/ui/Button";
+import Button from "@/components/ui/Button";
 import { useFormState, useFormStatus } from "react-dom"
 import { signup } from "@/app/modules/user/application/actions";
 import {EyeIcon} from "@/components/ui/Icons";

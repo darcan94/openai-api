@@ -1,5 +1,5 @@
 'use client'
-import { Button } from "@/components/ui/Button";
+import Button from "@/components/ui/Button";
 import { useFormState, useFormStatus } from "react-dom"
 import { authenticate, login } from "@/app/modules/user/application/actions";
 import {EyeIcon} from "@/components/ui/Icons";
@@ -86,7 +86,7 @@ export default function LoginForm(){
 
 function ShowPasswordButton({onclick, active}: {onclick: () => void, active: boolean}){
     return(
-        <button onClick={onclick} type='button' className="text-gray-400 hover:text-gray-500">
+        <button onClick={onclick} type='button' className="text-font hover:text-gray-500">
             <EyeIcon className={`h-5 w-5 ${active ? 'hover:stroke-primary stroke-primary-500': ''}`} />
             <span className="sr-only">Show password</span>
         </button>
@@ -96,14 +96,12 @@ function ShowPasswordButton({onclick, active}: {onclick: () => void, active: boo
 function LoginButton() {
     const {pending} = useFormStatus();
     return (
-        <Button className="flex w-full justify-center rounded-md border border-transparent
-                       bg-primary py-3 px-4 text-sm font-medium text-white shadow-sm
-                       hover:bg-primary-500 focus:outline-none focus:ring-2
-                       focus:ring-indigo-500 focus:ring-offset-2"
-                aria-disabled={pending}
-                disabled={pending}
-                type="submit">
-            {pending ? 'Submitting...' : 'Sign In' }
+        <Button 
+            className="w-full hover:bg-primary-500"
+            aria-disabled={pending}
+            disabled={pending}
+            type="submit">
+                {pending ? 'Submitting...' : 'Sign In' }
         </Button>
     );
 }

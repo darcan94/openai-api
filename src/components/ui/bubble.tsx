@@ -3,7 +3,7 @@ import CodeBlock from "@/components/ui/codeBlock";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import { MemoizedMarkdown } from "@/components/memoizedMarkdown";
-import { Button } from "@/components/ui/Button";
+import Button from "@/components/ui/Button";
 import { IconCheck, IconCopy } from "@/components/ui/Icons";
 import useClipboard from "@/hooks/useClipboard";
 

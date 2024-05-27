@@ -4,12 +4,14 @@ import SidebarContainer from "@/components/sidebar/sidebarContainer";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex w-full h-full overflow-hidden">
+    <main className="flex w-full h-full overflow-hidden">
       <SidebarContainer/>
       <div className="relative w-full h-full">
         <Header />
-        {children}
+        <div className="w-full h-full">
+          {children}
+        </div>
       </div>
-    </div>
+    </main>
   );
 }

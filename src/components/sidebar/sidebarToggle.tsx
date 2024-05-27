@@ -1,5 +1,5 @@
 "use client";
-import { Button } from "@/components/ui/Button";
+import Button from "@/components/ui/Button";
 import { IconSidebarAlt } from "@/components/ui/Icons";
 import { useSidebar } from "@/components/sidebarProvider";
 

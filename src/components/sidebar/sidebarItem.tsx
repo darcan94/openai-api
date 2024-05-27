@@ -1,6 +1,6 @@
 "use client";
 import { usePathname } from "next/navigation";
-import { Button } from "@/components/ui/Button";
+import Button from "@/components/ui/Button";
 import { IconTrash } from "@/components/ui/Icons";
 import clsx from "clsx";
 import { deleteChat } from "@/app/modules/chat/application/actions";
