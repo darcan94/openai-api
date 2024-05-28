@@ -19,7 +19,7 @@ export default function ChatList({ messages }: { messages: Message[] }) {
   })
 
   return (
-    <div  ref={chatListRef} className="flex w-9/12 mx-auto h-full flex-col gap-4 px-2 pt-10 pb-24 overflow-y-auto overflow-x-hidden">
+    <div  ref={chatListRef} className="flex xl:w-9/12 mx-auto h-full flex-col gap-4 px-2 pt-10 pb-24 overflow-y-auto overflow-x-hidden">
       {messages.map((message, index) => (
         <Bubble key={index} message={message} />
       ))}
