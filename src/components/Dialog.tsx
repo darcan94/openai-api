@@ -19,17 +19,20 @@ export default function Dialog({ isOpen, onClose, onConfirm }: DialogProps) {
   }, [isOpen]);
 
   return (    
-      <dialog ref={dialogRef} className="backdrop:bg-black/60 fixed inset-0 space-y-8 p-6 rounded-lg bg-secondary shadow-lg">
-        <h3>Are you sure you want to delete the chat?</h3>
-        <div className="flex gap-2 justify-end">
-          <Button variant="secondary" onClick={() => onClose(false)}>
-            Cancel
-          </Button>
+      <dialog 
+        ref={dialogRef} 
+        onClick={() => onClose(false)} 
+        className="backdrop:bg-black/70 fixed inset-0 space-y-8 p-6 rounded-lg bg-secondary shadow-lg">
+          <h3>Are you sure you want to delete the chat?</h3>
+          <div className="flex gap-2 justify-end">
+            <Button variant="secondary" onClick={() => onClose(false)}>
+              Cancel
+            </Button>
 
-          <Button variant="destructive" onClick={onConfirm}>
-            Confirm
-          </Button>
-        </div>
+            <Button variant="destructive" onClick={onConfirm}>
+              Confirm
+            </Button>
+          </div>
       </dialog>
   );
 }

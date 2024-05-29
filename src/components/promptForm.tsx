@@ -36,7 +36,7 @@ export default function PromptForm({
           setInput('');
           await onSubmit(input);
         }}
-        className="mx-auto w-full md:w-8/12 p-4"
+        className="mx-auto w-full lg:w-8/12 p-4"
       >
         <div className="flex h-[4rem] items-center rounded-[30px] border border-gray-200 bg-secondary p-1 dark:border-white/10">
           <TextArea
@@ -47,34 +47,32 @@ export default function PromptForm({
 
           {
             isLoading ? (
-                <Button
-                  variant="rounded"
-                  onClick={() => stop()}
-                  className="bg-background h-full text-font"
-                >
+              <Button
+                variant="rounded"
+                onClick={() => stop()}
+                className="bg-background h-full text-font">
                   <IconStop />
                   <span className="sr-only"> Stop message </span>
-                </Button>
+              </Button>
             ) : (
             (hasMessage && input === "") && (
                 <Button
                   variant="rounded"
                   onClick={() => reload()}
-                  className="bg-background h-full text-font"
-                >
-                  <IconReload />
-                  <span className="sr-only"> Reload message </span>                  
+                  className="bg-background h-full text-font">
+                    <IconReload />
+                    <span className="sr-only"> Reload message </span>                  
                 </Button>
             )
           )}
           
-          {!(isLoading || input === "") && (<Button
-            type="submit"
-            variant="ghost"
-          >
-            <IconSubmit />
-            <span className="sr-only"> Send message </span>
-          </Button>)}
+          {
+            !(isLoading || input === "") && 
+              ( <Button type="submit" variant="ghost">
+                  <IconSubmit />
+                  <span className="sr-only"> Send message </span>
+                </Button> )
+          }
         </div>
       </form>
     </div>

@@ -9,14 +9,16 @@ export default function Sidebar({ children }: { children?: React.ReactNode }) {
   const state = isSidebarOpen && !isLoading ? "open" : "closed";
 
   return (
-    <div id="sidebar"
+    <aside id="sidebar"
       data-state={state}
       className="absolute md:static hidden md:flex flex-col gap-2 h-full z-20 data-[state=open]:flex w-10/12 md:w-[300px] 
       md:data-[state=closed]:w-16 justify-between border-r border-white/10 bg-secondary p-2 pt-16 text-font duration-300"
     >
       <SidebarHeader state={state}/>
-      {isSidebarOpen && children}
+      <div data-state={state} className="md:data-[state=closed]:hidden grow">
+        {children}
+      </div>
       <SidebarFooter />
-    </div>
+    </aside>
   );
 }
