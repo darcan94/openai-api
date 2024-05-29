@@ -23,8 +23,8 @@ export default function SidebarItem({ chat }: { chat: any }) {
       className={clsx(
         "relative w-full group flex items-center justify-between gap-2 rounded-lg p-2 text-font hover:bg-background",
         { "bg-background": active },
-      )}
-    >
+      )}>
+        
       <Link
         key={chat.id}
         className="w-full whitespace-nowrap font-light text-font no-underline overflow-hidden"
@@ -32,6 +32,7 @@ export default function SidebarItem({ chat }: { chat: any }) {
       >
         {chat.title}
       </Link>
+
       <div className={`${active ? 'flex' : 'hidden'} bg-background group-hover:flex absolute right-2`}>
         <Button
           variant="ghost"
@@ -40,14 +41,14 @@ export default function SidebarItem({ chat }: { chat: any }) {
         >
           <IconTrash />
           <span className="sr-only"> Delete chat </span>
-        </Button>
-        
+        </Button>        
       </div>
       
-      {isDialogOpen && <Dialog
+      <Dialog
+        isOpen={isDialogOpen}
         onClose={setIsDialogOpen}
         onConfirm={() => handleDeleteConfirm(chat.id)}
-      />}
+      />
     </div>
   );
 }

@@ -6,9 +6,6 @@ import { type Message } from "ai";
 import { useEffect } from "react";
 
 export default function ChatList({ messages }: { messages: Message[] }) {
-  /*const filteredMessages = messages.filter(
-    (message: Message) => message?.role !== "system",
-  );*/
   const chatListRef = useAutoScroll(messages);
   const isAtBottom = useScrollDetection(chatListRef);
   const scrollToBottom = useScrollToBottom(chatListRef);

@@ -1,18 +1,27 @@
 import Button from "@/components/ui/Button";
+import { useEffect, useRef } from "react";
 
 interface DialogProps {
+  isOpen: boolean;
   onClose: (closed: boolean) => void;
   onConfirm: () => void;
 }
 
-export default function Dialog({ onClose, onConfirm }: DialogProps) {
-  
-  return (
-    <div className="fixed inset-0 z-20 flex items-center justify-center bg-black bg-opacity-80"  
-      onClick={() => onClose(false)}>
-      <div className="space-y-8 rounded-lg bg-secondary p-6 shadow-md">
+export default function Dialog({ isOpen, onClose, onConfirm }: DialogProps) {  
+  const dialogRef = useRef<HTMLDialogElement | null>(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      dialogRef.current?.showModal();
+    } else {
+      dialogRef.current?.close();
+    }
+  }, [isOpen]);
+
+  return (    
+      <dialog ref={dialogRef} className="backdrop:bg-black/60 fixed inset-0 space-y-8 p-6 rounded-lg bg-secondary shadow-lg">
         <h3>Are you sure you want to delete the chat?</h3>
-        <div className="flex justify-end gap-2">
+        <div className="flex gap-2 justify-end">
           <Button variant="secondary" onClick={() => onClose(false)}>
             Cancel
           </Button>
@@ -21,7 +30,6 @@ export default function Dialog({ onClose, onConfirm }: DialogProps) {
             Confirm
           </Button>
         </div>
-      </div>
-    </div>
+      </dialog>
   );
 }
