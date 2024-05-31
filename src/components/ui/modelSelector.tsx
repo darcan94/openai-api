@@ -2,6 +2,16 @@
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import DropDown from "../dropDown";
 
+export interface Model{
+  model: string;
+  path: string;
+}
+
+const models = [
+  { model: "gpt-3.5", path: "chat" },
+  { model: "gemini-pro", path: "chatGemini" },
+];
+
 export default function ModelSelector() {  
   const LOCAL_STORAGE_KEY = "modelSelected";
   const [
@@ -15,6 +25,7 @@ export default function ModelSelector() {
 
   return <DropDown 
             onSelect={ handleModelSelect } 
+            models={models}
             selectedModel={ selectedModel } 
         />
 }
