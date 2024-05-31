@@ -1,20 +1,17 @@
 import { useState } from "react";
 import { DropDownIcon } from "@/components/ui/Icons";
-
-const models = [
-  { model: "gpt-3.5", path: "chat" },
-  { model: "gemini-pro", path: "chatGemini" },
-];
+import { Model } from "@/components/ui/modelSelector";
 
 interface DropDownProps {
-  selectedModel: { model: string, path: string};
-  onSelect: ( model:{ model: string, path: string} ) => void;
+  selectedModel: Model;
+  models: Model[]
+  onSelect: ( model:Model ) => void;
 }
 
-export default function DropDown({ onSelect, selectedModel }: DropDownProps) {
+export default function DropDown({ onSelect, models, selectedModel }: DropDownProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const handleSelect = (model: { model: string, path: string}) => {
+  const handleSelect = (model: Model) => {
     onSelect(model);
     setIsOpen(false);
   };

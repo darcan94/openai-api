@@ -1,11 +1,10 @@
 "use client";
 import { useChat } from "ai/react";
 import ChatList from "@/app/modules/chat/ui/chatList";
-import PromptForm from "@/components/promptForm/promptForm";
+import PromptForm from "@/components/promptForm";
 import { Message } from "ai";
 import EmptyChat from "./EmptyChat";
 import {usePathname, useRouter} from "next/navigation";
-import DropDown from "@/components/dropDown/dropDown";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import React from "react";
 import {Session} from "next-auth";
@@ -21,8 +20,7 @@ export default function Chat({ id, initialMessages, session }: ChatProps) {
   const router = useRouter();
   const path = usePathname();
   const [
-      selectedModel,
-      setSelectedModel
+      selectedModel
   ] = useLocalStorage(LOCAL_STORAGE_KEY, { model: "gpt-3.5", path: "chat" });
 
   const {
@@ -45,21 +43,13 @@ export default function Chat({ id, initialMessages, session }: ChatProps) {
     }
   });
 
-  const handleModelSelect = (model: { model: string, path: string}) => {
-    setSelectedModel(model);
-  }
-
   return (
-    <div className="animate-in w-full h-full overflow-hidden duration-300 ease-in-out">
-      <div className="fixed top-0 z-10">
-        <DropDown onSelect = { handleModelSelect } selectedModel = { selectedModel} />
-      </div>
+    <div className="animate-in w-full h-full overflow-hidden duration-300 ease-in-out">      
       <div className="h-full">
-        {messages.length > 0 ? (
-          <ChatList messages={messages} />
-        ) : (
-          <EmptyChat setInput={setInput} session={session} />
-        )}
+        {messages.length > 0 
+           ? <ChatList messages={messages} />
+           : <EmptyChat setInput={setInput} session={session} />
+        }
 
         <PromptForm
           input={input}

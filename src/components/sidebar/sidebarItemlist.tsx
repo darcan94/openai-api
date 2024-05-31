@@ -14,7 +14,7 @@ export default async function SidebarItemList() {
   const chats: Chat[] = await loadChats(session?.user?.id);
 
   return (   
-      <div className="flex grow overflow-y-auto overflow-x-hidden">
+      <div className="flex overflow-y-auto overflow-x-hidden">
         {
           chats?.length ? (
             <SidebarItems chats={chats}/>

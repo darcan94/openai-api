@@ -9,10 +9,10 @@ export const { auth, signIn, signOut, handlers: { GET, POST } } = NextAuth({
     ...authConfig,
     providers: [
         Credentials({
-             async authorize(credentials: any) {
-                 const { email, password } = credentials;
+             async authorize({ email, password }: any) {
                  const user = await getUser(email);
                  if(!user) return null;
+                 
                  const passwordsMatch = await bcrypt.compare(password, user.password);
                  if(passwordsMatch) return user;
 
