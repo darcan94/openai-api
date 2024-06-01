@@ -9,8 +9,8 @@ export async function saveChat(chat: Chat) {
   return await chatRepository.save(chat);
 }
 
-export async function updateChat(id: string, message: CreateMessage) {
-  return await chatRepository.update(id, message);
+export async function updateChat(id: string, messages: CreateMessage[]) {
+  return await chatRepository.update(id, messages);
 }
 
 export async function getChats(userId: string) {

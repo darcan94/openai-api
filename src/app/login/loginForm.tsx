@@ -71,7 +71,7 @@ export default function LoginForm(){
             </form>
             <form action={login}>
                 <button 
-                    className='flex items-center justify-center w-full justify-center rounded-md border border-transparent 
+                    className='flex items-center justify-center w-full rounded-md border border-transparent 
                     bg-slate-200 py-3 px-4 text-sm font-medium text-slate-800 shadow-sm 
                     hover:bg-slate-300 focus:outline-none focus:ring-2 
                     focus:ring-indigo-slate-300 focus:ring-offset-2' 

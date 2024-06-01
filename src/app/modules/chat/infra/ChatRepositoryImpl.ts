@@ -23,7 +23,7 @@ export class ChatRepositoryImpl implements ChatRepository {
     }
   }
 
-  async update(id: string, message: CreateMessage): Promise<number | null> {
+  async update(id: string, messages: CreateMessage[]): Promise<number | null> {
     if (!collection) {
       console.warn(`Database is not connected. Chat will not be update`);
       return null;
@@ -31,7 +31,7 @@ export class ChatRepositoryImpl implements ChatRepository {
 
     const filter = { id: id };
     const update = {
-      $push: { messages: message },
+      $set: { messages: messages },
     };
 
     try {

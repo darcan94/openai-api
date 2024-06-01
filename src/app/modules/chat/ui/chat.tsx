@@ -44,7 +44,7 @@ export default function Chat({ id, initialMessages, session }: ChatProps) {
   });
 
   return (
-    <div className="animate-in w-full h-full overflow-hidden duration-300 ease-in-out">      
+    <div className="h-full overflow-hidden">      
       <div className="h-full">
         {messages.length > 0 
            ? <ChatList messages={messages} />

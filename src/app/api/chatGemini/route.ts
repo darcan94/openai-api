@@ -1,66 +1,32 @@
-import {
-  saveChat,
-  updateChat,
-} from "@/app/modules/chat/application/actions";
+import { saveChat, updateChat } from "@/app/modules/chat/application/actions";
 import { Chat } from "@/app/modules/chat/domain/Chat";
-import {
-  GoogleGenerativeAIStream,
-  Message,
-  StreamingTextResponse,
-} from "ai";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { streamText } from "ai";
+import { google } from "@ai-sdk/google";
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
-
-const buildGoogleGenAiPrompt = (messages: Message[]) => ({
-  contents: messages
-    .filter((message) => ["user", "assistant"].includes(message.role))
-    .map((message) => ({
-      role: message.role === "user" ? "user" : "model",
-      parts: [{ text: message.content }],
-    })),
-});
-
-export const POST = async (request: Request) => {
-  const { messages, id, userId } = await request.json();
+export async function POST(req: Request){
+  const { messages, id, userId } = await req.json();
   
-  const response = await genAI
-    .getGenerativeModel({ model: "gemini-pro" })
-    .generateContentStream(buildGoogleGenAiPrompt(messages));
+  const result = await streamText({
+    model: google("models/gemini-1.5-pro-latest"),
+    messages,
+    maxTokens: 400,
+    temperature: 0,
+    maxRetries: 1,
+    async onFinish({ text }){
+      messages.push({content: text, role: 'assistant'})
+      if( await updateChat(id, messages) ) return
 
-  const stream = GoogleGenerativeAIStream(response, {
-    onStart: async () => {
-      if (await updateChat(id, messages[messages.length - 1])) return;
-      
-      const title: string = messages[0].content.substring(0, 50);
-      const createdAt: Date = new Date();
       const newChat: Chat = {
         id,
-        title,
-        createdAt,
+        title: messages[0].content.substring(0, 100),
+        createdAt: new Date(),
         userId,
-        messages,
-      };
+        messages
+      }
+
       await saveChat(newChat);
-    },
-    onCompletion: async (completion: string) => {
-      await updateChat(id, {content: completion, role: "assistant"});
-    },
-  });
-
-  return new StreamingTextResponse(stream);
+    }
+  })
+ 
+  return result.toAIStreamResponse();
 };
-
-
-/**
- * const buildGoogleGenAiPrompt = (messages: Message[]) => ({
- *   contents: messages
- *     .filter((message) => ["user", "assistant"].includes(message.role))
- *     // Limita la lista de mensajes al número de MESSAGE_LIMIT
- *     .slice(0, MESSAGE_LIMIT)
- *     .map((message) => ({
- *       role: message.role === "user" ? "user" : "model",
- *       parts: [{ text: message.content }],
- *     })),
- * });
- */

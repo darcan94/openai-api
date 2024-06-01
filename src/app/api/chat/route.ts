@@ -1,44 +1,32 @@
-import {
-  saveChat,
-  updateChat,
-} from "@/app/modules/chat/application/actions";
+import { saveChat, updateChat } from "@/app/modules/chat/application/actions";
 import { Chat } from "@/app/modules/chat/domain/Chat";
-import { OpenAIStream, StreamingTextResponse } from "ai";
-import { Configuration, OpenAIApi } from "openai-edge";
+import { streamText } from "ai";
+import { openai } from "@ai-sdk/openai";
 
-const config = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+export async function POST(req: Request){
+  const { messages, id, userId } = await req.json();
 
-const openai = new OpenAIApi(config);
-
-export const POST = async (request: Request) => {
-  const { messages, id } = await request.json();
-
-  const response = await openai.createChatCompletion({
-    model: "gpt-3.5-turbo",
+  const result = await streamText({
+    model: openai("gpt-4o"),
     messages,
-    max_tokens: 400,
+    maxTokens: 400,
     temperature: 0,
-    stream: true,
-  });
+    maxRetries: 1,
+    async onFinish({ text }){
+      messages.push({content: text, role: 'assistant'})
+      if( await updateChat(id, messages) ) return
 
-  const stream = OpenAIStream(response, {
-    onCompletion: async (completion) => {
-      messages.push({content: completion, role: "assistant"});
-      if(await updateChat(id, messages)) return;
-
-      const title: string = messages[0].content.substring(0, 100);
-      const createdAt: Date = new Date();
       const newChat: Chat = {
         id,
-        title,
-        createdAt,
-        messages,
-      };
+        title: messages[0].content.substring(0, 100),
+        createdAt: new Date(),
+        userId,
+        messages
+      }
+
       await saveChat(newChat);
-    },
+    }    
   });
 
-  return new StreamingTextResponse(stream);
+  return result.toAIStreamResponse();
 };
