@@ -46,7 +46,7 @@ export default function Chat({ id, initialMessages, session }: ChatProps) {
   return (
     <div className="h-full overflow-hidden">      
       <div className="h-full">
-        {messages.length > 0 
+        {messages.length
            ? <ChatList messages={messages} />
            : <EmptyChat setInput={setInput} session={session} />
         }
@@ -55,7 +55,7 @@ export default function Chat({ id, initialMessages, session }: ChatProps) {
           input={input}
           setInput={setInput}
           isLoading={isLoading}
-          hasMessage={messages.length > 1}
+          hasMessage={messages.length > 0}
           stop={stop}
           reload={reload}
           onSubmit={
