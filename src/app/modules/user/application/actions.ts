@@ -1,11 +1,11 @@
 "use server";
 import { signIn } from "@/auth";
 import { AuthError } from "next-auth";
-import { UserRepositoryImpl } from "../infra/UserRepositoryImpl";
+import { UserRepositoryImpl } from "@/app/modules/user/infra/UserRepositoryImpl";
 import {LoginFormSchema, LoginFormState} from "@/app/login/definitions";
 import { FormState, SignupFormSchema } from "@/app/signup/definitions";
 import bcrypt from "bcrypt";
-import { User } from "../domain/User";
+import { User } from "@/app/modules/user/domain/User";
 import { nanoid } from "nanoid";
 
 const userRepository = new UserRepositoryImpl();

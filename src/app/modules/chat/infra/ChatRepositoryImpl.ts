@@ -1,6 +1,6 @@
 import { ObjectId } from "mongodb";
-import { Chat } from "../domain/Chat";
-import { ChatRepository } from "../domain/ChatRepository";
+import { Chat } from "@/app/modules/chat/domain/Chat";
+import { ChatRepository } from "@/app/modules/chat/domain/ChatRepository";
 import { collection } from "@/app/modules/chat/infra/data-access/MongoDB";
 import { revalidatePath, unstable_noStore as noStore} from "next/cache";
 import { redirect } from "next/navigation";

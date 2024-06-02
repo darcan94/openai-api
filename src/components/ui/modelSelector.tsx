@@ -1,6 +1,6 @@
 "use client"
 import { useLocalStorage } from "@/hooks/useLocalStorage";
-import DropDown from "../dropDown";
+import DropDown from "@/components/dropDown";
 
 export interface Model{
   model: string;

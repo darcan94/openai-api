@@ -1,7 +1,7 @@
 import { signOut } from "@/auth";
 import Button from "@/components/ui/Button";
-import ModelSelector from "./ui/modelSelector";
-import { SidebarToggle } from "./sidebar/sidebarToggle";
+import ModelSelector from "@/components/ui/modelSelector";
+import { SidebarToggle } from "@/components/sidebar/sidebarToggle";
 
 export default function Header() {
   return (
