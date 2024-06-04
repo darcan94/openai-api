@@ -14,7 +14,7 @@ export default function ModelConfig(){
         </Button>
 
         <dialog open={isOpen}
-          className="space-y-6 absolute top-48 -left-36 backdrop:bg-black/70 fixed inset-0 space-y-8 p-6 rounded-lg bg-secondary shadow-lg">
+          className="space-y-6 absolute top-48 -left-36 backdrop:bg-black/70 inset-0 p-6 rounded-lg bg-secondary shadow-lg">
             <SettingInput min={50} max={2024} step={1} title="tokens">Max Tokens</SettingInput>
             <SettingInput min={0} max={2} step={.1} title="temperature">Temperature</SettingInput>
             <SettingInput min={0} max={1} step={.1} title="topP">Top P</SettingInput>             
