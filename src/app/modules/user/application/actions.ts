@@ -1,6 +1,6 @@
 "use server";
 import { signIn } from "@/auth";
-import { AuthError } from "next-auth";
+import  AuthError  from "next-auth";
 import { UserRepositoryImpl } from "@/app/modules/user/infra/UserRepositoryImpl";
 import {LoginFormSchema, FormState, SignupFormSchema} from "@/app/(auth)/definitions";
 import bcrypt from "bcrypt";

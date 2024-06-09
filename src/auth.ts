@@ -9,15 +9,15 @@ export const { auth, signIn, signOut, handlers: { GET, POST } } = NextAuth({
     ...authConfig,
     providers: [
         Credentials({
-             async authorize({ email, password }: any) {
-                 const user = await getUser(email);
-                 if(!user) return null;
+            async authorize({ email, password }: any) {
+                const user = await getUser(email);
+                if(!user) return null;
                  
-                 const passwordsMatch = await bcrypt.compare(password, user.password);
-                 if(passwordsMatch) return user;
+                const passwordsMatch = await bcrypt.compare(password, user.password);
+                if(passwordsMatch) return user;
 
-                 console.warn('Invalid Credentials');
-                 return null;
+                console.warn('Invalid Credentials');
+                return null;
             },
         }),
         github

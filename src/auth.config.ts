@@ -5,7 +5,7 @@ export const authConfig = {
         signIn: '/login',
     },
     callbacks: {
-        authorized({ auth, request: { nextUrl } }){
+        authorized({ auth, request: { nextUrl } } : any ): any {
             const isLoggedIn = !!auth?.user;
             const isOnLoginPage = nextUrl.pathname.startsWith('/login');
             const isOnSignupPage = nextUrl.pathname.startsWith('/signup');
@@ -14,7 +14,7 @@ export const authConfig = {
                 if(isOnLoginPage || isOnSignupPage){
                     return Response.redirect(new URL('/', nextUrl));
                 }
-            }  
+            }
 
             if(isLoggedIn || isOnSignupPage){
                 return true;
@@ -26,7 +26,7 @@ export const authConfig = {
             if (user) {
               token = { ...token, id: user.id }
             }
-      
+
             return token
         },
         async session({ session, token }) {
@@ -42,6 +42,6 @@ export const authConfig = {
     },
     providers: [],
     session: {
-        maxAge:  60 * 60 // 1 hours
+        maxAge:  60 * 60 // 1 hour
     }
 } satisfies NextAuthConfig
