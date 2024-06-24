@@ -1,11 +1,11 @@
 import "@/app/globals.css";
 import type { Metadata } from "next";
-import { Comfortaa } from "next/font/google";
+import { Inter } from "next/font/google";
 import { ChatThemeProvider } from "@/components/chatThemeProvider";
 import React from "react";
 import { ViewTransitions } from "next-view-transitions";
 
-const comfortaa = Comfortaa({
+const inter = Inter({
   subsets: ["latin"],
   weight: ["300", "500", "700"],
   display: "swap"
@@ -30,7 +30,7 @@ export default function RootLayout({
 }) {
   return (
     <ViewTransitions>
-      <html lang="en" suppressHydrationWarning className={comfortaa.className}>
+      <html lang="en" suppressHydrationWarning className={inter.className}>
         <body className="h-screen w-screen">
           <ChatThemeProvider
             attribute="class"
