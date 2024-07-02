@@ -32,7 +32,7 @@ export default function EmptyChat({ setInput, session }: {setInput: any, session
                 onClick={() => setInput(message.message)}
                 className="p-2 text-start cursor-pointer border border-secondary dark:bg-secondary flex-1 h-24 rounded-lg shadow-sm dark:shadow-none">
               <span
-                className="text-sm text-primary dark:text-primary-300"
+                className="text-sm text-font"
                 onClick={() => setInput(message.message)}
               >
                 {message.heading}

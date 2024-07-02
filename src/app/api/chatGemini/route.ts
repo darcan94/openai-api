@@ -7,8 +7,9 @@ export async function POST(req: Request){
   const { messages, id, userId } = await req.json();
   
   const result = await streamText({
-    model: google("models/gemini-1.5-pro-latest"),
+    model: google("models/gemini-1.5-flash"),
     messages,
+    system:"Detect user's language and response everything in MARKDOWN format",
     maxTokens: 400,
     temperature: 0,
     maxRetries: 1,
