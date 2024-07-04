@@ -37,6 +37,7 @@ function SettingInput({min, max, step, title, children}: SettingProps){
             <div className="flex gap-4 justify-between items-center">
                 <label htmlFor={title}>{children}</label>
                 <input 
+                    name={title}
                     value={value} 
                     type="number" 
                     className="w-16 appearance-none rounded-md px-2 text-sm bg-secondary border border-white/20" 

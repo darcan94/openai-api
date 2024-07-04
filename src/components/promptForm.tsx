@@ -1,27 +1,30 @@
 import useEnterSend from "@/hooks/useEnterSend";
 import Button from "@/components/ui/Button";
-import TextArea from "@/components/ui/TextArea";
 import { IconReload, IconStop, IconSubmit, ImageIcon } from "@/components/ui/Icons";
 import { useState } from "react";
 
 interface ChatFormProps {
   input: string;
-  setInput: any;
+  //setInput: any;
   isLoading: boolean;
   hasMessage: boolean;
   stop: () => void;
   reload: () => void;
-  onSubmit: any;
+  //onSubmit: any;
+  handleInputChange:any;
+  handleSubmit:any;
 }
 
 export default function PromptForm({
   input,
-  setInput,
+  //setInput,
   isLoading,
   hasMessage,
   stop,
   reload,
-  onSubmit
+  //onSubmit,
+  handleInputChange,
+  handleSubmit,
 }: ChatFormProps) {
   const { formRef, onKeyDown } = useEnterSend();
   const [imagePreview, setImagePreview] = useState<string | null>(null);
@@ -41,22 +44,21 @@ export default function PromptForm({
 
   const handleDeleteImage = () => {
     setImagePreview(null);
-    setInput('');
+    //setInput('');
   }
 
   return (
     <div className="sticky bottom-0 w-full bg-background-alpha backdrop-blur-md">
       <form
         ref={formRef}
-        onSubmit={async e => {
-          e.preventDefault();
-          if(!input?.trim()) {
-            return
-          }
-          setInput('');
-          await onSubmit(input);
-        }}
         className="mx-auto w-full lg:w-8/12 p-4"
+        onSubmit={e => {
+          handleSubmit(e, {
+            data: {
+              image: imagePreview
+            },
+          })
+        }}
       >
         <div className="rounded-[30px] border border-gray-200 bg-secondary dark:border-white/10">
           {imagePreview && (
@@ -71,17 +73,37 @@ export default function PromptForm({
             </div>
           )}
           <div className="flex items-center w-full min-h-[4rem] p-1"> 
-            <TextArea
-              input={input}
-              setInput={setInput}
-              onKeyDown={onKeyDown}
-            />
+          <textarea
+            name="prompt"
+            autoFocus={true}
+            tabIndex={0}
+            rows={1}
+            onChange={handleInputChange}
+            className="w-full rounded-3xl max-h-32 resize-none bg-transparent px-4 py-[.5rem] text-font outline-none sm:text-sm"
+            onKeyDown={onKeyDown}
+            value={input}
+            placeholder="Send a message"
+          ></textarea>
+
+            { (!imagePreview && !isLoading) && (
+              <>
+                <label className="px-2" htmlFor="file-input">
+                  <ImageIcon />
+                </label>
+                <input
+                  id="file-input"
+                  className="hidden" 
+                  type="file" 
+                  accept="image/*"
+                  onChange={handleImageChange}/>
+              </>)
+            }
 
             {
               isLoading ? (
                 <Button
                   variant="rounded"
-                  onClick={() => stop()}
+                  onClick={stop}
                   className="bg-background h-full text-font">
                     <IconStop />
                     <span className="sr-only"> Stop message </span>
@@ -90,26 +112,13 @@ export default function PromptForm({
               (hasMessage && input === "") && (
                   <Button
                     variant="rounded"
-                    onClick={() => reload()}
+                    onClick={reload}
                     className="bg-background h-full text-font">
                       <IconReload />
                       <span className="sr-only"> Reload message </span>                  
                   </Button>
               )
             )}
-
-            { !imagePreview && (
-              <>
-                <label className="px-2" htmlFor="file-input">
-                  <ImageIcon />
-                </label>
-                <input
-                className="hidden" 
-                id="file-input" 
-                type="file" 
-                accept="image/*"
-                onChange={handleImageChange}/>
-              </>)}
 
             {
               !(isLoading || input === "") && 

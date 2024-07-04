@@ -30,7 +30,9 @@ export default function Chat({ id, initialMessages, session }: ChatProps) {
     setInput,
     stop,
     reload,
-    append
+    //append,
+    handleInputChange,
+    handleSubmit,
   } = useChat({
     initialMessages,
     body: { id, userId: session?.user?.id },
@@ -53,18 +55,13 @@ export default function Chat({ id, initialMessages, session }: ChatProps) {
 
         <PromptForm
           input={input}
-          setInput={setInput}
+          //setInput={setInput}
           isLoading={isLoading}
           hasMessage={messages.length > 0}
           stop={stop}
           reload={reload}
-          onSubmit={
-            async (value: string) => {
-              await append({
-                content: value,
-                role: 'user'
-            })
-          }}
+          handleInputChange={handleInputChange}
+          handleSubmit={handleSubmit}
         />
       </div>
     </div>
