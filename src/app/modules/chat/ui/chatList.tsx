@@ -3,6 +3,7 @@ import { IconArrowDown } from "@/components/ui/Icons";
 import Bubble from "@/components/ui/bubble";
 import { useAutoScroll, useScrollDetection, useScrollToBottom } from "@/hooks/useScroll";
 import { type Message } from "ai";
+import Image from "next/image";
 import { useEffect } from "react";
 
 export default function ChatList({ messages }: { messages: Message[] }) {
@@ -17,9 +18,25 @@ export default function ChatList({ messages }: { messages: Message[] }) {
 
   return (
     <div  ref={chatListRef} className="flex xl:w-9/12 mx-auto h-full flex-col gap-4 px-2 pt-10 pb-24 overflow-y-auto overflow-x-hidden">
-      {messages.map((message, index) => (
-        <Bubble key={index} message={message} />
-      ))}
+      {messages.map((message, index) => 
+        {
+          if(Array.isArray(message.content) && message.content.length > 1 && 'image' in message.content[1])
+            return (
+              <div key={index}>
+                <Bubble message={{id: message.id, role: message.role, content: message.content[0].text}} />
+                <Image 
+                  width={32} 
+                  height={32} 
+                  src={message.content[1].image} 
+                  alt="Image Preview" 
+                  className="rounded-xl w-10/12 md:w-8/12 lg:w-6/12 xl:w-4/12 px-2"/>
+              </div>
+            )
+
+          return <Bubble key={index} message={message} />
+        }        
+      )}
+      
       {!isAtBottom && (
         <Button
           variant="rounded"
@@ -34,3 +51,17 @@ export default function ChatList({ messages }: { messages: Message[] }) {
     </div>
   );
 }
+
+
+/* 
+(<Bubble key={index} message={message} />)
+
+  typeof message.content === 'object'
+                        ? (
+                          <>
+                            {message.content[0].text}
+                            <Image width={6} height={4} src={message.content[1].image} alt="Image Preview" className="w-36 h-28 object-cover rounded-[20px]"/>
+                          </>
+                        )
+                        : message.content
+*/

@@ -2,6 +2,8 @@ import useEnterSend from "@/hooks/useEnterSend";
 import Button from "@/components/ui/Button";
 import { IconReload, IconStop, IconSubmit, ImageIcon } from "@/components/ui/Icons";
 import { useState } from "react";
+import Image from "next/image";
+import useTextareaAutoHeight from "@/hooks/useTextareaAutoHeight";
 
 interface ChatFormProps {
   input: string;
@@ -27,6 +29,7 @@ export default function PromptForm({
   handleSubmit,
 }: ChatFormProps) {
   const { formRef, onKeyDown } = useEnterSend();
+  const textareaRef = useTextareaAutoHeight(input);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,7 +47,6 @@ export default function PromptForm({
 
   const handleDeleteImage = () => {
     setImagePreview(null);
-    //setInput('');
   }
 
   return (
@@ -53,6 +55,7 @@ export default function PromptForm({
         ref={formRef}
         className="mx-auto w-full lg:w-8/12 p-4"
         onSubmit={e => {
+          setImagePreview(null);
           handleSubmit(e, {
             data: {
               image: imagePreview
@@ -63,7 +66,7 @@ export default function PromptForm({
         <div className="rounded-[30px] border border-gray-200 bg-secondary dark:border-white/10">
           {imagePreview && (
             <div className="px-2 py-2 w-max relative group">
-              <img src={imagePreview} alt="Image Preview" className="w-36 h-28 object-cover rounded-[20px]" />
+              <Image width={6} height={4} src={imagePreview} alt="Image Preview" className="w-36 h-28 object-cover rounded-[20px]" />
               <button 
                 type="button"
                 onClick={handleDeleteImage}
@@ -75,6 +78,7 @@ export default function PromptForm({
           <div className="flex items-center w-full min-h-[4rem] p-1"> 
           <textarea
             name="prompt"
+            ref={textareaRef}
             autoFocus={true}
             tabIndex={0}
             rows={1}
