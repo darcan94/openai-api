@@ -21,7 +21,7 @@ export default function Chat({ id, initialMessages, session }: ChatProps) {
   const path = usePathname();
   const [
       selectedModel
-  ] = useLocalStorage(LOCAL_STORAGE_KEY, { model: "gpt-3.5", path: "chat" });
+  ] = useLocalStorage(LOCAL_STORAGE_KEY, { model: "openai:gpt-4o", path: "chat" });
 
   const {
     messages,
@@ -52,7 +52,7 @@ export default function Chat({ id, initialMessages, session }: ChatProps) {
            ? <ChatList messages={messages} />
            : <EmptyChat setInput={setInput} session={session} />
         }
-
+        {selectedModel.model}
         <PromptForm
           input={input}
           //setInput={setInput}

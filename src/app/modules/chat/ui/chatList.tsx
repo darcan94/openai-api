@@ -29,7 +29,7 @@ export default function ChatList({ messages }: { messages: Message[] }) {
                   height={32} 
                   src={message.content[1].image} 
                   alt="Image Preview" 
-                  className="rounded-xl w-10/12 md:w-8/12 lg:w-6/12 xl:w-4/12 px-2"/>
+                  className="rounded-xl w-8/12 md:w-6/12 lg:w-4/12"/>
               </div>
             )
 

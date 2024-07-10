@@ -32,7 +32,9 @@ export async function POST(req: Request){
 
       const newChat: Chat = {
         id,
-        title: messages[0].content.substring(0, 100),
+        title: data.image 
+          ? messages[0].content[0].text.substring(0, 100)
+          : messages[0].content.substring(0, 100) ,
         createdAt: new Date(),
         userId,
         messages

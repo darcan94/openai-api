@@ -8,7 +8,7 @@ export interface Model{
 }
 
 const models = [
-  { model: "gpt-3.5", path: "chat" },
+  { model: "openai: gpt-4o", path: "chat" },
   { model: "gemini-pro", path: "chatGemini" },
 ];
 
