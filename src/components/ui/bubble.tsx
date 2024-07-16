@@ -18,8 +18,8 @@ export default function Bubble({ message }: { message: Message }) {
 
   return (
     <div
-      key={message.id}
-      className={"hover:group-hover group w-full p-3 text-font"}>
+      id={ message.id }
+      className="hover:group-hover group w-full p-3 text-font">
       
       <div className="flex relative justify-between items-center h-6 w-full">
         <p className="font-bold">{ isUser ? "You" : "AI"}</p>

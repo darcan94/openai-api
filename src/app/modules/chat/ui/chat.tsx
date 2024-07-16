@@ -37,6 +37,7 @@ export default function Chat({ id, initialMessages, session }: ChatProps) {
     initialMessages,
     body: { id, userId: session?.user?.id },
     api: `/api/${selectedModel.path}`,
+    sendExtraMessageFields: true,
     onFinish: () => {
       if(!path.includes(id)) {
         router.push(`/chat/${id}`);
