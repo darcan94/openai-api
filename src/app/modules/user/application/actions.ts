@@ -2,8 +2,8 @@
 import { signIn } from "@/auth";
 import { AuthError } from "next-auth";
 import { UserRepositoryImpl } from "@/app/modules/user/infra/UserRepositoryImpl";
-import {LoginFormSchema, LoginFormState} from "@/app/login/definitions";
-import { FormState, SignupFormSchema } from "@/app/signup/definitions";
+import {LoginFormSchema, LoginFormState} from "@/app/(auth)/login/definitions";
+import { FormState, SignupFormSchema } from "@/app/(auth)/signup/definitions";
 import bcrypt from "bcrypt";
 import { User } from "@/app/modules/user/domain/User";
 import { nanoid } from "nanoid";

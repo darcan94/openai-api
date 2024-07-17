@@ -13,7 +13,7 @@ export default function Header() {
       <div className="flex items-center">
         <ModelConfig />
         
-        <form className="hidden md:flex h-full items-center justify-end px-6"
+        <form className="hidden md:flex h-full items-center justify-end px-2"
           action={async () => {
             'use server';
             await signOut({redirectTo: '/login'});

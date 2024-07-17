@@ -1,4 +1,4 @@
-import React, { cache } from "react";
+import React from "react";
 import { getChats } from "@/app/modules/chat/application/actions";
 import { Chat } from "@/app/modules/chat/domain/Chat";
 import { Session } from "next-auth";

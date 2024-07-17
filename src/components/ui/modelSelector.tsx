@@ -17,7 +17,7 @@ export default function ModelSelector() {
   const [
     selectedModel,
     setSelectedModel
-  ] = useLocalStorage(LOCAL_STORAGE_KEY, { model: "gpt-3.5", path: "chat" });
+  ] = useLocalStorage(LOCAL_STORAGE_KEY, { model: "openai: gpt-4o", path: "chat" });
 
   const handleModelSelect = (model: { model: string, path: string}) => {
     setSelectedModel(model);

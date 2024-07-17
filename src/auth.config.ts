@@ -16,6 +16,10 @@ export const authConfig = {
                 }
             }  
 
+            if(isLoggedIn || isOnSignupPage){
+                return true;
+            }
+
             return isLoggedIn;
         },
         async jwt({ token, user }) {

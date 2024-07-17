@@ -1,15 +1,15 @@
 import { Metadata } from "next";
-import LoginForm from "@/app/login/loginForm";
+import SignupForm from "@/app/(auth)/signup/signupForm";
 
 export const metadata: Metadata = {
-    title: 'Login',
+    title: 'Sign up',
 }
 
-export default function LoginPage(){
+export default function SignupPage(){
     return(
         <main className="flex min-h-screen items-center justify-center
         bg-gradient-to-br from-secondary to-background px-4 py-12 sm:px-6 lg:px-8">
-            <LoginForm />
+            <SignupForm />
         </main>
     );
 }
