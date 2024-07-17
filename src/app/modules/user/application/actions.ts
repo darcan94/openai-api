@@ -2,8 +2,7 @@
 import { signIn } from "@/auth";
 import { AuthError } from "next-auth";
 import { UserRepositoryImpl } from "@/app/modules/user/infra/UserRepositoryImpl";
-import {LoginFormSchema, LoginFormState} from "@/app/(auth)/login/definitions";
-import { FormState, SignupFormSchema } from "@/app/(auth)/signup/definitions";
+import {LoginFormSchema, FormState, SignupFormSchema} from "@/app/(auth)/definitions";
 import bcrypt from "bcrypt";
 import { User } from "@/app/modules/user/domain/User";
 import { nanoid } from "nanoid";
@@ -58,7 +57,7 @@ export async function signup(
 }
 
 export async function authenticate(
-    prevState: LoginFormState,
+    prevState: FormState,
     formData: FormData
 ){
   const validatedFields = LoginFormSchema.safeParse({
