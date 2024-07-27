@@ -19,17 +19,27 @@ export default async function Header() {
         
         
         <UserMenu session={session}>
-          <form className="hidden md:flex h-full items-center justify-end px-2"
-            action={async () => {
-              'use server';
-              await signOut({redirectTo: '/login'});
-            }}>
-              <Button variant="ghost" className="text-font font-extralight">
-                Sign Out
-              </Button>
-          </form>
+          <LogoutForm />
         </UserMenu>
       </div>
     </header>
+  );
+}
+
+
+function LogoutForm(){
+  return (
+    <form 
+      className="hidden md:flex h-full items-center justify-end px-2"
+      action={async () => {
+        'use server';
+        await signOut({redirectTo: '/login'});
+      }}>
+
+      <Button variant="ghost" className="text-font font-extralight">
+        Sign Out
+      </Button>
+
+    </form>
   );
 }

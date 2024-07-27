@@ -1,32 +1,21 @@
-"use client"
-import { useLocalStorage } from "@/hooks/useLocalStorage";
-import DropDown from "@/components/dropDown";
+import Dropdown from "./dropDown";
 
-export interface Model{
-  model: string;
-  path: string;
+interface Option{
+  value: string;
+  label: string;
 }
 
-const models = [
-  { model: "openai: gpt-4o", path: "chat" },
-  { model: "gemini-pro", path: "chatGemini" },
+const options: Option[] = [
+  { label: 'gpt-4o', value: 'chat' },
+  { label: 'gemini-1.5-pro-latest', value: 'chatGemini' }
 ];
 
-const LOCAL_STORAGE_KEY = "modelSelected";
-
 export default function ModelSelector() {  
-  const [
-    selectedModel,
-    setSelectedModel
-  ] = useLocalStorage(LOCAL_STORAGE_KEY, { model: "openai: gpt-4o", path: "chat" });
-
-  const handleModelSelect = (model: Model) => {
-    setSelectedModel(model);
-  }
-
-  return <DropDown 
-            onSelect={ handleModelSelect } 
-            models={models}
-            selectedModel={ selectedModel } 
-        />
+  return (
+    <Dropdown 
+      options={options}
+      defaultOption={ options[0] } 
+      localStorageKey="model"
+    />
+  )
 }

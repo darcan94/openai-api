@@ -9,7 +9,6 @@ import { useLocalStorage } from "@/hooks/useLocalStorage";
 import React from "react";
 import {Session} from "next-auth";
 
-const LOCAL_STORAGE_KEY = "modelSelected";
 interface ChatProps{
   id: string;
   initialMessages?: Message[];
@@ -21,7 +20,7 @@ export default function Chat({ id, initialMessages, session }: ChatProps) {
   const path = usePathname();
   const [
       selectedModel
-  ] = useLocalStorage(LOCAL_STORAGE_KEY, { model: "openai:gpt-4o", path: "chat" });
+  ] = useLocalStorage('model', { label: 'gpt-4o', value: 'chat' });
 
   const {
     messages,
@@ -36,7 +35,7 @@ export default function Chat({ id, initialMessages, session }: ChatProps) {
   } = useChat({
     initialMessages,
     body: { id, userId: session?.user?.id },
-    api: `/api/${selectedModel.path}`,
+    api: `/api/${selectedModel.value}`,
     sendExtraMessageFields: true,
     onFinish: () => {
       if(!path.includes(id)) {
@@ -53,7 +52,7 @@ export default function Chat({ id, initialMessages, session }: ChatProps) {
            ? <ChatList messages={messages} />
            : <EmptyChat setInput={setInput} session={session} />
         }
-        {selectedModel.model}
+        {selectedModel.label}
         <PromptForm
           input={input}
           //setInput={setInput}

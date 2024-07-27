@@ -19,20 +19,6 @@
     @apply my-4 text-base font-medium italic before:content-['"'] after:content-['"'];
   }
 
-  h1 {
-    @apply text-2xl;
-  }
-  h2 {
-    @apply text-xl;
-  }
-  h3 {
-    @apply text-lg;
-  }
-
-  h4 {
-    @apply text-base;
-  }
-
   img {
     @apply w-2/4;
   }
@@ -41,26 +27,38 @@
 @layer base {
   :root {
     --primary: #1b4aef;
+    --primary-100: #dae7ff;
+    --primary-200: #bed5ff;
+    --primary-300: #91bbff;
+    --primary-400: #5d96fd;
+    --primary-500: #376ffa;
+    --primary-600: #1b4aef;
+    --primary-700: #1b30b2;
+
     --secondary: #e4eaf1;
     --secondary-alpha: #ffffff8a;
     --background: #f7f7f7;
     --background-alpha: #f7f7f78a;
     --foreground: #484848;
-    --primary-500: #4b84fd;
-    --primary-300: #73a7fb;
     --danger: #d8514b;
     --highlight: #000000;
   }
 
   .dark {
     --primary: #003f5c;
+    --primary-700: #006b95;
+    --primary-100: #dcf6ff;
+    --primary-200: #b2f0ff;
+    --primary-300: #6de5ff;
+    --primary-400: #20d9ff;
+    --primary-500: #00c5ff;
+    --primary-600: #009fdf;
+
     --secondary: #131314;
     --secondary-alpha: #1313148a;
     --background: #1e1f20;
     --background-alpha: #1e1f208a;
     --foreground: #a2a2a2;
-    --primary-500: #0084c3;
-    --primary-300: #0092d6;
     --highlight: #dddddd;
   }
 }

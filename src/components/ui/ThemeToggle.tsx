@@ -15,7 +15,7 @@ export default function ThemeToggle({
   };
 
   return (
-    <div className="absolute bottom-2 left-8 flex items-start flex-col rounded-md bg-background px-1 py-2 shadow-md">
+    <>
       <div className="w-full hover:bg-secondary rounded-md">
         <Button className="" variant="ghost" onClick={() => handleCloseDialog("dark")}>
           <IconMoon />
@@ -39,6 +39,6 @@ export default function ThemeToggle({
           <span className="sr-only">Toggle dark theme</span>
         </Button>
       </div>
-    </div>
+    </>
   );
 }
