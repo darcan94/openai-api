@@ -37,6 +37,7 @@ export default function SidebarItem({ chat }: { chat: any }) {
         <Button
           variant="ghost"
           size="iconsm"
+          className="mx-1"
           onClick={() => setIsDialogOpen(!isDialogOpen)}
         >
           <IconTrash />

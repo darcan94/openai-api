@@ -3,9 +3,8 @@ import Button from "@/components/ui/Button";
 import ModelSelector from "@/components/ui/modelSelector";
 import { SidebarToggle } from "@/components/sidebar/sidebarToggle";
 import ModelConfig from "./modelConfig";
-import Avatar from "./avatar";
 import { Session } from "next-auth";
-import UserMenu from "./user-menu";
+import UserMenu from "./userMenu";
 
 export default async function Header() {
   const session: Session | null = await auth();
@@ -25,7 +24,7 @@ export default async function Header() {
               'use server';
               await signOut({redirectTo: '/login'});
             }}>
-              <Button variant="ghost" className="text-white font-extralight">
+              <Button variant="ghost" className="text-font font-extralight">
                 Sign Out
               </Button>
           </form>

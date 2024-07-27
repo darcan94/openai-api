@@ -70,7 +70,7 @@ export default function PromptForm({
               <button 
                 type="button"
                 onClick={handleDeleteImage}
-                className="absolute hidden top-0 right-0 bg-danger rounded-full px-2 focus:outline-none group-hover:block">
+                className="absolute hidden text-white top-0 right-0 bg-danger rounded-full px-2 focus:outline-none group-hover:block">
                   x
               </button>
             </div>
@@ -126,7 +126,7 @@ export default function PromptForm({
 
             {
               !(isLoading || input === "") && 
-                ( <Button type="submit" variant="ghost">
+                ( <Button type="submit" variant="ghost" size="icon" className="px-1">
                     <IconSubmit />
                     <span className="sr-only"> Send message </span>
                   </Button> )

@@ -1,16 +1,17 @@
 import { Session } from "next-auth";
 import Image from "next/image";
 
-interface AvatarProps{
+interface Props{
     session?: Session | null;
 }
 
-export default function Avatar({ session }: AvatarProps){
+export default function Avatar({ session }: Props){
     
-    if(!session?.user?.image) {return (
-        <div className="text-white text-xl rounded-full z-10 h-10 w-10 flex justify-center items-center -space-x-4 rtl-space-x-reverse bg-primary">
-            {session?.user?.name?.charAt(0).toUpperCase()}
-        </div>
+    if(!session?.user?.image) {
+        return (
+            <div className="text-white text-xl rounded-full z-10 h-10 w-10 flex justify-center items-center -space-x-4 rtl-space-x-reverse bg-primary">
+                {session?.user?.name?.charAt(0).toUpperCase()}
+            </div>
     );}
 
     return (

@@ -1,13 +1,13 @@
 import Button from "@/components/ui/Button";
 import { useEffect, useRef } from "react";
 
-interface DialogProps {
+interface Props {
   isOpen: boolean;
   onClose: (closed: boolean) => void;
   onConfirm: () => void;
 }
 
-export default function Dialog({ isOpen, onClose, onConfirm }: DialogProps) {  
+export default function Dialog({ isOpen, onClose, onConfirm }: Props) {  
   const dialogRef = useRef<HTMLDialogElement | null>(null);
 
   useEffect(() => {

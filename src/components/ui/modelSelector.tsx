@@ -12,14 +12,15 @@ const models = [
   { model: "gemini-pro", path: "chatGemini" },
 ];
 
+const LOCAL_STORAGE_KEY = "modelSelected";
+
 export default function ModelSelector() {  
-  const LOCAL_STORAGE_KEY = "modelSelected";
   const [
     selectedModel,
     setSelectedModel
   ] = useLocalStorage(LOCAL_STORAGE_KEY, { model: "openai: gpt-4o", path: "chat" });
 
-  const handleModelSelect = (model: { model: string, path: string}) => {
+  const handleModelSelect = (model: Model) => {
     setSelectedModel(model);
   }
 

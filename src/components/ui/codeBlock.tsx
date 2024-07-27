@@ -3,12 +3,12 @@ import useClipboard from "@/hooks/useClipboard";
 import Button from "@/components/ui/Button";
 import SyntaxHighlighter from "@/components/ui/syntaxHighlighter";
 
-interface CodeBlockProps {
+interface Props {
   value: string;
   language: string;
 }
 
-export default function CodeBlock({ value, language }: CodeBlockProps) {
+export default function CodeBlock({ value, language }: Props) {
   const { isCopied, copyToClipboard } = useClipboard({ timeout: 3000 });
 
   const onCopy = () => {

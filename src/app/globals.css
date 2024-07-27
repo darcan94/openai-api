@@ -113,3 +113,7 @@ th {
 tr:nth-child(even) {
   background-color: var(--secondary);
 }
+
+.text-responsive{
+  font-size: clamp(1rem, 5vw, 4rem);
+}

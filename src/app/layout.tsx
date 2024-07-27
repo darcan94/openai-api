@@ -7,7 +7,6 @@ import { ViewTransitions } from "next-view-transitions";
 
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["300", "500", "700"],
   display: "swap"
 });
 

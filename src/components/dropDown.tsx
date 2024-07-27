@@ -2,13 +2,13 @@ import { useState } from "react";
 import { DropDownIcon } from "@/components/ui/Icons";
 import { Model } from "@/components/ui/modelSelector";
 
-interface DropDownProps {
+interface Props {
   selectedModel: Model;
   models: Model[]
   onSelect: ( model:Model ) => void;
 }
 
-export default function DropDown({ onSelect, models, selectedModel }: DropDownProps) {
+export default function DropDown({ onSelect, models, selectedModel }: Props) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleSelect = (model: Model) => {

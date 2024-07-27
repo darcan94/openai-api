@@ -1,7 +1,7 @@
 import useTextareaAutoHeight from "@/hooks/useTextareaAutoHeight";
 import { KeyboardEvent } from "react";
 
-interface ChatFormProps {
+interface Props {
   input: string;
   setInput: (value: string) => void;
   onKeyDown: (event: KeyboardEvent<HTMLTextAreaElement>) => void;
@@ -11,7 +11,7 @@ export default function TextArea({
   input,
   setInput,
   onKeyDown,
-}: ChatFormProps) {
+}: Props) {
   const textareaRef = useTextareaAutoHeight(input);
   return (
     <textarea
