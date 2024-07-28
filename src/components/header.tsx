@@ -30,7 +30,7 @@ export default async function Header() {
 function LogoutForm(){
   return (
     <form 
-      className="hidden md:flex h-full items-center justify-end px-2"
+      className="flex h-full items-center justify-end px-2"
       action={async () => {
         'use server';
         await signOut({redirectTo: '/login'});

@@ -43,7 +43,7 @@ export default function Dropdown({ options, localStorageKey, defaultOption }: Pr
         <div className="relative w-64" ref={dropdownRef}>
             <button 
                 onClick={ handleToggle }
-                className="w-full p-2 rounded-md shadow-sm flex items-center  focus:outline-none hover:text-highlight">
+                className="w-full p-2 rounded-md flex items-center  focus:outline-none hover:text-highlight">
 
                     <span className="truncate">
                         {selectedOption.label}

@@ -21,7 +21,7 @@ export default function UserMenu({session, children}: {session: Session | null, 
     return () => {
         document.removeEventListener('mousedown', handleClickOutside);
     };
-}, []);
+  }, []);
 
   const handleToggle = (): void => setIsOpen(!isOpen);
 
