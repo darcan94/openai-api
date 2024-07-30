@@ -40,7 +40,7 @@ export default function ChatList({ messages }: { messages: Message[] }) {
       {!isAtBottom && (
         <Button
           variant="rounded"
-          className="absolute bottom-28 right-6 z-10 bg-secondary"
+          className="absolute p-2 bottom-28 right-6 z-10 pointer bg-secondary"
           size="iconlg"
           onClick={scrollToBottom}
         >

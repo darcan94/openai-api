@@ -25,11 +25,11 @@ const mobileVariants = {
 
 const desktopVariants = {
   open: {
-    width: '300px',
+    width: '20rem',
     transition: { type: 'spring', stiffness: 300, damping: 30 },
   },
   closed: {
-    width: '4.4rem',
+    width: '4rem',
     transition: { type: 'spring', stiffness: 300, damping: 30 },
   },
 };
@@ -41,7 +41,7 @@ export default function Sidebar({ children }: Props) {
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768); // Adjust this breakpoint as needed
+      setIsMobile(window.innerWidth < 768);
     };
 
     checkMobile();
@@ -55,23 +55,20 @@ export default function Sidebar({ children }: Props) {
         isMobile 
           ? (
             <motion.aside
-              initial="closed"
               animate={state}
               variants={mobileVariants}
-              className="absolute flex flex-col gap-2 justify-between h-full inset-0 bg-secondary z-20 pt-16 p-2 border-r border-white/10 text-font md:hidden">
+              className="absolute flex flex-col gap-2 justify-between h-full bg-secondary-alpha backdrop-blur-md z-20 pt-16 p-2 shadow-xl text-font">
             
                 <Link 
                   href="/"
                   className="flex items-center no-underline text-font p-2 rounded-full w-max bg-background-alpha hover:bg-background">
-                <IconClearChat />
-                <span
-                    data-state={state}
-                    className="mr-2 data-[state=closed]:hidden">
-                    New Chat
-                </span>
-                <span className="sr-only">New Chat</span>
+                    <IconClearChat />
+                    <span className="mr-2">
+                        New Chat
+                    </span>
+                    <span className="sr-only">New Chat</span>
                 </Link>
-                <div data-state={state} className="md:data-[state=closed]:hidden grow">
+                <div className="grow">
                   {children}
                 </div>
                 <Settings />
@@ -80,24 +77,22 @@ export default function Sidebar({ children }: Props) {
           )
           :(
             <motion.aside 
-              id="sidebar"
-              initial={isMobile ? 'closed' : 'open'}
               animate={state}
               variants={desktopVariants}
-              className={`hidden md:static top-0 left-0 bottom-0 md:flex flex-col gap-2 justify-between h-full bg-secondary shadow-lg z-20 pt-16 p-2 border-r border-white/10 text-font
-              ${isMobile ? 'hidden md:block' : ''}`}>
+              className={`flex flex-col gap-2 justify-between bg-secondary pt-16 p-2 border-r border-white/10 text-font overflow-hidden`}>
 
                   <Link 
                     href="/"
                     className="flex items-center no-underline text-font p-2 rounded-full w-max bg-background-alpha hover:bg-background">
-                  <IconClearChat />
-                  <span
-                      data-state={state}
-                      className="mr-2 data-[state=closed]:hidden">
-                      New Chat
-                  </span>
-                  <span className="sr-only">New Chat</span>
+                      <IconClearChat />
+                      <span
+                          data-state={state}
+                          className="mr-2 md:data-[state=closed]:hidden">
+                          New Chat
+                      </span>
+                      <span className="sr-only">New Chat</span>
                   </Link>
+                  
                   <div data-state={state} className="md:data-[state=closed]:hidden grow">
                     {children}
                   </div>

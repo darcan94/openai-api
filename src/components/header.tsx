@@ -10,11 +10,11 @@ export default async function Header() {
   const session: Session | null = await auth();
 
   return (
-    <header className="flex px-2 justify-center md:justify-between items-center absolute z-10 top-0 h-14 w-full text-font bg-background-alpha backdrop-blur-md">   
+    <header className="absolute pl-10 md:pl-0 flex justify-between items-center  h-14 w-full text-font bg-background-alpha backdrop-blur-md">   
       <SidebarToggle />  
       <ModelSelector />
 
-      <div className="flex items-center">
+      <div className="flex gap-2 items-center p-2">
         <ModelConfig />
         
         

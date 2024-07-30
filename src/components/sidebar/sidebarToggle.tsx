@@ -13,8 +13,8 @@ export function SidebarToggle() {
         <Button
           variant="ghost"
           size="icon"
-          className="fixed top-2 left-2 z-30 rounded-full transition-all duration-300"
-          onClick={() => toggleSidebar()}
+          className="fixed m-2 z-30"
+          onClick={toggleSidebar}
         >
           <IconSidebarAlt />
           <span className="sr-only">Toggle Sidebar</span>
