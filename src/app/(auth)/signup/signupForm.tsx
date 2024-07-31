@@ -1,5 +1,4 @@
 'use client'
-import Button from "@/components/ui/Button";
 import { useFormState, useFormStatus } from "react-dom"
 import { signup } from "@/app/modules/user/application/actions";
 import {EyeIcon} from "@/components/ui/Icons";
@@ -78,12 +77,12 @@ export default function SignupForm(){
                 }
                 {errorMessage?.message && <p className="text-danger">{errorMessage.message}</p>}
 
-                <Button className="w-full h-12 hover:bg-primary-500 rounded-lg"
+                <button className="w-full p-2 bg-primary hover:bg-primary-500 rounded-lg"
                     aria-disabled={pending}
                     disabled={pending}
                     type="submit">
                     {pending ? 'Submitting...' : 'Sign Up' }
-                </Button>
+                </button>
             </form>
         </div>
     )

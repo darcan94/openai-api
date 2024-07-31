@@ -1,5 +1,4 @@
 'use client'
-import Button from "@/components/ui/Button";
 import { useFormState, useFormStatus } from "react-dom"
 import { authenticate, login } from "@/app/modules/user/application/actions";
 import {EyeIcon} from "@/components/ui/Icons";
@@ -59,13 +58,13 @@ export default function LoginForm(){
                 {errorMessage?.errors?.password && <p className="text-danger">{errorMessage.errors.password}</p>}
                 {errorMessage?.message && <p className="text-danger">{errorMessage.message}</p>}
 
-                <Button 
-                    className="w-full h-12 hover:bg-primary-500 rounded-lg"
+                <button 
+                    className="w-full p-2 bg-primary hover:bg-primary-500 rounded-lg"
                     aria-disabled={pending}
                     disabled={pending}
                     type="submit">
                         {pending ? 'Submitting...' : 'Sign In' }
-                </Button>
+                </button>
             </form>
 
             <div className="flex items-center text-font before:content-[''] after:content-[''] before:flex-grow after:flex-grow before:border-t after:border-t before:font after:font">
@@ -75,7 +74,7 @@ export default function LoginForm(){
             <div className="space-y-3">
                 <form action="#">
                     <button 
-                        className='flex items-center justify-center w-full rounded-lg border-2 border-gray-100 dark:border-font py-3 px-4 text-sm font-medium text-font hover:bg-gray-100 dark:hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-indigo-slate-300 focus:ring-offset-2' 
+                        className='flex items-center justify-center w-full rounded-lg border-2 border-gray-100 dark:border-font py-3 px-4 text-sm font-medium text-font hover:bg-gray-100 dark:hover:bg-secondary' 
                         type="submit">
                             <Image loading="lazy" className="w-5" height="2" width="2" alt="provider-logo" src="https://authjs.dev/img/providers/google.svg"/>
                             <span className='grow'>Signin in with Google</span>
@@ -84,7 +83,7 @@ export default function LoginForm(){
 
                 <form action={login}>
                     <button 
-                        className='flex items-center justify-center w-full rounded-lg border-2 border-gray-100 dark:border-font py-3 px-4 text-sm font-medium text-font hover:bg-gray-100 dark:hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-indigo-slate-300 focus:ring-offset-2' 
+                        className='flex items-center justify-center w-full rounded-lg border-2 border-gray-100 dark:border-font py-3 px-4 text-sm font-medium text-font hover:bg-gray-100 dark:hover:bg-secondary' 
                         type="submit">
                             <Image loading="lazy" className="w-5" height="2" width="2" alt="provider-logo" src="https://authjs.dev/img/providers/github.svg"/>
                             <span className='grow'>Signin in with GitHub</span>

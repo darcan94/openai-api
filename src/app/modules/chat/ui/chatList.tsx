@@ -51,17 +51,3 @@ export default function ChatList({ messages }: { messages: Message[] }) {
     </div>
   );
 }
-
-
-/* 
-(<Bubble key={index} message={message} />)
-
-  typeof message.content === 'object'
-                        ? (
-                          <>
-                            {message.content[0].text}
-                            <Image width={6} height={4} src={message.content[1].image} alt="Image Preview" className="w-36 h-28 object-cover rounded-[20px]"/>
-                          </>
-                        )
-                        : message.content
-*/
