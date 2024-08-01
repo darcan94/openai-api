@@ -30,21 +30,22 @@ const handleToggle = (): void => setIsOpen(!isOpen);
           <span className="sr-only">Model Config</span>
         </Button>
 
-        { isOpen && (
-            <AnimatePresence>
-              <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute w-max mx-2 bg-secondary rounded-md shadow-md p-4 right-0 space-y-6">
-              
-                    <Input min={50} max={2024} step={1} value={50}>Max Tokens</Input>
-                    <Input min={0} max={2} step={.1}>Temperature</Input>
-                    <Input min={0} max={1} step={.1}>Top P</Input>
-              </motion.div>
-            </AnimatePresence>
-        )}
+        <AnimatePresence>
+            { isOpen && (           
+                <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute w-max mx-2 bg-secondary rounded-md shadow-md p-4 right-0 space-y-6">
+                
+                        <Input min={50} max={2024} step={1} value={50}>Max Tokens</Input>
+                        <Input min={0} max={2} step={.1}>Temperature</Input>
+                        <Input min={0} max={1} step={.1}>Top P</Input>
+                        
+                </motion.div>
+            )}
+        </AnimatePresence>
     </div>
       
   );

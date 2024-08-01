@@ -1,4 +1,4 @@
-import Chat from "@/app/modules/chat/ui/chat";
+import Chat from "@/components/chat/chat";
 import { Metadata } from "next";
 import { nanoid } from "nanoid";
 import {Session} from "next-auth";

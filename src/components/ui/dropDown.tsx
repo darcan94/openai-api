@@ -59,7 +59,7 @@ export default function Dropdown({ options, localStorageKey, defaultOption }: Pr
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute z-10 w-full mx-2 mt-1 bg-secondary rounded-md shadow-md p-1">
+                        className="absolute z-0 w-full mx-2 mt-1 bg-secondary rounded-md shadow-md p-1">
 
                         { options.map((option) => (
                             <li 

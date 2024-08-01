@@ -1,4 +1,4 @@
-import Chat from "@/app/modules/chat/ui/chat";
+import Chat from "@/components/chat/chat";
 import { notFound } from "next/navigation";
 import { getChat } from "@/app/modules/chat/application/actions";
 import { Session } from "next-auth";
