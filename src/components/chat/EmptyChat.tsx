@@ -22,7 +22,7 @@ export default function EmptyChat({ setInput, session }: {setInput: any, session
         <h1 className="font-semibold text-responsive leading-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%">
           Welcome { session?.user?.name }
         </h1>
-        <p className="text-2xl text-font">
+        <p className="text-xl text-font">
           You can start a conversation here or try the following examples:
         </p>
         <div className="flex flex-wrap mt-16 gap-4 items-center">

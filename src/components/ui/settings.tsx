@@ -38,7 +38,7 @@ export default function Settings() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
               transition={{ duration: 0.2 }}
-              className="absolute z-10 w-max mx-10 mt-1 bg-background rounded-md shadow-md py-2 bottom-6">  
+              className="absolute z-10 w-max mx-10 mt-1 bg-background rounded-md shadow-md p-2 bottom-6">  
                 <ThemeToggle setOpen={setIsOpen} />
             </motion.div>  
         )}

@@ -77,7 +77,7 @@ export default function SignupForm(){
                 }
                 {errorMessage?.message && <p className="text-danger">{errorMessage.message}</p>}
 
-                <button className="w-full p-2 bg-primary hover:bg-primary-500 rounded-lg"
+                <button className="w-full p-2 bg-primary hover:bg-primary-500 rounded-lg text-white"
                     aria-disabled={pending}
                     disabled={pending}
                     type="submit">
