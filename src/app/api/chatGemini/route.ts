@@ -4,8 +4,8 @@ import { convertToCoreMessages, streamText } from "ai";
 import { google } from "@ai-sdk/google";
 
 export async function POST(req: Request){
-  const { messages, data, id, userId } = await req.json();
-
+  const { messages, data, id, userId, config } = await req.json();
+  console.log(config);
   const initialMessages = messages.slice(0, -1);
   const currentMessage = messages[messages.length - 1];
   
@@ -18,13 +18,12 @@ export async function POST(req: Request){
 
   const result = await streamText({
     model: google("models/gemini-1.5-pro-latest"),
-    system:"Detect user's language and response everything in MARKDOWN format",
+    system:"Detect user's language and response in MARKDOWN format",
     messages: [
       ...convertToCoreMessages(initialMessages),
       currentMessage
     ],
-    maxTokens: 400,
-    temperature: 0,
+    ...config,
     maxRetries: 1,
     async onFinish({ text }){
       messages.push({content: text, role: 'assistant'})
@@ -37,6 +36,7 @@ export async function POST(req: Request){
           : messages[0].content.substring(0, 100) ,
         createdAt: new Date(),
         userId,
+        config,
         messages
       }
 

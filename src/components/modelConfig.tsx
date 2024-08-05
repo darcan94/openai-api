@@ -1,22 +1,49 @@
 'use client'
-import { useEffect, useRef, useState } from "react";
+import React, { createContext, useContext, useEffect, useRef, useState } from "react";
 import Button from "@/components/ui/Button";
 import { ConfigIcon } from "@/components/ui/Icons";
 import { motion, AnimatePresence } from "framer-motion";
 
-interface Config{
+export interface Config{
     maxTokens: number;
     temperature: number;
     topP: number;
 }
 
+interface ConfigContextType {
+    config: Config;
+    setConfig: React.Dispatch<React.SetStateAction<Config>>;
+}
+
+const ConfigContext = createContext<ConfigContextType | undefined>(undefined);
+
+export const ConfigProvider: React.FC<{ children: React.ReactNode}> = ({children}) => {
+    const [config, setConfig] = useState<Config>({
+        maxTokens: 50,
+        temperature: 0,
+        topP: 0
+    });
+
+    return (
+      <ConfigContext.Provider value={{config, setConfig }}>
+        {children}
+      </ConfigContext.Provider>
+    );
+}
+
+export const useConfig = () => {
+    const context = useContext(ConfigContext);
+    if (context === undefined) {
+        throw new Error('useConfig must be used within a ConfigProvider');
+    }
+    return context;
+}
+
+
 export default function ModelConfig(){
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [config, setConfig] = useState<Config>({
-    maxTokens: 50,
-    temperature: 0,
-    topP: 0
-  });
+  const { config, setConfig } = useConfig();
+  
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const handleConfigChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,8 +54,6 @@ export default function ModelConfig(){
         [name]: parseFloat(value)
     }));
   }
-
-  console.log(config)
 
   useEffect(() => {
     const handleClickOutside = ( event : MouseEvent) => {
@@ -59,8 +84,7 @@ export default function ModelConfig(){
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute w-max mx-2 bg-secondary rounded-md shadow-md p-4 right-0 space-y-6">
-                        
+                    className="absolute w-max md:w-80 mx-2 bg-secondary rounded-md shadow-md p-4 right-0 space-y-6">                        
                     
                             <Input 
                                 name="maxTokens"
@@ -90,8 +114,7 @@ export default function ModelConfig(){
                                 value={config.topP}
                                 onChange={handleConfigChange}>
                                     Top P
-                            </Input>
-                        
+                            </Input>                        
                         
                 </motion.div>
             )}
@@ -116,7 +139,7 @@ function Input({min, max, step, children, name, value, onChange}: Props){
     return(
         <div>            
             <label className="w-full gap-4 flex justify-between items-center">
-                <code className="text-xs">{ children }</code>
+                <code className="text-sm">{ children }</code>
                 <input 
                     name={name}
                     value={value} 
@@ -124,7 +147,7 @@ function Input({min, max, step, children, name, value, onChange}: Props){
                     min={min} 
                     max={max} 
                     onChange={onChange}
-                    className="text-xs w-16 appearance-none rounded-md px-2 bg-transparent border border-gray-300 dark:border-gray-600"/>
+                    className="text-sm text-right w-16 appearance-none rounded-md px-2 bg-transparent border border-gray-300 dark:border-gray-600"/>
             </label>
 
             <input 

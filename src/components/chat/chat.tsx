@@ -8,16 +8,19 @@ import {usePathname, useRouter} from "next/navigation";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import React from "react";
 import {Session} from "next-auth";
+import { useConfig } from "../modelConfig";
+import { Chat } from "@/app/modules/chat/domain/Chat";
 
 interface ChatProps{
   id: string;
-  initialMessages?: Message[];
+  chat?: Chat;
   session: Session | null;
 }
 
-export default function Chat({ id, initialMessages, session }: ChatProps) {
+export default function Chat({ id, chat, session }: ChatProps) {
   const router = useRouter();
   const path = usePathname();
+  const { config } = useConfig();
   const [
       selectedModel
   ] = useLocalStorage('model', { label: 'gpt-4o', value: 'chat' });
@@ -33,8 +36,12 @@ export default function Chat({ id, initialMessages, session }: ChatProps) {
     handleInputChange,
     handleSubmit,
   } = useChat({
-    initialMessages,
-    body: { id, userId: session?.user?.id },
+    initialMessages: chat?.messages,
+    body: { 
+      id, 
+      userId: session?.user?.id,
+      config: chat?.config || config
+    },
     api: `/api/${selectedModel.value}`,
     sendExtraMessageFields: true,
     onFinish: () => {

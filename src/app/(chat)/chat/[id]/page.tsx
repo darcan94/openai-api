@@ -9,6 +9,6 @@ export default async function ChatPage({ params }: { params: any }) {
   const chat = await getChat(params.id, session?.user?.id || "");
 
   return  chat 
-            ? <Chat id={chat.id} initialMessages={chat.messages} session={null}/>
+            ? <Chat id={chat.id} chat={chat} session={null}/>
             : notFound()
 }
