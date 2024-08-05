@@ -4,9 +4,31 @@ import Button from "@/components/ui/Button";
 import { ConfigIcon } from "@/components/ui/Icons";
 import { motion, AnimatePresence } from "framer-motion";
 
+interface Config{
+    maxTokens: number;
+    temperature: number;
+    topP: number;
+}
+
 export default function ModelConfig(){
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [config, setConfig] = useState<Config>({
+    maxTokens: 50,
+    temperature: 0,
+    topP: 0
+  });
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const handleConfigChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    
+    setConfig(prevConfig => ({
+        ...prevConfig, 
+        [name]: parseFloat(value)
+    }));
+  }
+
+  console.log(config)
 
   useEffect(() => {
     const handleClickOutside = ( event : MouseEvent) => {
@@ -21,7 +43,7 @@ export default function ModelConfig(){
     };
 }, []);
 
-const handleToggle = (): void => setIsOpen(!isOpen);
+  const handleToggle = (): void => setIsOpen(!isOpen);
 
   return (    
     <div className="relative" ref={dropdownRef}>
@@ -38,10 +60,38 @@ const handleToggle = (): void => setIsOpen(!isOpen);
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.2 }}
                     className="absolute w-max mx-2 bg-secondary rounded-md shadow-md p-4 right-0 space-y-6">
-                
-                        <Input min={50} max={2024} step={1} value={50}>Max Tokens</Input>
-                        <Input min={0} max={2} step={.1}>Temperature</Input>
-                        <Input min={0} max={1} step={.1}>Top P</Input>
+                        
+                    
+                            <Input 
+                                name="maxTokens"
+                                min={50} 
+                                max={2024} 
+                                step={1} 
+                                value={config.maxTokens}
+                                onChange={handleConfigChange}>
+                                    Max Tokens
+                            </Input>
+
+                            <Input 
+                                name="temperature"
+                                min={0} 
+                                max={2} 
+                                step={.1}
+                                value={config.temperature}
+                                onChange={handleConfigChange}>
+                                    Temperature
+                            </Input>
+
+                            <Input 
+                                name="topP"
+                                min={0} 
+                                max={1} 
+                                step={.1}
+                                value={config.topP}
+                                onChange={handleConfigChange}>
+                                    Top P
+                            </Input>
+                        
                         
                 </motion.div>
             )}
@@ -53,40 +103,38 @@ const handleToggle = (): void => setIsOpen(!isOpen);
 
 interface Props{
     children: string;
+    name?: string;
     value?: number;
     min: number;
     max: number;
     step: number;
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-function Input({min, max, step, children}: Props){
-    const [value, setValue] = useState<number>(0);
-
-    const handleChangeValue = (evt:React.ChangeEvent<HTMLInputElement>) => {
-        const value = parseFloat(evt.target.value);
-        setValue(value);
-    }
+function Input({min, max, step, children, name, value, onChange}: Props){
 
     return(
         <div>            
             <label className="w-full gap-4 flex justify-between items-center">
                 <code className="text-xs">{ children }</code>
                 <input 
+                    name={name}
                     value={value} 
                     type="number" 
                     min={min} 
                     max={max} 
-                    onChange={handleChangeValue}
+                    onChange={onChange}
                     className="text-xs w-16 appearance-none rounded-md px-2 bg-transparent border border-gray-300 dark:border-gray-600"/>
             </label>
 
             <input 
+                name={name}
                 value={value} 
                 type="range" 
                 min={min} 
                 max={max} 
                 step={step} 
-                onChange={handleChangeValue} 
+                onChange={onChange} 
                 className="w-full h-1 accent-primary"/>                
         </div>  
     )
