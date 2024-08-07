@@ -4,14 +4,12 @@ import { streamText } from "ai";
 import { openai } from "@ai-sdk/openai";
 
 export async function POST(req: Request){
-  const { messages, id, userId } = await req.json();
+  const { messages, id, userId, config } = await req.json();
 
   const result = await streamText({
     model: openai("gpt-4o"),
     messages,
-    maxTokens: 400,
-    temperature: 0,
-    maxRetries: 1,
+    ...config,
     async onFinish({ text }){
       messages.push({content: text, role: 'assistant'})
       if( await updateChat(id, messages) ) return
@@ -20,6 +18,7 @@ export async function POST(req: Request){
         id,
         title: messages[0].content.substring(0, 100),
         createdAt: new Date(),
+        config,
         userId,
         messages
       }

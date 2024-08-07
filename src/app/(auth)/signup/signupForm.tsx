@@ -15,14 +15,14 @@ export default function SignupForm(){
     }
 
     return(
-        <div className="w-full max-w-sm p-4 bg-background rounded-xl space-y-6">
+        <div className="w-full max-w-sm p-4 bg-background rounded-xl space-y-6 shadow-lg">
             <div>
-                <h2 className="mt-6 text-center text-xl font-semibold tracking-tight text-font">
+                <h2 className="mt-6 text-center text-xl tracking-tight text-font">
                     Create an account.
                 </h2>
                 <p className="mt-2 text-center text-sm text-gray-400">
                     <span>Already have an account? </span>
-                    <Link className="font-medium text-primary-500 hover:text-indigo-400" href="/login">
+                    <Link className="font-medium text-primary-500 hover:text-primary-700 no-underline" href="/login">
                         Sign in
                     </Link>
                 </p>
@@ -77,7 +77,7 @@ export default function SignupForm(){
                 }
                 {errorMessage?.message && <p className="text-danger">{errorMessage.message}</p>}
 
-                <button className="w-full p-2 bg-primary hover:bg-primary-500 rounded-lg text-white"
+                <button className="w-full p-2 bg-primary hover:bg-primary-700 rounded-lg text-white"
                     aria-disabled={pending}
                     disabled={pending}
                     type="submit">

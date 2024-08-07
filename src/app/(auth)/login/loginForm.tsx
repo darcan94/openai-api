@@ -16,14 +16,14 @@ export default function LoginForm(){
     }
 
     return(
-        <div className="w-full max-w-sm p-4 bg-white dark:bg-background rounded-xl space-y-6">
+        <div className="w-full max-w-sm p-4 bg-white dark:bg-background rounded-xl space-y-6 shadow-lg">
             <div>
-                <h2 className="mt-6 text-center text-xl font-semibold tracking-tight text-font">
+                <h2 className="mt-6 text-center text-xl text-font">
                     Sign in to your account.
                 </h2>
-                <p className="mt-2 text-center text-sm text-gray-400">
+                <p className="mt-2 text-center text-sm text-font">
                     <span>Or </span>
-                    <Link className="font-medium text-primary-500 hover:text-indigo-400" href="/signup">
+                    <Link className="font-medium text-primary-500 hover:text-primary-700 no-underline" href="/signup">
                         Sign up
                     </Link>
                 </p>
@@ -59,7 +59,7 @@ export default function LoginForm(){
                 {errorMessage?.message && <p className="text-danger">{errorMessage.message}</p>}
 
                 <button 
-                    className="w-full p-2 bg-primary hover:bg-primary-500 rounded-lg text-white"
+                    className="w-full p-2 bg-primary hover:bg-primary-700 rounded-lg text-white"
                     aria-disabled={pending}
                     disabled={pending}
                     type="submit">
@@ -74,7 +74,7 @@ export default function LoginForm(){
             <div className="space-y-3">
                 <form action="#">
                     <button 
-                        className='flex items-center justify-center w-full rounded-lg border-2 border-gray-100 dark:border-font py-3 px-4 text-sm font-medium text-font hover:bg-gray-100 dark:hover:bg-secondary' 
+                        className='flex items-center justify-center w-full rounded-lg border border-gray-100 dark:border-font py-3 px-4 text-sm font-medium text-font hover:bg-gray-100 dark:hover:bg-secondary' 
                         type="submit">
                             <Image loading="lazy" className="w-5" height="2" width="2" alt="provider-logo" src="https://authjs.dev/img/providers/google.svg"/>
                             <span className='grow'>Signin in with Google</span>
@@ -83,7 +83,7 @@ export default function LoginForm(){
 
                 <form action={login}>
                     <button 
-                        className='flex items-center justify-center w-full rounded-lg border-2 border-gray-100 dark:border-font py-3 px-4 text-sm font-medium text-font hover:bg-gray-100 dark:hover:bg-secondary' 
+                        className='flex items-center justify-center w-full rounded-lg border border-gray-100 dark:border-font py-3 px-4 text-sm font-medium text-font hover:bg-gray-100 dark:hover:bg-secondary' 
                         type="submit">
                             <Image loading="lazy" className="w-5" height="2" width="2" alt="provider-logo" src="https://authjs.dev/img/providers/github.svg"/>
                             <span className='grow'>Signin in with GitHub</span>

@@ -12,20 +12,32 @@ export interface Config{
 
 interface ConfigContextType {
     config: Config;
-    setConfig: React.Dispatch<React.SetStateAction<Config>>;
+    setConfig: (config: Config) => void;
+    resetToDefault: () => void;
 }
+
+const defaultConfig: Config = {
+    maxTokens: 300,
+    temperature: 1.0,
+    topP: 0.5
+};
 
 const ConfigContext = createContext<ConfigContextType | undefined>(undefined);
 
+
 export const ConfigProvider: React.FC<{ children: React.ReactNode}> = ({children}) => {
-    const [config, setConfig] = useState<Config>({
-        maxTokens: 50,
-        temperature: 0,
-        topP: 0
-    });
+    const [config, setConfigState] = useState<Config>(defaultConfig);
+
+    const setConfig = (newConfig: Config) => {
+        setConfigState(newConfig);
+    };
+
+    const resetToDefault = () => {
+        setConfigState(defaultConfig);
+    };
 
     return (
-      <ConfigContext.Provider value={{config, setConfig }}>
+      <ConfigContext.Provider value={{config, setConfig, resetToDefault }}>
         {children}
       </ConfigContext.Provider>
     );
@@ -49,10 +61,10 @@ export default function ModelConfig(){
   const handleConfigChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     
-    setConfig(prevConfig => ({
-        ...prevConfig, 
-        [name]: parseFloat(value)
-    }));
+    setConfig({
+        ...config,
+        [name]: parseFloat(value),
+    });
   }
 
   useEffect(() => {

@@ -1,12 +1,17 @@
 "use client";
 import { ThemeProvider } from "next-themes";
-import { ThemeProviderProps } from "next-themes/dist/types";
 import { SidebarProvider } from "@/components/sidebarProvider";
 import { ConfigProvider } from "./modelConfig";
 
-export function ChatThemeProvider({ children, ...props }: ThemeProviderProps) {
+interface Props{  children: React.ReactNode }
+
+export function Providers({ children }: Props ) {
   return (
-    <ThemeProvider {...props}>
+    <ThemeProvider 
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            enableColorScheme>
       <SidebarProvider>
         <ConfigProvider>
          {children}

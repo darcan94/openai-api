@@ -46,13 +46,13 @@
 
   .dark {
     --primary: #003f5c;
-    --primary-700: #006b95;
     --primary-100: #dcf6ff;
     --primary-200: #b2f0ff;
     --primary-300: #6de5ff;
     --primary-400: #20d9ff;
     --primary-500: #00c5ff;
     --primary-600: #009fdf;
+    --primary-700: #006b95;
 
     --secondary: #131314;
     --secondary-alpha: #1313148a;

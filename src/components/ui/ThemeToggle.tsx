@@ -2,11 +2,11 @@ import { useTheme } from "next-themes";
 import Button from "@/components/ui/Button";
 import { IconMoon, IconSun, IconSystem } from "@/components/ui/Icons";
 
-export default function ThemeToggle({
-  setOpen,
-}: {
+interface Props{
   setOpen: (isOpen: boolean) => void;
-}) {
+}
+
+export default function ThemeToggle({ setOpen }: Props) {
   const { setTheme } = useTheme();
 
   const handleCloseDialog = (theme: string) => {

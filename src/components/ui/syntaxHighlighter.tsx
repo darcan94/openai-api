@@ -1,6 +1,12 @@
 import { Highlight } from 'prism-react-renderer';
 
-export default function SyntaxHighlighter({ code, language, showLineNumbers}: any){    
+interface Props{
+    code: string;
+    language: string;
+    showLineNumbers: boolean;
+}
+
+export default function SyntaxHighlighter({ code, language, showLineNumbers = false}: Props){    
     return (
         <Highlight code={code} language={language}>
             {({tokens, getLineProps, getTokenProps }) => (

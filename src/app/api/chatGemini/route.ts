@@ -5,7 +5,7 @@ import { google } from "@ai-sdk/google";
 
 export async function POST(req: Request){
   const { messages, data, id, userId, config } = await req.json();
-  console.log(config);
+  
   const initialMessages = messages.slice(0, -1);
   const currentMessage = messages[messages.length - 1];
   
@@ -18,7 +18,7 @@ export async function POST(req: Request){
 
   const result = await streamText({
     model: google("models/gemini-1.5-pro-latest"),
-    system:"Detect user's language and response in MARKDOWN format",
+    system:"It detects the user's language and responds in markdown format when appropriate, in their language!",
     messages: [
       ...convertToCoreMessages(initialMessages),
       currentMessage
