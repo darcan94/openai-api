@@ -51,7 +51,7 @@ export class ChatRepositoryImpl implements ChatRepository {
     }
 
     try {
-      const chats = collection.find({userId}, { projection: {_id: 0}}).sort({ createdAt: -1 });
+      const chats = collection.find({ userId }, { projection: {id: 1, title: 1, _id: 0}}).sort({ createdAt: -1 });      
       return (await chats.toArray()) as unknown as Chat[];
     } catch (error) {
       console.error(`Error occurred while getting all chats: ${error}`);
@@ -66,7 +66,7 @@ export class ChatRepositoryImpl implements ChatRepository {
     }
 
     try {
-      const chat = await collection.findOne({ id, userId });
+      const chat = await collection.findOne({ id, userId }, { projection: {_id: 0}});
       return chat as unknown as Chat;
     } catch (error) {
       console.error(`Error occurred while getting a chat: ${error}`);
