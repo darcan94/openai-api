@@ -55,7 +55,7 @@ export default function Sidebar({ children }: Props) {
       className={clsx(
         "flex flex-col gap-2 justify-between bg-secondary-alpha backdrop-blur-md pt-16 p-2 text-font",
         {"absolute h-full shadow-xl z-20": isMobile},
-        {"border-r border-white/10 w-80": !isMobile}
+        {"w-80": !isMobile}
       )}>
     
         <Link 

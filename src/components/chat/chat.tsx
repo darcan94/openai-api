@@ -5,7 +5,7 @@ import PromptForm from "@/components/promptForm";
 import EmptyChat from "./EmptyChat";
 import {usePathname, useRouter} from "next/navigation";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import {Session} from "next-auth";
 import { useConfig } from "@/components/modelConfig";
 import type { Chat } from "@/app/modules/chat/domain/Chat";
@@ -21,13 +21,19 @@ export default function Chat({ id, chat, session }: Props) {
   const path = usePathname();
   const { config, setConfig, resetToDefault } = useConfig();
   const [ selectedModel ] = useLocalStorage('model');
+  const isInitialMount = useRef(true);
 
   useEffect(() => {    
-
-      if(chat?.config) setConfig(chat.config);
-
-      else resetToDefault();
-      
+    if(isInitialMount.current){
+      isInitialMount.current = false;
+      if(chat?.config) {
+        setConfig(chat.config);
+        console.log(chat.config);        
+      }
+      else {
+        resetToDefault();      
+      }
+    }      
   }, [chat, setConfig, resetToDefault])
 
   const {

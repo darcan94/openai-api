@@ -158,6 +158,7 @@ function Input({min, max, step, children, name, value, onChange}: Props){
                     type="number" 
                     min={min} 
                     max={max} 
+                    step={step}
                     onChange={onChange}
                     className="text-sm text-right w-16 appearance-none rounded-md px-2 bg-transparent border border-gray-300 dark:border-gray-600"/>
             </label>
