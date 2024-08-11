@@ -17,8 +17,8 @@ export default function CodeBlock({ value, language }: Props) {
   };
 
   return (
-    <div className="rounded-lg m-2 bg-zinc-800 font-sans">
-      <div className="flex items-center justify-between rounded-se-lg rounded-ss-lg p-2 text-zinc-100">
+    <div className="rounded-lg m-2 bg-secondary text-sm">
+      <div className="flex items-center justify-between rounded-se-lg rounded-ss-lg p-2 text-font">
         <span>{language}</span>
         
         <Button variant="ghost" size="iconsm" onClick={onCopy}>

@@ -27,8 +27,7 @@ export default function Chat({ id, chat, session }: Props) {
     if(isInitialMount.current){
       isInitialMount.current = false;
       if(chat?.config) {
-        setConfig(chat.config);
-        console.log(chat.config);        
+        setConfig(chat.config);     
       }
       else {
         resetToDefault();      

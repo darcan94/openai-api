@@ -5,7 +5,6 @@ import { Link } from "next-view-transitions";
 import { IconClearChat } from "@/components/ui/Icons";
 import Settings from "@/components/ui/settings";
 import { motion } from "framer-motion";
-import clsx from "clsx";
 
 interface Props{
   children: React.ReactNode; 
@@ -52,11 +51,8 @@ export default function Sidebar({ children }: Props) {
     <motion.aside
       animate={state}
       variants={isMobile ? mobileVariants : desktopVariants}
-      className={clsx(
-        "flex flex-col gap-2 justify-between bg-secondary-alpha backdrop-blur-md pt-16 p-2 text-font",
-        {"absolute h-full shadow-xl z-20": isMobile},
-        {"w-80": !isMobile}
-      )}>
+      data-state={isMobile ? "mobile" : "desktop"}
+      className="data-[state=mobile]:absolute data-[state=mobile]:h-full data-[state=mobile]:shadow-xl flex flex-col gap-2 justify-between bg-secondary-alpha backdrop-blur-md pt-16 p-2 text-font data-[state=desktop]:w-80 z-20">
     
         <Link 
           href="/"
