@@ -19,8 +19,8 @@ export default function Avatar({ user }: Props){
                 </div>
                 ) 
             : (
-                <div className="text-white text-xl rounded-full z-10 h-10 w-10 flex justify-center items-center -space-x-4 rtl-space-x-reverse bg-primary">
-                    {user?.name?.charAt(0).toUpperCase()}
+                <div className="text-white text-xl rounded-full z-10 h-10 w-10 flex justify-center items-center bg-primary">
+                    { user?.name?.charAt(0).toUpperCase() }
                 </div>
               )
             

@@ -3,10 +3,13 @@ import { useFormState, useFormStatus } from "react-dom"
 import { authenticate, login } from "@/app/modules/user/application/actions";
 import {EyeIcon} from "@/components/ui/Icons";
 import {useState} from "react";
-import { Link } from "next-view-transitions";
 import Image from "next/image";
 
-export default function LoginForm(){
+interface Props{
+    children?: React.ReactNode;
+}
+
+export default function LoginForm( { children }: Props ){
     const [isPasswordVisible, setPasswordVisible] = useState(false);
     const [errorMessage, dispatch] = useFormState(authenticate, undefined);
     const {pending} = useFormStatus();
@@ -17,17 +20,8 @@ export default function LoginForm(){
 
     return(
         <div className="w-full max-w-sm p-4 bg-white dark:bg-background rounded-xl space-y-6 shadow-lg">
-            <div>
-                <h2 className="mt-6 text-center text-xl text-font">
-                    Sign in to your account.
-                </h2>
-                <p className="mt-2 text-center text-sm text-font">
-                    <span>Or </span>
-                    <Link className="font-medium text-primary-500 hover:text-primary-700 no-underline" href="/signup">
-                        Sign up
-                    </Link>
-                </p>
-            </div>
+            
+            { children}
 
             <form action={dispatch} className="space-y-6">
                 <div className="space-y-1">

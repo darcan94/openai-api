@@ -35,7 +35,7 @@ export default function UserMenu({ user, children }: Props) {
       
       <Button variant="ghost" size="iconlg" onClick={handleToggle}>
         <Avatar user={ user }/>
-        <span className="sr-only">Settings</span>
+        <span className="sr-only">User Menu</span>
       </Button>
 
       <AnimatePresence>

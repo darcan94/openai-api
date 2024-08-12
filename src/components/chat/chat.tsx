@@ -9,6 +9,7 @@ import React, { useEffect, useRef } from "react";
 import {Session} from "next-auth";
 import { useConfig } from "@/components/modelConfig";
 import type { Chat } from "@/app/modules/chat/domain/Chat";
+import { Message } from "ai";
 
 interface Props{
   id: string;
@@ -42,8 +43,7 @@ export default function Chat({ id, chat, session }: Props) {
     setInput,
     stop,
     reload,
-    handleInputChange,
-    handleSubmit,
+    append
   } = useChat({
     initialMessages: chat?.messages,
     body: { id, userId: session?.user?.id, config },
@@ -69,12 +69,19 @@ export default function Chat({ id, chat, session }: Props) {
 
         <PromptForm
           input={input}
+          setInput={setInput}
           isLoading={isLoading}
           hasMessage={messages.length > 0}
           stop={stop}
           reload={reload}
-          handleInputChange={handleInputChange}
-          handleSubmit={handleSubmit}
+          onSubmit={
+            async ( {content, experimental_attachments, role}: Message) => {              
+              await append({
+                content,
+                experimental_attachments,
+                role,
+            })
+          }}
         />
 
       </div>

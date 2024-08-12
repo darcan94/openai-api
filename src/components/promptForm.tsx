@@ -5,42 +5,52 @@ import { useState } from "react";
 import Image from "next/image";
 import useTextareaAutoHeight from "@/hooks/useTextareaAutoHeight";
 
-interface ChatFormProps {
+
+interface Attachment {
+  name?: string;
+  contentType?: string;
+  url: string;
+}
+interface Props {
   input: string;
-  //setInput: any;
+  setInput: (input: string) => void;
   isLoading: boolean;
   hasMessage: boolean;
   stop: () => void;
   reload: () => void;
-  //onSubmit: any;
-  handleInputChange:any;
-  handleSubmit:any;
+  onSubmit: any;
 }
 
 export default function PromptForm({
   input,
-  //setInput,
+  setInput,
   isLoading,
   hasMessage,
   stop,
   reload,
-  //onSubmit,
-  handleInputChange,
-  handleSubmit,
-}: ChatFormProps) {
+  onSubmit
+}: Props) {
   const { formRef, onKeyDown } = useEnterSend();
   const textareaRef = useTextareaAutoHeight(input);
-  const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [imagePreview, setImagePreview] = useState<Attachment[] | null>(null);
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
-    if (file){
+
+    if (file){      
       const reader = new FileReader();
       reader.onload = (e: ProgressEvent<FileReader>) => {
         if (e.target?.result && typeof e.target.result === 'string') {
-          setImagePreview(e.target.result);
+          const attachment: Attachment[] = [{
+            name: file.name,
+            contentType: file.type,
+            url: e.target.result
+          }]
+
+          setImagePreview(attachment);
         }
       };
+      
       reader.readAsDataURL(file);
     }
   }
@@ -54,19 +64,24 @@ export default function PromptForm({
       <form
         ref={formRef}
         className="mx-auto w-full lg:w-8/12 p-4"
-        onSubmit={e => {
+        onSubmit={async e => {
+          e.preventDefault();
+          if(!input?.trim()) {
+            return
+          }
+          setInput('');
           setImagePreview(null);
-          handleSubmit(e, {
-            data: {
-              image: imagePreview
-            },
-          })
+          await onSubmit({ 
+            content: input,
+            experimental_attachments: imagePreview,
+            role: 'user'
+          });
         }}
       >
         <div className="rounded-[30px] border border-gray-200 bg-secondary dark:border-white/10">
           {imagePreview && (
             <div className="px-2 py-2 w-max relative group">
-              <Image width={6} height={4} src={imagePreview} alt="Image Preview" className="w-36 h-28 object-cover rounded-[20px]" />
+              <Image width={6} height={4} src={imagePreview[0].url} alt="Image Preview" className="w-36 h-28 object-cover rounded-[20px]" />
               <button 
                 type="button"
                 onClick={handleDeleteImage}
@@ -82,7 +97,7 @@ export default function PromptForm({
             autoFocus={true}
             tabIndex={0}
             rows={1}
-            onChange={handleInputChange}
+            onChange={e => setInput(e.target.value)}
             className="w-full rounded-3xl max-h-32 resize-none bg-transparent px-4 py-[.5rem] text-font outline-none sm:text-sm"
             onKeyDown={onKeyDown}
             value={input}
@@ -91,7 +106,7 @@ export default function PromptForm({
 
             { (!imagePreview && !isLoading) && (
               <>
-                <label className="px-2" htmlFor="file-input">
+                <label className="px-2 cursor-pointer" htmlFor="file-input">
                   <ImageIcon />
                 </label>
                 <input

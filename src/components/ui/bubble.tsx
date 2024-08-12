@@ -6,6 +6,7 @@ import { MemoizedMarkdown } from "@/components/memoizedMarkdown";
 import Button from "@/components/ui/Button";
 import { IconCheck, IconCopy } from "@/components/ui/Icons";
 import useClipboard from "@/hooks/useClipboard";
+import Image from "next/image";
 
 export default function Bubble({ message }: { message: Message }) {
   const { isCopied, copyToClipboard } = useClipboard({ timeout: 3000 });
@@ -59,6 +60,16 @@ export default function Bubble({ message }: { message: Message }) {
       >
         {message.content}
       </MemoizedMarkdown>
+      {
+        message.experimental_attachments && (
+          <Image 
+            width={32} 
+            height={32} 
+            src={message.experimental_attachments[0].url} 
+            alt="Image Preview" 
+            className="rounded-xl w-8/12 md:w-6/12 lg:w-4/12"/>
+        )
+      }
     </div>
   );
 }
