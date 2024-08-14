@@ -61,14 +61,20 @@ export default function Bubble({ message }: { message: Message }) {
         {message.content}
       </MemoizedMarkdown>
       {
-        message.experimental_attachments && (
-          <Image 
-            width={32} 
-            height={32} 
-            src={message.experimental_attachments[0].url} 
-            alt="Image Preview" 
-            className="rounded-xl w-8/12 md:w-6/12 lg:w-4/12"/>
-        )
+        message.experimental_attachments && 
+        <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
+          {
+            message.experimental_attachments.map( attachment => (
+              <Image 
+                key={attachment.name}
+                width={24} 
+                height={24} 
+                src={attachment.url} 
+                alt={attachment.name || 'image preview'}
+                className="rounded-xl min-w-28 w-6/12 max-w-48"/>
+            ))
+          }
+        </div>
       }
     </div>
   );
