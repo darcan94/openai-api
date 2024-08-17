@@ -7,7 +7,8 @@ interface Option{
 
 const options: Option[] = [
   { label: 'gpt-4o', value: 'chat' },
-  { label: 'gemini-1.5-pro-latest', value: 'chatGemini' }
+  { label: 'gemini-1.5-pro-latest', value: 'gemini' },
+  { label: 'claude-3-5-sonnet', value: 'claude' }
 ];
 
 export default function ModelSelector() {  

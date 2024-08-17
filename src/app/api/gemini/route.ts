@@ -14,7 +14,7 @@ export async function POST(req: Request){
     maxRetries: 1,
     async onFinish({ text }){
       messages.push({content: text, role: 'assistant'})
-      if( await updateChat(id, messages) ) return
+      if( await updateChat(id, messages) ) return;
 
       const newChat: Chat = {
         id,
@@ -30,4 +30,4 @@ export async function POST(req: Request){
   })
  
   return result.toAIStreamResponse();
-};
+}
