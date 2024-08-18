@@ -70,7 +70,7 @@ export default function LoginForm( { children }: Props ){
                     <button 
                         className='flex items-center justify-center w-full rounded-lg border border-gray-100 dark:border-font py-3 px-4 text-sm font-medium text-font hover:bg-gray-100 dark:hover:bg-secondary' 
                         type="submit">
-                            <Image loading="lazy" className="w-5" height="2" width="2" alt="provider-logo" src="https://authjs.dev/img/providers/google.svg"/>
+                            <Image loading="lazy" height="20" width="20" alt="provider-logo" src="https://authjs.dev/img/providers/google.svg"/>
                             <span className='grow'>Signin in with Google</span>
                     </button>
                 </form>
@@ -79,7 +79,7 @@ export default function LoginForm( { children }: Props ){
                     <button 
                         className='flex items-center justify-center w-full rounded-lg border border-gray-100 dark:border-font py-3 px-4 text-sm font-medium text-font hover:bg-gray-100 dark:hover:bg-secondary' 
                         type="submit">
-                            <Image loading="lazy" className="w-5" height="2" width="2" alt="provider-logo" src="https://authjs.dev/img/providers/github.svg"/>
+                            <Image loading="lazy" height="20" width="20" alt="provider-logo" src="https://authjs.dev/img/providers/github.svg"/>
                             <span className='grow'>Signin in with GitHub</span>
                     </button>
                 </form>                

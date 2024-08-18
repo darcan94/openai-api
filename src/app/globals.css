@@ -18,10 +18,6 @@
   blockquote > p {
     @apply my-4 text-base font-medium italic before:content-['"'] after:content-['"'];
   }
-
-  img {
-    @apply w-2/4;
-  }
 }
 
 @layer base {

@@ -8,7 +8,10 @@ export default async function ChatPage({ params }: { params: any }) {
   const session: Session | null = await auth();
   const chat = await getChat(params.id, session?.user?.id || "");
 
-  return  chat 
-            ? <Chat id={chat.id} chat={chat} session={null}/>
-            : notFound()
+  if (!chat) {
+    const { notFound } = await import('next/navigation');    
+    return notFound();
+  }
+
+  return  <Chat id={chat.id} chat={chat} session={null}/>
 }
