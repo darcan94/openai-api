@@ -1,4 +1,4 @@
-import Dropdown from "./dropDown";
+import Dropdown from "@/components/ui/dropDown";
 
 interface Option{
   value: string;
@@ -6,8 +6,8 @@ interface Option{
 }
 
 const options: Option[] = [
-  { label: 'gpt-4o', value: 'chat' },
-  { label: 'gemini-1.5-pro-latest', value: 'gemini' },
+  { label: 'gpt-4o', value: 'openai' },
+  { label: 'gemini-1.5-pro-latest', value: 'google' },
   { label: 'claude-3-5-sonnet', value: 'claude' }
 ];
 
